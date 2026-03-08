@@ -20,8 +20,9 @@ export function ContactSection() {
     script.src = HUBSPOT_SCRIPT;
     script.async = true;
     script.onload = () => {
-      if (typeof window !== "undefined" && (window as { hbspt?: { forms: { create: (opts: object) => void } } }).hbspt?.forms) {
-        const hbspt = (window as { hbspt: { forms: { create: (opts: object) => void } }).hbspt;
+      // Usamos (window as any) para evitar errores de tipado que rompen el build
+      if (typeof window !== "undefined" && (window as any).hbspt) {
+        const hbspt = (window as any).hbspt;
         hbspt.forms.create({
           portalId: HUBSPOT_PORTAL_ID,
           formId: HUBSPOT_FORM_GUID,
@@ -30,6 +31,7 @@ export function ContactSection() {
           submitButtonClass: "hubspot-submit-btn",
           submitText: "Let's talk >",
         });
+
         timer = setTimeout(() => {
           const container = document.getElementById(HUBSPOT_FORM_ID);
           if (container && container.querySelector(".hs-form")) {
@@ -42,7 +44,9 @@ export function ContactSection() {
     return () => {
       if (timer) clearTimeout(timer);
       const existing = document.querySelector(`script[src="${HUBSPOT_SCRIPT}"]`);
-      if (existing?.parentNode) existing.parentNode.removeChild(existing);
+      if (existing && existing.parentNode) {
+  existing.parentNode.removeChild(existing);
+}
     };
   }, []);
 
