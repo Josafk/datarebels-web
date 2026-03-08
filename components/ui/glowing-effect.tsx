@@ -72,7 +72,7 @@ const GlowingEffect = memo(
           isPointerInsideRef.current = false;
           animate(
             gradient,
-            { opacity: 0 },
+            { opacity: 0 } as any,
             { duration: movementDuration * 0.3, ease: "ease-out" }
           );
           return;
