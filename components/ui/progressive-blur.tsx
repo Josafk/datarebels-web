@@ -42,9 +42,10 @@ export function ProgressiveBlur({
         );
 
         const gradient = `linear-gradient(${angle}deg, ${gradientStops.join(", ")})`;
+        const MotionDiv = motion.div as any;
 
         return (
-          <motion.div
+          <MotionDiv
             key={index}
             className="pointer-events-none absolute inset-0 rounded-[inherit]"
             style={{
