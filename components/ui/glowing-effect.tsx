@@ -95,8 +95,8 @@ const GlowingEffect = memo(
         gradient.style.background = `conic-gradient(from ${startAngle}deg, ${getGradientColors()})`;
         animate(
           gradient,
-          { opacity: glow || isInside ? 1 : 0.8 },
-          { duration: 0.15, ease: "ease-out" }
+          { opacity: glow || isInside ? 1 : 0.8 } as any, // 1. Agregamos 'as any'
+          { duration: 0.15, ease: "easeOut" }              // 2. Cambiamos a 'easeOut'
         );
       },
       [glow, proximity, spread, movementDuration, getGradientColors]
