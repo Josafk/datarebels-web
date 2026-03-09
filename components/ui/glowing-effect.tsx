@@ -73,7 +73,7 @@ const GlowingEffect = memo(
           animate(
             gradient,
             { opacity: 0 } as any,
-            { duration: movementDuration * 0.3, ease: "ease-out" }
+            { duration: movementDuration * 0.3, ease: "easeOut" }
           );
           return;
         }
