@@ -45,9 +45,7 @@ export const ImageSwiper: React.FC<ImageSwiperProps> = ({
 
   const getCards = useCallback((): HTMLElement[] => {
     if (!cardStackRef.current) return [];
-    return [
-      ...cardStackRef.current.querySelectorAll(".image-card"),
-    ] as HTMLElement[];
+    return Array.from(cardStackRef.current.querySelectorAll(".image-card")) as HTMLElement[];
   }, []);
 
   const getActiveCard = useCallback((): HTMLElement | null => {
