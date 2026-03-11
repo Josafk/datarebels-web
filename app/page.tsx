@@ -1,4 +1,4 @@
-import { Hero } from "@/components/Hero";
+import { Hero } from "@/components/hero";
 import { TheProblem } from "@/components/TheProblem";
 import { ExplosiveDemand } from "@/components/ExplosiveDemand";
 import { MTP } from "@/components/MTP";
@@ -8,7 +8,7 @@ import { GenAITalentGap } from "@/components/GenAITalentGap";
 import { SuccessStories } from "@/components/SuccessStories";
 import { RebelCurriculum } from "@/components/RebelCurriculum";
 import { GlobalMovement } from "@/components/GlobalMovement";
-import { BeyondData } from "@/components/BeyondData";
+import { BeyondData } from "@/components|";
 import { FAQ } from "@/components/FAQ";
 import { ContactSection } from "@/components/ContactSection";
 

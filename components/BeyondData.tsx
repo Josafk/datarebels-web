@@ -17,7 +17,7 @@ const episodes = [
     date: "23 JUL, 2025",
     name: "Christopher Paquette",
     title: "Chief Digital & Transformation Officer",
-    image: "/Podcast1.avif",
+    image: "/podcast-01.avif",
     watchUrl: "https://www.youtube.com/watch?v=nPxZAuwX6Ns",
   },
   {
@@ -25,7 +25,7 @@ const episodes = [
     date: "12 MAY, 2025",
     name: "Koro Castellano",
     title: "Independent Advisor and Strategic Consultant",
-    image: "/Podcast2.avif",
+    image: "/podcast-02.avif",
     watchUrl: "https://www.youtube.com/watch?v=RJOcFuX4oIs",
   },
   {
@@ -33,7 +33,7 @@ const episodes = [
     date: "04 APR, 2025",
     name: "Mariano Hansen",
     title: "Chief Strategy Officer en PSG",
-    image: "/Podcast3.avif",
+    image: "/podcast-03.avif",
     watchUrl: "https://youtu.be/Dflk3lKTKxI?si=olbEgV0NJA1_KWGf",
   },
   {
@@ -41,7 +41,7 @@ const episodes = [
     date: "18 MAR, 2025",
     name: "José Chapa",
     title: "VP Product Management en Walmart",
-    image: "/Podcast4.avif",
+    image: "/podcast-04.avif",
     watchUrl: "https://youtu.be/_QNofyYmct8?si=yLBrXDvyExLJgh9Y",
   },
   {
@@ -49,7 +49,7 @@ const episodes = [
     date: "27 FEB, 2025",
     name: "Sebastián Caro",
     title: "CEO de Hunty",
-    image: "/Podcast5.avif",
+    image: "/podcast-05.avif",
     watchUrl: "https://youtu.be/aWOWs1UWSqU?si=-K8ZLlTqrBxShfOk",
   },
   {
@@ -57,7 +57,7 @@ const episodes = [
     date: "15 FEB, 2025",
     name: "Patricio Gil",
     title: "Director de Estrategia de Consumidor y Analitica de Oxxo",
-    image: "/Podcast6.png",
+    image: "/podcast-06.png",
     watchUrl: "https://youtu.be/vcw3HsBpuhI?si=azAFa02xE_eT8wxR",
   },
   {
@@ -65,7 +65,7 @@ const episodes = [
     date: "09 FEB, 2025",
     name: "Enrico Robles",
     title: "Director of Data Analytics & Platform en Endeavor",
-    image: "/Podcast7.png",
+    image: "/podcast-07.png",
     watchUrl: "https://youtu.be/gZbvuMpjI_M?si=juWDJeHxsxAYeYrE",
   },
   {
@@ -73,7 +73,7 @@ const episodes = [
     date: "20 JAN, 2025",
     name: "Eduardo de la Garza",
     title: "Por Talento Ganas o por Talento Pierdes",
-    image: "/Podcast8.png",
+    image: "/podcast-08.png",
     watchUrl: "https://youtu.be/o4A26hzyyrs?si=Tw3ziTr8PXTggJgW",
   },
   {
@@ -81,7 +81,7 @@ const episodes = [
     date: "08 JAN, 2025",
     name: "Alberto de Armas",
     title: "HR Powered AI",
-    image: "/Podcast9.png",
+    image: "/podcast-09.png",
     watchUrl: "https://youtu.be/zEPY40fmIfU?si=Ib4ordqyvXnBkjqP",
   },
   {
@@ -89,7 +89,7 @@ const episodes = [
     date: "22 DEC, 2024",
     name: "Karim Touma",
     title: "Data & AI como capacidad de negocios",
-    image: "/Podcast10.png",
+    image: "/podcast-10.png",
     watchUrl: "https://youtu.be/SgEVj-6g41k?si=JWAMWiDzG-r1MQvS",
   },
   {
@@ -97,7 +97,7 @@ const episodes = [
     date: "10 DEC, 2024",
     name: "David Puente",
     title: "De AI a ROI: Modelos de captura de valor",
-    image: "/Podcast11.png",
+    image: "/podcast-11.png",
     watchUrl: "https://youtu.be/w-dBaJPByKE?si=aElOIXtf5ztnE5S7",
   },
 ];
@@ -135,7 +135,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
           {/* Logo en la transición exacta entre imagen y cuerpo blanco */}
           <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 z-10">
             <Image
-              src="/BeyonData.svg"
+              src="/beyond-data.svg"
               alt="BEYOND DATA"
               width={92}
               height={30}
@@ -209,7 +209,7 @@ export function BeyondData() {
       <div
         className="absolute inset-0 z-0 opacity-30"
         style={{
-          backgroundImage: "url('/Background podcast.png')",
+          backgroundImage: "url('/background-podcast.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -220,7 +220,7 @@ export function BeyondData() {
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5 md:gap-8 mb-8 md:mb-10">
             <div className="order-1 md:order-2 flex-shrink-0 md:self-start">
               <Image
-                src="/BeyonData.svg"
+                src="/beyond-data.svg"
                 alt="BEYOND DATA"
                 width={180}
                 height={80}

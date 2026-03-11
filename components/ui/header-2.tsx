@@ -203,7 +203,7 @@ export function Header() {
         )}>
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <Image src="/Logo-white.svg" alt="Data Rebels"
+            <Image src="/logo-white.svg" alt="Data Rebels"
               width={130} height={20} className="h-5 w-auto" priority />
           </Link>
 

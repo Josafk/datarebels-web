@@ -74,7 +74,7 @@ export function GenAITalentGap() {
           {/* Logo + Título — min-w-0 para ceder espacio a las pills en lg:flex-row */}
           <div className="flex items-center gap-4 min-w-0">
             <Image
-              src="/Isologo-white.svg"
+              src="/isologo-white.svg"
               alt=""
               width={40}
               height={32}
