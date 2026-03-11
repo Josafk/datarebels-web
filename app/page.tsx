@@ -1,4 +1,4 @@
-import { Hero } from "@/components/hero";
+import { Hero } from "@/components/Hero";
 import { TheProblem } from "@/components/TheProblem";
 import { ExplosiveDemand } from "@/components/ExplosiveDemand";
 import { MTP } from "@/components/MTP";
@@ -8,7 +8,7 @@ import { GenAITalentGap } from "@/components/GenAITalentGap";
 import { SuccessStories } from "@/components/SuccessStories";
 import { RebelCurriculum } from "@/components/RebelCurriculum";
 import { GlobalMovement } from "@/components/GlobalMovement";
-import { BeyondData } from "@/components|";
+import { BeyondData } from "@/components/BeyondData";
 import { FAQ } from "@/components/FAQ";
 import { ContactSection } from "@/components/ContactSection";
 
@@ -41,10 +41,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 5. New Approach & Stats (La Isla Blanca) */}
+      {/* 5. New Approach & Stats */}
       <NewApproach />
 
-      {/* 6. Logos - Join the 100K Rebels (Infinite Slider) */}
+      {/* 6. Logos - Join the 100K Rebels */}
       <LogoCloudSection />
 
       {/* 7. Close the GenAI Talent Gap */}
