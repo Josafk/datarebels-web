@@ -61,7 +61,7 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
           <div className="max-w-md">
             <Image
-              src="/Logo-white.svg"
+              src="/logo-white.svg"
               alt="Data Rebels"
               width={130}
               height={20}

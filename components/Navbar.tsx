@@ -18,7 +18,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/Logo-white.svg"
+            src="/logo-white.svg"
             alt="Data Rebels"
             width={130}
             height={20}

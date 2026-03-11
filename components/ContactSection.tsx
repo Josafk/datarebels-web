@@ -6,7 +6,6 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 const HUBSPOT_SCRIPT = "https://js.hsforms.net/forms/embed/v2.js";
 const HUBSPOT_FORM_ID = "hubspot-contact-form";
-
 const HUBSPOT_PORTAL_ID = "22679661";
 const HUBSPOT_FORM_GUID = "d28de33f-fcd1-47f1-9f2d-48b349c3d548";
 
@@ -37,13 +36,11 @@ export function ContactSection() {
       id="contact"
       className="relative w-full py-16 lg:py-24 flex items-center justify-center bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/background-form.png')" }}
-      aria-label="Contact"
     >
       <div className="max-w-6xl mx-auto w-full px-6 lg:px-8">
         <div className="bg-white rounded-[3rem] p-8 lg:p-16 shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 text-left">
             
-            {/* Columna Izquierda - Información */}
             <div className="flex flex-col">
               <div className="mb-8">
                 <Image
@@ -63,4 +60,27 @@ export function ContactSection() {
 
               <div className="space-y-6">
                 <a href="tel:8182626300" className="flex items-center gap-4 text-slate-700 hover:text-blue-600 transition-colors">
-                  <Phone className="w-5 h
+                  <Phone className="w-5 h-5 text-rose-500" />
+                  <span className="font-medium text-left">81 8262 6300</span>
+                </a>
+                <a href="mailto:contact@datarebels.mx" className="flex items-center gap-4 text-slate-700 hover:text-blue-600 transition-colors">
+                  <Mail className="w-5 h-5 text-rose-500" />
+                  <span className="font-medium text-left">contact@datarebels.mx</span>
+                </a>
+                <div className="flex items-start gap-4 text-slate-700">
+                  <MapPin className="w-5 h-5 mt-1 text-rose-500" />
+                  <span className="font-medium text-left">Blvd. Díaz Ordaz 333, SPGG, N.L.</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center min-h-[450px]">
+              <div id={HUBSPOT_FORM_ID} className="w-full" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

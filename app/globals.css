@@ -43,7 +43,7 @@
 
 /* Background responsivo Hero→MTP:
    - Móvil (<640px): mobile-background.png
-   - sm+ (640px+): Background-Principal.png — cover + center, sin espacios negros */
+   - sm+ (640px+): background-principal.png — cover + center, sin espacios negros */
 .hero-section-bg {
   background-image: url('/mobile-background.png');
   background-size: cover;
@@ -52,7 +52,7 @@
 }
 @media (min-width: 640px) {
   .hero-section-bg {
-    background-image: url('/Background-Principal.png');
+    background-image: url('/background-principal.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -116,7 +116,7 @@
   background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #1e3a8a 100%);
 }
 .podcast-thumb-pattern {
-  background-image: url("/Background podcast.png");
+  background-image: url("/background-podcast.png");
   background-size: 120% 120%;
   background-position: center;
   opacity: 0.15;

@@ -39,7 +39,7 @@ export function NewApproach() {
             <div className="flex flex-col p-8 md:p-10 lg:p-16 lg:max-w-xl relative z-10">
               <div className="mb-5">
                 <Image
-                  src="/Isologo.svg" alt=""
+                  src="/isologo.svg" alt=""
                   width={40} height={32}
                   className="object-contain w-10 h-8"
                 />
@@ -70,7 +70,7 @@ export function NewApproach() {
             {/* Imagen de la chica — SOLO en desktop (lg+) */}
             <div className="hidden lg:block lg:absolute lg:right-0 lg:bottom-0 lg:w-[48%] lg:min-w-[280px] lg:h-full lg:max-h-[450px] z-10">
               <Image
-                src="/IMG.png"
+                src="/img.png"
                 alt="Data Rebels team member"
                 fill
                 className="object-contain object-bottom pointer-events-none"
