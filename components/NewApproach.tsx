@@ -20,7 +20,7 @@ export function NewApproach() {
           
           <div className="flex flex-col lg:flex-row items-stretch">
             
-            {/* Columna de Texto */}
+            {/* Contenido de Texto */}
             <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center">
               <div className="mb-6">
                 <Image
@@ -32,7 +32,6 @@ export function NewApproach() {
                 />
               </div>
 
-              {/* Título: Ambit SemiBold 32/34 usando Tailwind arbitrario */}
               <h2 className="font-title text-slate-900 font-semibold mb-4 text-left text-[32px] leading-[34px]">
                 Our economy demands a <br className="hidden lg:block" /> new approach
               </h2>
@@ -50,7 +49,7 @@ export function NewApproach() {
               </div>
             </div>
 
-            {/* Columna de Imagen */}
+            {/* Fotografía de la chica */}
             <div className="flex-1 relative min-h-[250px] lg:min-h-full">
               <Image
                 src="/image-girl.png" 
@@ -62,3 +61,14 @@ export function NewApproach() {
               />
             </div>
           </div>
+
+          {/* Bloque de Estadísticas */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-gray-100">
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`flex flex-col items-center lg:items-start justify-center py-8 px-6 text-center lg:text-left ${
+                  i > 0 ? "lg:border-l border-gray-100" : ""
+                } ${i >= 2 ? "border-t lg:border-t-0" : ""}`}
+              >
+                <AnimatedCounter
