@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { ShinyButton } from "@/components/ui/shiny-button";
 
@@ -14,38 +13,37 @@ const stats = [
 
 export function NewApproach() {
   return (
-    <section className="bg-gray-100 py-12 w-full relative z-10">
+    <section className="bg-gray-100 py-12 lg:py-20 w-full relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        {/* CARD PRINCIPAL: max-w-5xl y altura controlada */}
-        <div className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
+        {/* CARD PRINCIPAL - max-w-5xl para que sea compacta como el Figma */}
+        <div className="bg-white rounded-[2.5rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
           
-          <div className="flex flex-col lg:flex-row relative lg:h-[420px]">
+          <div className="flex flex-col lg:flex-row relative">
             
-            {/* COLUMNA TEXTO: Medidas de Figma (40px top, 80px bottom, 32px sides) */}
-            <div className="flex-1 pt-[40px] pb-[40px] lg:pb-[80px] px-[32px] flex flex-col justify-start z-20 bg-white lg:bg-transparent">
-              <div className="mb-6">
-                <Image
+            {/* TEXTO: 40px arriba, 80px abajo, 32px a los lados */}
+            <div className="flex-1 pt-[40px] pb-[40px] lg:pb-[80px] px-[32px] flex flex-col justify-start z-20">
+              <div className="mb-6 h-[40px]">
+                {/* Usamos etiqueta img directa para asegurar que Vercel encuentre /isologo.svg */}
+                <img
                   src="/isologo.svg" 
                   alt="Data Rebels"
-                  width={40}
-                  height={34}
-                  priority
-                  className="object-contain"
+                  className="h-full w-auto object-contain"
                 />
               </div>
 
-              <h2 className="font-title text-slate-900 font-semibold mb-4 text-[32px] leading-[34px] tracking-tight text-left">
+              <h2 className="font-title text-slate-900 font-semibold mb-5 text-[32px] leading-[34px] tracking-tight text-left">
                 Our economy demands a <br className="hidden lg:block" /> new approach
               </h2>
 
-              <p className="font-sans text-gray-600 text-[14px] leading-relaxed mb-8 max-w-[360px] text-left">
+              <p className="font-sans text-gray-600 text-[14px] leading-relaxed mb-8 max-w-[380px] text-left">
                 We aim to solve this problem by eliminating uncertainty. We achieve
-                this by mapping the precise skills required by the global GenAI market.
+                this by mapping the precise skills required by the global GenAI market,
+                moving beyond traditional curricula.
               </p>
 
-              {/* BOTÓN: Propiedades exactas de Figma (11px vert, 24px left, 16px right) */}
-              <div className="flex justify-start">
+              {/* BOTÓN: Con el padding exacto de Figma y ahora con espacio suficiente */}
+              <div className="flex justify-start pb-4">
                 <ShinyButton 
                   href="#contact" 
                   variant="blue" 
@@ -53,7 +51,7 @@ export function NewApproach() {
                 >
                   <span className="flex items-center gap-2">
                     Enroll a Rebel Today
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M5 12h14m-7-7 7 7-7 7" />
                     </svg>
                   </span>
@@ -61,21 +59,13 @@ export function NewApproach() {
               </div>
             </div>
 
-            {/* COLUMNA IMAGEN: No empuja el contenedor, "flota" a la derecha */}
-            <div className="hidden lg:block absolute right-0 bottom-0 w-[50%] h-full z-10 pointer-events-none">
-              <Image
+            {/* IMAGEN DE LA CHICA: SOLO visible en Desktop (lg+) */}
+            <div className="hidden lg:block absolute right-0 bottom-0 w-[55%] h-[120%] z-10 pointer-events-none">
+              <img
                 src="/image-girl.png" 
-                alt="Rebel"
-                fill
-                className="object-contain object-right-bottom scale-110 origin-bottom-right"
-                sizes="40vw"
-                priority
+                alt="Data Rebels Student"
+                className="w-full h-full object-contain object-right-bottom scale-110 origin-bottom-right"
               />
-            </div>
-            
-            {/* Versión móvil de la imagen */}
-            <div className="lg:hidden relative h-[300px] w-full bg-white">
-               <Image src="/image-girl.png" alt="Rebel" fill className="object-contain object-bottom" />
             </div>
           </div>
 
@@ -84,7 +74,7 @@ export function NewApproach() {
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className={`flex flex-col items-center lg:items-start justify-center py-8 px-8 ${
+                className={`flex flex-col items-center lg:items-start justify-center py-10 px-8 ${
                   i > 0 ? "lg:border-l border-gray-100" : ""
                 } ${i >= 2 ? "border-t lg:border-t-0" : ""}`}
               >
