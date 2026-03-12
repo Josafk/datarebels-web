@@ -11,12 +11,12 @@ import { HERO_SECTION_IMAGES } from "@/lib/hero-images";
 gsap.registerPlugin(useGSAP);
 
 const HERO_ALTS: Record<string, string> = {
-  "/community-demoday-01.png": "Semillero de talento - Demoday",
-  "/community-woman-presenting-02.png": "Presentación Machine Learning y análisis de datos",
-  "/community-woman-portrait-03.png": "Rebel en espacio Data Rebels",
-  "/community-man-presenting-04.png": "Presentación en evento Data Rebels",
-  "/community-woman-red-glasses-05.png": "Análisis exploratorio y visualización - presentación",
-  "/community-team-meeting-06.png": "Equipo Data Rebels en reunión colaborativa",
+  "/hero-1.png": "Semillero de talento - Demoday",
+  "/hero-2.png": "Presentación Machine Learning y análisis de datos",
+  "/hero-3.png": "Rebel en espacio Data Rebels",
+  "/hero-4.png": "Presentación en evento Data Rebels",
+  "/hero-5.png": "Análisis exploratorio y visualización - presentación",
+  "/hero-6.png": "Equipo Data Rebels en reunión colaborativa",
 };
 
 const rebelProfiles = HERO_SECTION_IMAGES.map((src) => ({
