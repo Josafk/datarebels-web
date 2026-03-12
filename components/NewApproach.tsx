@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { ShinyButton } from "@/components/ui/shiny-button";
 
@@ -26,13 +25,11 @@ export function NewApproach() {
             <div className="flex-1 pt-8 pb-8 px-8 flex flex-col justify-center z-20">
 
               <div className="mb-5 h-8 flex items-center">
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/isologo.svg"
                   alt="Data Rebels"
-                  width={36}
-                  height={32}
-                  className="h-full w-auto object-contain"
-                  priority
+                  className="h-8 w-auto"
                 />
               </div>
 
@@ -52,7 +49,7 @@ export function NewApproach() {
                 <ShinyButton
                   href="#contact"
                   variant="blue"
-                  className="py-2.5 pl-6 pr-4 rounded-full text-[14px] font-bold"
+                  className="h-10 px-5 text-[14px] min-w-0 w-auto"
                 >
                   <span className="flex items-center gap-2">
                     Enroll a Rebel Today
@@ -71,16 +68,13 @@ export function NewApproach() {
               </div>
             </div>
 
-            {/* FOTO CHICA: posicionada desde abajo para no inflar la altura */}
+            {/* FOTO CHICA */}
             <div className="hidden lg:flex absolute right-0 bottom-0 w-[46%] h-full z-10 pointer-events-none items-end justify-end">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/image-girl.png"
                 alt="Rebel"
-                width={420}
-                height={380}
-                className="w-auto object-contain object-right-bottom"
-                style={{ maxHeight: "100%" }}
-                priority
+                className="w-auto object-contain object-right-bottom max-h-full"
               />
             </div>
           </div>
