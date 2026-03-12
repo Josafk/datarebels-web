@@ -14,7 +14,7 @@ const stats = [
 
 export function NewApproach() {
   return (
-    <section className="bg-gray-100 py-10 lg:py-16 w-full relative z-10">
+    <section className="bg-gray-100 py-10 lg:py-16 w-full relative z-10" aria-label="New Approach and Stats">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
           
@@ -24,7 +24,7 @@ export function NewApproach() {
             <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center">
               <div className="mb-6">
                 <Image
-                  src="/beyond-data-isologo.svg" // RUTA CORREGIDA AQUÍ
+                  src="/beyond-data-isologo.svg" 
                   alt="Data Rebels Isologo"
                   width={40}
                   height={34}
@@ -32,9 +32,8 @@ export function NewApproach() {
                 />
               </div>
 
-              {/* Título: Ambit SemiBold 32/34 */}
-              <h2 className="font-title text-slate-900 font-semibold mb-4 text-left"
-                  style={{ fontSize: '32px', lineHeight: '34px' }}>
+              {/* Título: Ambit SemiBold 32/34 usando Tailwind arbitrario */}
+              <h2 className="font-title text-slate-900 font-semibold mb-4 text-left text-[32px] leading-[34px]">
                 Our economy demands a <br className="hidden lg:block" /> new approach
               </h2>
 
@@ -63,30 +62,3 @@ export function NewApproach() {
               />
             </div>
           </div>
-
-          {/* Estadísticas: Ambit SemiBold 48/56 */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-gray-100">
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className={`flex flex-col items-center lg:items-start justify-center py-8 px-6 text-center lg:text-left ${
-                  i > 0 ? "lg:border-l border-gray-100" : ""
-                } ${i >= 2 ? "border-t lg:border-t-0" : ""}`}
-              >
-                <AnimatedCounter
-                  value={stat.value}
-                  className="font-title font-semibold text-[#1330f4] block"
-                  style={{ fontSize: '48px', lineHeight: '56px' }}
-                />
-                <span className="font-sans text-slate-500 text-[10px] font-bold uppercase tracking-wider mt-1">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-}
