@@ -5,28 +5,28 @@ import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { ShinyButton } from "@/components/ui/shiny-button";
 
 const stats = [
-  { value: "1,135", label: "REBELS GRADUATED" },
-  { value: "+357",  label: "PROYECTOS IMPLEMENTADOS" },
-  { value: "8x",   label: "AVERAGE ROI ON AI IMPLEMENTATIONS" },
-  { value: "91%",  label: "DE CSAT ALCANZADO" },
+  { value: "1,135", label: "Rebels Graduated" },
+  { value: "+357",  label: "Proyectos implementados" },
+  { value: "8x",   label: "Average ROI on AI Implementations" },
+  { value: "91%",  label: "de CSAT alcanzado" },
 ];
 
 export function NewApproach() {
   return (
-    <section className="bg-gray-100 py-12 lg:py-20 w-full relative z-10">
+    <section className="bg-gray-100 py-10 lg:py-16 w-full relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        {/* CARD PRINCIPAL - max-w-5xl para que sea compacta como el Figma */}
+        {/* CARD PRINCIPAL - max-w-5xl */}
         <div className="bg-white rounded-[2.5rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
           
           <div className="flex flex-col lg:flex-row relative">
             
-            {/* TEXTO: 40px arriba, 80px abajo, 32px a los lados */}
+            {/* TEXTO: Margen de 40px arriba / 80px abajo (Desktop) y 32px a los lados */}
             <div className="flex-1 pt-[40px] pb-[40px] lg:pb-[80px] px-[32px] flex flex-col justify-start z-20">
               <div className="mb-6 h-[40px]">
-                {/* Usamos etiqueta img directa para asegurar que Vercel encuentre /isologo.svg */}
+                {/* Forzamos el logo con query param para evitar caché de Vercel */}
                 <img
-                  src="/isologo.svg" 
+                  src="/isologo.svg?refresh=2" 
                   alt="Data Rebels"
                   className="h-full w-auto object-contain"
                 />
@@ -38,12 +38,11 @@ export function NewApproach() {
 
               <p className="font-sans text-gray-600 text-[14px] leading-relaxed mb-8 max-w-[380px] text-left">
                 We aim to solve this problem by eliminating uncertainty. We achieve
-                this by mapping the precise skills required by the global GenAI market,
-                moving beyond traditional curricula.
+                this by mapping the precise skills required by the global GenAI market.
               </p>
 
-              {/* BOTÓN: Con el padding exacto de Figma y ahora con espacio suficiente */}
-              <div className="flex justify-start pb-4">
+              {/* BOTÓN: Padding exacto de Figma: 11px vertical, 24px izquierda, 16px derecha */}
+              <div className="flex justify-start">
                 <ShinyButton 
                   href="#contact" 
                   variant="blue" 
@@ -59,17 +58,18 @@ export function NewApproach() {
               </div>
             </div>
 
-            {/* IMAGEN DE LA CHICA: SOLO visible en Desktop (lg+) */}
-            <div className="hidden lg:block absolute right-0 bottom-0 w-[55%] h-[120%] z-10 pointer-events-none">
+            {/* FOTO DE LA CHICA: 'hidden' por defecto, 'lg:block' solo en desktop */}
+            {/* El rostro no se tapa porque usamos object-bottom y max-h-[100%] */}
+            <div className="hidden lg:block absolute right-0 bottom-0 w-[50%] h-full z-10 pointer-events-none">
               <img
                 src="/image-girl.png" 
-                alt="Data Rebels Student"
-                className="w-full h-full object-contain object-right-bottom scale-110 origin-bottom-right"
+                alt="Rebel"
+                className="max-h-[100%] w-auto object-contain object-bottom ml-auto"
               />
             </div>
           </div>
 
-          {/* ESTADÍSTICAS: Ambit 48px / 56px */}
+          {/* NUMERALIA: Todo en Inter (font-sans) con medidas de Figma */}
           <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-gray-100 bg-white relative z-30">
             {stats.map((stat, i) => (
               <div
@@ -78,10 +78,12 @@ export function NewApproach() {
                   i > 0 ? "lg:border-l border-gray-100" : ""
                 } ${i >= 2 ? "border-t lg:border-t-0" : ""}`}
               >
-                <div className="font-title font-semibold text-[#1330f4] text-[48px] leading-[56px]">
+                {/* Números: Inter SemiBold 48px / 56px */}
+                <div className="font-sans font-semibold text-[#1330f4] text-[48px] leading-[56px] tracking-tighter">
                   <AnimatedCounter value={stat.value} />
                 </div>
-                <span className="font-sans text-slate-500 text-[10px] font-bold uppercase tracking-[0.1em] mt-1">
+                {/* Labels: Inter Regular 16px / 24px */}
+                <span className="font-sans text-slate-500 text-[16px] font-normal leading-[24px] mt-1 text-left">
                   {stat.label}
                 </span>
               </div>
