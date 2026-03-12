@@ -14,18 +14,17 @@ const stats = [
 
 export function NewApproach() {
   return (
-    <section className="bg-gray-100 py-10 lg:py-16 w-full relative z-10" aria-label="New Approach and Stats">
+    <section className="bg-gray-100 py-10 lg:py-16 w-full relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
           
           <div className="flex flex-col lg:flex-row items-stretch">
             
-            {/* Contenido de Texto */}
             <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center">
               <div className="mb-6">
                 <Image
                   src="/beyond-data-isologo.svg" 
-                  alt="Data Rebels Isologo"
+                  alt="Data Rebels Logo"
                   width={40}
                   height={34}
                   className="object-contain"
@@ -49,11 +48,10 @@ export function NewApproach() {
               </div>
             </div>
 
-            {/* Fotografía de la chica */}
             <div className="flex-1 relative min-h-[250px] lg:min-h-full">
               <Image
                 src="/image-girl.png" 
-                alt="Rebel student"
+                alt="Rebel"
                 fill
                 className="object-contain object-bottom lg:scale-105 origin-bottom"
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -62,7 +60,6 @@ export function NewApproach() {
             </div>
           </div>
 
-          {/* Bloque de Estadísticas */}
           <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-gray-100">
             {stats.map((stat, i) => (
               <div
@@ -71,4 +68,22 @@ export function NewApproach() {
                   i > 0 ? "lg:border-l border-gray-100" : ""
                 } ${i >= 2 ? "border-t lg:border-t-0" : ""}`}
               >
-                <AnimatedCounter
+                {/* TRUCO FINAL: Envolvemos el counter en un div. 
+                  El counter hará la animación y el div le dará el tamaño 48px del Figma.
+                */}
+                <div className="font-title font-semibold text-[#1330f4] text-[48px] leading-[56px]">
+                  <AnimatedCounter value={stat.value} />
+                </div>
+                
+                <span className="font-sans text-slate-500 text-[10px] font-bold uppercase tracking-wider mt-1">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
