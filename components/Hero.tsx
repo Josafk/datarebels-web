@@ -30,31 +30,32 @@ export function Hero() {
   useGSAP(() => {
     if (!headerRef.current) return;
     gsap.from(headerRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      ease: "power3.out",
-      delay: 0.5,
+      opacity: 0, y: 30, duration: 1, ease: "power3.out", delay: 0.5,
     });
   }, []);
 
   return (
     <>
+      {/* Título */}
       <h1
         ref={headerRef}
-        className="font-title text-white text-[32px] sm:text-[40px] lg:text-[48px] lg:leading-[56px] font-semibold leading-tight mb-8 md:mb-12 max-w-3xl"
+        className="font-title text-white font-semibold leading-tight mb-5 max-w-3xl
+          text-[28px] sm:text-[36px] lg:text-[44px] lg:leading-[52px]"
       >
         The Future of AI is Built Here. Become One of Our{" "}
         <span className="font-semibold">100K Rebels.</span>
       </h1>
 
-      {/* CARRUSEL REPARADO: Sin cortes y con espacio para el hover */}
-      <div className="relative w-full mb-10 md:mb-16 py-4"> 
-        <div className="group flex items-center justify-between gap-4 overflow-visible">
+      {/* Galería de perfiles */}
+      <div className="relative w-full mb-6 md:mb-8 py-3">
+        <div className="group flex items-center justify-between gap-3 overflow-visible">
           {rebelProfiles.map((profile) => (
             <div
               key={profile.src}
-              className="relative flex-1 aspect-[3/4] min-w-[100px] rounded-2xl transition-all duration-500 ease-in-out group-hover:scale-95 group-hover:opacity-40 hover:!scale-110 hover:!opacity-100 hover:z-20 shadow-xl"
+              className="relative flex-1 aspect-[3/4] min-w-[80px] rounded-2xl shadow-xl
+                transition-all duration-500 ease-in-out
+                group-hover:scale-95 group-hover:opacity-40
+                hover:!scale-110 hover:!opacity-100 hover:z-20"
             >
               <Image
                 src={profile.src}
@@ -69,19 +70,25 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-8 relative z-10">
-        <p className="font-sans text-[16px] lg:text-[18px] text-[#F9F9F9] max-w-sm leading-relaxed opacity-90">
+      {/* Tagline + botones */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 lg:gap-8 relative z-10">
+        <p className="font-sans text-[15px] lg:text-[17px] text-[#F9F9F9] max-w-xs leading-relaxed opacity-90">
           The fastest, most cost-effective way to get your teams using AI.
         </p>
 
-        {/* BOTONES UNIFICADOS */}
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          {/* Botón outline — mismo alto que ShinyButton (44px) */}
           <Link
             href="#programs"
-            className="h-12 px-8 min-w-[180px] rounded-full border border-rose-500/50 text-white font-bold flex items-center justify-center hover:bg-rose-500/10 transition-all duration-300"
+            className="inline-flex items-center justify-center h-11 px-6 rounded-full
+              border-2 border-[#EA366B] text-white font-bold text-[15px]
+              whitespace-nowrap
+              hover:bg-[#EA366B]/10 transition-all duration-300"
           >
             Our programs
           </Link>
+
+          {/* ShinyButton azul con efecto conic-gradient */}
           <ShinyButton href="#contact" variant="blue">
             Enroll a Rebel Today
           </ShinyButton>
