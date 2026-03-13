@@ -13,7 +13,13 @@ const stats = [
 
 export function NewApproach() {
   return (
-    <section className="bg-gray-100 py-8 lg:py-12 w-full relative z-10">
+    /*
+      pt-8: 32px de aire sobre la tarjeta blanca.
+      pb-0: eliminado — LogoCloud pega directo debajo sin gap.
+      La sección tiene bg-gray-100 que es el mismo fondo del LogoCloud,
+      así ambas se funden visualmente sin costuras.
+    */
+    <section className="bg-gray-100 pt-8 lg:pt-10 pb-0 w-full relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
@@ -68,7 +74,7 @@ export function NewApproach() {
               </div>
             </div>
 
-            {/* FOTO CHICA */}
+            {/* FOTO */}
             <div className="hidden lg:flex absolute right-0 bottom-0 w-[46%] h-full z-10 pointer-events-none items-end justify-end">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
