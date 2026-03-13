@@ -4,13 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Linkedin, Instagram } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import { cn } from '@/lib/utils';
 import { useScroll } from '@/components/ui/use-scroll';
 import { ShinyButton } from '@/components/ui/shiny-button';
 
 function XBrandIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" style={{ width: 16, height: 16 }}>
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   );
@@ -43,41 +42,16 @@ const SOCIAL = [
   { href: 'https://x.com/Eduardo_dlgs',                     Icon: XBrandIcon, label: 'X'         },
 ];
 
-/* Nav link: Inter Semibold 16px/24px #E5E7FB → white on hover — NO background on hover */
-const NavLink = ({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) => (
-  <Link
-    href={href}
-    onClick={onClick}
-    style={{
-      fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-      fontSize: 16,
-      fontWeight: 600,
-      lineHeight: '24px',
-      color: '#E5E7FB',
-      textDecoration: 'none',
-      whiteSpace: 'nowrap',
-      transition: 'color .15s',
-      background: 'none',
-      padding: 0,
-      border: 'none',
-    }}
-    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
-    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = '#E5E7FB'; }}
-  >
-    {label}
-  </Link>
-);
-
 const backdropV = { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } };
 const cardV = {
-  hidden:  { opacity: 0, scale: .84, y: -6 },
-  visible: { opacity: 1, scale: 1,   y: 0, transition: { type: 'spring', stiffness: 360, damping: 26 } },
-  exit:    { opacity: 0, scale: .84, y: -6, transition: { duration: .16, ease: 'easeIn' } },
+  hidden:  { opacity: 0, scale: .88, y: -4 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 340, damping: 28 } },
+  exit:    { opacity: 0, scale: .88, y: -4, transition: { duration: .15, ease: 'easeIn' } },
 };
 const itemV = {
-  hidden:  { opacity: 0, y: 8 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: .06 + i * .05, duration: .22 } }),
-  exit:    (i: number) => ({ opacity: 0, y: 6, transition: { delay: i * .025,      duration: .14 } }),
+  hidden:  { opacity: 0, y: 6 },
+  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: .05 + i * .04, duration: .2 } }),
+  exit:    (i: number) => ({ opacity: 0, y: 4, transition: { delay: i * .02, duration: .12 } }),
 };
 
 export function Header() {
@@ -94,90 +68,120 @@ export function Header() {
   return (
     <>
       {/*
-        ─── HEADER ───────────────────────────────────────────────────
-        Estado inicial (top of page):
-          • full-width, negro sólido, h-14, logo grande
-
-        Al hacer scroll (scrolled = true):
-          • se convierte en píldora centrada de ancho fijo
-          • borde sutil + sombra
-          • logo levemente más pequeño
-
-        La transición se hace con max-width + border-radius en el
-        wrapper interior, no en el <header> fixed.
-        ─────────────────────────────────────────────────────────────
+        ESTRATEGIA:
+        - El <header> ocupa todo el ancho (left-0 right-0) pero es transparente
+          y tiene pointer-events:none para no bloquear el hero debajo.
+        - El contenido real está en un <div> interior que transiciona suavemente:
+            • Estado TOP:    w-full, bg negro, h-14, sin border-radius, sin margen top
+            • Estado SCROLL: max-w-3xl centrado, pill redondeada, mt-2, bg negro/95
+        - NO usamos transform ni translate — todo es max-width + margin + border-radius
+          para evitar texto cortado o solapado.
       */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center"
-        style={{ background: 'transparent', pointerEvents: 'none' }}>
-
-        {/* Pill wrapper — este es el que crece/encoge */}
+      <header
+        style={{
+          position: 'fixed', top: 0, left: 0, right: 0,
+          zIndex: 50,
+          display: 'flex', justifyContent: 'center', alignItems: 'flex-start',
+          background: 'transparent',
+          pointerEvents: 'none',
+          // Reservamos espacio para la píldora con mt-2
+          paddingTop: scrolled ? 8 : 0,
+          transition: 'padding-top .4s ease',
+        }}
+      >
         <div
-          className={cn(
-            'flex items-center justify-between',
-            'transition-all duration-300 ease-out',
-            'pointer-events-auto',
-            scrolled
-              ? [
-                  // Píldora compacta centrada
-                  'mt-2 px-4 rounded-full',
-                  'h-11',
-                  'w-auto max-w-[780px] min-w-[600px]',
-                  'bg-black/95 backdrop-blur-md',
-                  'border border-white/10',
-                  'shadow-[0_4px_24px_rgba(0,0,0,0.6)]',
-                ].join(' ')
-              : [
-                  // Barra completa
-                  'mt-0 px-8 md:px-12 rounded-none',
-                  'h-14',
-                  'w-full max-w-none',
-                  'bg-black',
-                ].join(' '),
-          )}
+          style={{
+            // Ancho: full en top, fijo en scroll
+            width: scrolled ? 'min(840px, calc(100vw - 48px))' : '100%',
+            // Alto: un poco más compacto en scroll
+            height: scrolled ? 48 : 56,
+            // Fondo siempre negro, sin transparencia
+            background: '#000',
+            // Bordes: pill en scroll, recto en top
+            borderRadius: scrolled ? 999 : 0,
+            // Borde sutil solo en scroll
+            border: scrolled ? '1px solid rgba(255,255,255,0.1)' : 'none',
+            // Sombra suave solo en scroll
+            boxShadow: scrolled ? '0 4px 32px rgba(0,0,0,0.5)' : 'none',
+            // Padding lateral — más generoso en top para no comprimir
+            paddingLeft: scrolled ? 20 : 40,
+            paddingRight: scrolled ? 16 : 40,
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            // Suavizar TODO de una vez
+            transition: 'width .4s ease, height .4s ease, border-radius .4s ease, padding .4s ease, box-shadow .4s ease, border-color .4s ease',
+            pointerEvents: 'auto',
+            // Prevenir overflow del texto
+            overflow: 'hidden',
+            position: 'relative',
+          }}
         >
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center">
+          <Link href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo-white.svg"
               alt="Data Rebels"
               style={{
-                height: scrolled ? 16 : 19,
+                height: scrolled ? 15 : 18,
                 width: 'auto',
-                transition: 'height .3s ease',
+                transition: 'height .4s ease',
+                display: 'block',
               }}
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-7 xl:gap-8">
-            {NAV_LINKS.map(l => <NavLink key={l.href} {...l} />)}
+          {/* Desktop nav — oculto en mobile */}
+          <nav
+            className="hidden lg:flex"
+            style={{ alignItems: 'center', gap: scrolled ? 20 : 32, transition: 'gap .4s ease' }}
+          >
+            {NAV_LINKS.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+                  fontSize: scrolled ? 13 : 16,
+                  fontWeight: 600,
+                  lineHeight: '24px',
+                  color: '#E5E7FB',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  transition: 'color .15s, font-size .4s ease',
+                  flexShrink: 0,
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#fff'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = '#E5E7FB'; }}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:block flex-shrink-0">
+          {/* CTA desktop */}
+          <div className="hidden lg:block" style={{ flexShrink: 0 }}>
             <ShinyButton href="#contact" variant="blue">
-              Explore Solutions <ArrowRight className="w-3.5 h-3.5" />
+              Explore Solutions <ArrowRight style={{ width: 14, height: 14 }} />
             </ShinyButton>
           </div>
 
           {/* Mobile trigger */}
-          <div className="lg:hidden flex items-center gap-2">
-            <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: open ? 'rgba(255,255,255,0.5)' : '#fff', transition: 'color .18s' }}>
+          <div className="lg:hidden" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{
+              fontSize: 11, fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase',
+              color: open ? 'rgba(255,255,255,0.45)' : '#fff', transition: 'color .18s',
+            }}>
               {open ? 'Close' : 'Menu'}
             </span>
-            <button
-              type="button"
-              aria-label={open ? 'Cerrar' : 'Menú'}
-              onClick={toggle}
-              style={{ width: 36, height: 36, background: '#1330F4', borderRadius: 8, border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+            <button type="button" aria-label={open ? 'Cerrar' : 'Menú'} onClick={toggle}
+              style={{ width: 34, height: 34, background: '#1330F4', borderRadius: 8, border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}
             >
               <MorphIcon open={open} />
             </button>
           </div>
         </div>
 
-        {/* Mobile floating card — anchored to pill bottom */}
+        {/* Mobile floating card */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -186,49 +190,56 @@ export function Header() {
               style={{
                 transformOrigin: 'top right',
                 position: 'absolute',
-                top: scrolled ? 52 : 56,
+                top: scrolled ? 64 : 60,
                 right: 24,
-                boxShadow: '0 0 0 1px rgba(255,255,255,0.08),0 20px 60px rgba(0,0,0,0.8)',
+                width: 'min(300px, calc(100vw - 48px))',
+                background: '#1a1a1a',
+                borderRadius: 20,
+                overflow: 'hidden',
+                boxShadow: '0 0 0 1px rgba(255,255,255,0.07), 0 16px 48px rgba(0,0,0,0.75)',
+                pointerEvents: 'auto',
               }}
-              className="w-[min(320px,calc(100vw-48px))] rounded-2xl bg-[#1a1a1a] flex flex-col overflow-hidden pointer-events-auto"
               role="dialog" aria-modal aria-label="Navegación"
             >
-              <nav className="flex flex-col px-6 pt-5 pb-2">
+              <nav style={{ display: 'flex', flexDirection: 'column', padding: '20px 24px 8px' }}>
                 {NAV_LINKS.map((link, i) => (
                   <motion.div key={link.label} custom={i} variants={itemV} initial="hidden" animate="visible" exit="exit">
                     <Link href={link.href} onClick={close}
-                      className="block py-2.5 text-white hover:text-violet-300 transition-colors"
-                      style={{ fontSize: 22, fontWeight: 400, lineHeight: '30px' }}
+                      style={{ display: 'block', padding: '10px 0', fontSize: 20, fontWeight: 400, lineHeight: '28px', color: '#fff', textDecoration: 'none' }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#c4b5fd'; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = '#fff'; }}
                     >{link.label}</Link>
                   </motion.div>
                 ))}
                 <motion.div custom={NAV_LINKS.length} variants={itemV} initial="hidden" animate="visible" exit="exit">
                   <Link href="#contact" onClick={close}
-                    className="flex items-center gap-2 py-2.5 text-violet-400 hover:text-violet-300 transition-colors"
-                    style={{ fontSize: 22, fontWeight: 400, lineHeight: '30px' }}
+                    style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', fontSize: 20, fontWeight: 400, lineHeight: '28px', color: '#a78bfa', textDecoration: 'none' }}
                   >
                     Get in touch
-                    <span style={{ width: 32, height: 32, borderRadius: '50%', background: '#1330F4', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <ArrowUpRight style={{ width: 16, height: 16, color: '#fff' }} strokeWidth={2.5} />
+                    <span style={{ width: 30, height: 30, borderRadius: '50%', background: '#1330F4', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <ArrowUpRight style={{ width: 14, height: 14, color: '#fff' }} />
                     </span>
                   </Link>
                 </motion.div>
               </nav>
 
-              <div style={{ margin: '0 24px', height: 1, background: 'rgba(255,255,255,0.1)' }} />
+              <div style={{ margin: '0 24px', height: 1, background: 'rgba(255,255,255,0.08)' }} />
 
               <motion.div custom={NAV_LINKS.length + 1} variants={itemV} initial="hidden" animate="visible" exit="exit"
-                className="px-6 pt-3.5 pb-4 flex flex-col gap-2.5"
+                style={{ padding: '14px 24px 18px', display: 'flex', flexDirection: 'column', gap: 10 }}
               >
-                <div className="flex gap-2.5">
+                <div style={{ display: 'flex', gap: 8 }}>
                   {SOCIAL.map(({ href, Icon, label }) => (
                     <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                      className="w-9 h-9 rounded-lg flex items-center justify-center text-white hover:opacity-80 transition-opacity"
-                      style={{ background: 'linear-gradient(180deg,#B282FF,#9038FF)' }}
-                    ><Icon className="w-4 h-4" /></a>
+                      style={{ width: 36, height: 36, borderRadius: 8, background: 'linear-gradient(180deg,#B282FF,#9038FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', opacity: 1, transition: 'opacity .15s', textDecoration: 'none' }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '.75'; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </a>
                   ))}
                 </div>
-                <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>
+                <p style={{ fontSize: 9, fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0 }}>
                   ©2026 DATA REBELS. ALL RIGHTS RESERVED
                 </p>
               </motion.div>
@@ -237,12 +248,14 @@ export function Header() {
         </AnimatePresence>
       </header>
 
-      {/* Backdrop */}
+      {/* Backdrop mobile */}
       <AnimatePresence>
         {open && (
-          <motion.div key="bd" variants={backdropV} initial="hidden" animate="visible" exit="exit"
-            transition={{ duration: .2 }}
-            className="fixed inset-0 z-[49] bg-black/50 backdrop-blur-sm lg:hidden"
+          <motion.div key="bd"
+            variants={backdropV} initial="hidden" animate="visible" exit="exit"
+            transition={{ duration: .18 }}
+            style={{ position: 'fixed', inset: 0, zIndex: 49, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
+            className="lg:hidden"
             onClick={close} aria-hidden
           />
         )}

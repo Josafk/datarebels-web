@@ -29,51 +29,71 @@ export function Hero() {
 
   useGSAP(() => {
     if (!h1Ref.current) return;
-    gsap.from(h1Ref.current, { opacity: 0, y: 24, duration: 0.9, ease: "power3.out", delay: 0.3 });
+    gsap.from(h1Ref.current, { opacity: 0, y: 20, duration: 0.9, ease: "power3.out", delay: 0.2 });
   }, []);
 
   return (
-    /* pt-2 = muy poco aire bajo el header h-14, hero pegado arriba */
-    <div className="pt-2">
+    <div style={{ paddingTop: 4 }}>
 
-      {/* ── Título: Ambit Semibold 48px/56px ── */}
+      {/*
+        Título: 2 líneas forzadas con <br>
+        Ambit Semibold 48px / line-height 56px
+        En mobile se reduce con clamp
+      */}
       <h1
         ref={h1Ref}
         style={{
           fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
-          fontSize: 'clamp(32px, 5vw, 48px)',
+          fontSize: 'clamp(30px, 4.2vw, 48px)',
           fontWeight: 600,
-          lineHeight: '56px',
+          lineHeight: 'clamp(38px, 5.2vw, 56px)',
           color: '#ffffff',
+          margin: 0,
           marginBottom: '1rem',
-          maxWidth: '680px',
+          // Sin max-width para que el salto de línea sea natural con el <br>
         }}
       >
         The Future of AI is Built Here.{' '}
+        <br />
         Become One of Our <span style={{ fontWeight: 600 }}>100K Rebels.</span>
       </h1>
 
-      {/* ── Galería: aspecto 3/4, altura máx 200px en desktop ── */}
-      <div className="relative w-full mb-4" style={{ paddingBlock: '6px' }}>
+      {/*
+        Galería de perfiles
+        Altura fija 220px en desktop (igual al Figma)
+        aspect-ratio 3/4 definido por la imagen, no por el contenedor
+        El contenedor usa h fija para que todas queden iguales
+      */}
+      <div style={{ marginBottom: 16, paddingBlock: 4 }}>
         <div
-          className="group flex items-end justify-between gap-2 overflow-visible"
-          style={{ height: 'clamp(140px, 20vw, 200px)' }}
+          className="group"
+          style={{
+            display: 'flex',
+            alignItems: 'stretch',
+            gap: 8,
+            height: 'clamp(160px, 22vw, 220px)',
+          }}
         >
           {profiles.map((p) => (
             <div
               key={p.src}
-              className="relative flex-1 h-full rounded-xl overflow-hidden shadow-lg
-                transition-all duration-500 ease-in-out
-                group-hover:opacity-40 group-hover:scale-95
-                hover:!opacity-100 hover:!scale-105 hover:z-20"
-              style={{ minWidth: 0 }}
+              style={{
+                position: 'relative',
+                flex: '1 1 0',
+                minWidth: 0,
+                borderRadius: 14,
+                overflow: 'hidden',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
+                transition: 'transform .45s ease, opacity .45s ease',
+              }}
+              className="group-hover:opacity-40 group-hover:scale-95 hover:!opacity-100 hover:!scale-105 hover:z-20"
             >
               <Image
                 src={p.src}
                 alt={p.alt}
                 fill
                 sizes="(max-width: 768px) 33vw, 16vw"
-                className="object-cover object-top"
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 priority
               />
             </div>
@@ -81,47 +101,52 @@ export function Hero() {
         </div>
       </div>
 
-      {/* ── Tagline + CTAs ── */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      {/* Tagline + CTAs */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 16,
+          flexWrap: 'wrap',
+        }}
+      >
         <p
           style={{
             fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
             fontSize: 15,
             lineHeight: '22px',
-            color: 'rgba(249,249,249,0.85)',
-            maxWidth: 280,
+            color: 'rgba(249,249,249,0.82)',
+            maxWidth: 260,
+            margin: 0,
           }}
         >
           The fastest, most cost-effective way to get your teams using AI.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5">
-          {/*
-            Botón outline "Our programs"
-            — misma altura que ShinyButton (h-10 = 40px)
-            — borde #EA366B 2px
-            — hover: fondo levísimo, SIN caja ni sombra
-          */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          {/* Outline button — misma h que ShinyButton (40px), sin hover box */}
           <Link
             href="#programs"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '2.5rem',
-              padding: '0 1.125rem',
+              height: 40,
+              padding: '0 18px',
               borderRadius: 999,
               border: '2px solid #EA366B',
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-              fontSize: '0.8125rem',
+              fontSize: 13,
               fontWeight: 700,
-              color: '#ffffff',
+              color: '#fff',
               whiteSpace: 'nowrap',
               textDecoration: 'none',
-              transition: 'background .2s',
               background: 'transparent',
+              transition: 'background .2s',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.1)'; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.12)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
           >
             Our programs
