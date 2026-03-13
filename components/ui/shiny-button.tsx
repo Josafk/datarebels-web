@@ -48,11 +48,10 @@ export function ShinyButton({
       overflow: hidden;
       cursor: pointer;
       outline-offset: 4px;
-      /* Tamaño homologado: igual que el outline ghost del Hero */
-      padding: 0 1.5rem;
-      height: 2.75rem; /* 44px */
+      padding: 0 1.25rem;
+      height: 2.625rem;
       font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
       line-height: 1;
       font-weight: 700;
       border: 1px solid transparent;
@@ -120,10 +119,10 @@ export function ShinyButton({
     }
     .shiny-inner {
       z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
       position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
     .shiny-inner::before {
       --size: calc(100% + 1rem);
@@ -146,7 +145,7 @@ export function ShinyButton({
       --gradient-percent: 20%;
       --gradient-angle-offset: 95deg;
       --gradient-shine: var(--shiny-cta-highlight-subtle);
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
     .shiny-cta:is(:hover, :focus-visible),
     .shiny-cta:is(:hover, :focus-visible)::before,
