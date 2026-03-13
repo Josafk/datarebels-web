@@ -19,50 +19,61 @@ const HERO_ALTS: Record<string, string> = {
   "/hero-6.png": "Equipo Data Rebels en reunión colaborativa",
 };
 
-const rebelProfiles = HERO_SECTION_IMAGES.map((src) => ({
+const profiles = HERO_SECTION_IMAGES.map((src) => ({
   src,
   alt: HERO_ALTS[src] ?? "Rebel Data Rebels",
 }));
 
 export function Hero() {
-  const headerRef = useRef<HTMLHeadingElement>(null);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
 
   useGSAP(() => {
-    if (!headerRef.current) return;
-    gsap.from(headerRef.current, {
-      opacity: 0, y: 30, duration: 1, ease: "power3.out", delay: 0.5,
-    });
+    if (!h1Ref.current) return;
+    gsap.from(h1Ref.current, { opacity: 0, y: 24, duration: 0.9, ease: "power3.out", delay: 0.3 });
   }, []);
 
   return (
-    <>
-      {/* Título */}
+    /* pt-2 = muy poco aire bajo el header h-14, hero pegado arriba */
+    <div className="pt-2">
+
+      {/* ── Título: Ambit Semibold 48px/56px ── */}
       <h1
-        ref={headerRef}
-        className="font-title text-white font-semibold leading-tight mb-4 max-w-2xl
-          text-[28px] sm:text-[34px] lg:text-[40px] lg:leading-[48px]"
+        ref={h1Ref}
+        style={{
+          fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
+          fontSize: 'clamp(32px, 5vw, 48px)',
+          fontWeight: 600,
+          lineHeight: '56px',
+          color: '#ffffff',
+          marginBottom: '1rem',
+          maxWidth: '680px',
+        }}
       >
-        The Future of AI is Built Here. Become One of Our{" "}
-        <span className="font-semibold">100K Rebels.</span>
+        The Future of AI is Built Here.{' '}
+        Become One of Our <span style={{ fontWeight: 600 }}>100K Rebels.</span>
       </h1>
 
-      {/* Galería */}
-      <div className="relative w-full mb-5 md:mb-6 py-2">
-        <div className="group flex items-center justify-between gap-2 sm:gap-3 overflow-visible">
-          {rebelProfiles.map((profile) => (
+      {/* ── Galería: aspecto 3/4, altura máx 200px en desktop ── */}
+      <div className="relative w-full mb-4" style={{ paddingBlock: '6px' }}>
+        <div
+          className="group flex items-end justify-between gap-2 overflow-visible"
+          style={{ height: 'clamp(140px, 20vw, 200px)' }}
+        >
+          {profiles.map((p) => (
             <div
-              key={profile.src}
-              className="relative flex-1 aspect-[3/4] min-w-[72px] max-w-[160px] rounded-xl shadow-xl
+              key={p.src}
+              className="relative flex-1 h-full rounded-xl overflow-hidden shadow-lg
                 transition-all duration-500 ease-in-out
-                group-hover:scale-95 group-hover:opacity-40
-                hover:!scale-105 hover:!opacity-100 hover:z-20"
+                group-hover:opacity-40 group-hover:scale-95
+                hover:!opacity-100 hover:!scale-105 hover:z-20"
+              style={{ minWidth: 0 }}
             >
               <Image
-                src={profile.src}
-                alt={profile.alt}
+                src={p.src}
+                alt={p.alt}
                 fill
                 sizes="(max-width: 768px) 33vw, 16vw"
-                className="rounded-xl object-cover"
+                className="object-cover object-top"
                 priority
               />
             </div>
@@ -70,39 +81,57 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Tagline + botones */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-6 relative z-10">
-        <p className="font-sans text-[14px] lg:text-[16px] text-[#F9F9F9] max-w-xs leading-relaxed opacity-85">
+      {/* ── Tagline + CTAs ── */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <p
+          style={{
+            fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+            fontSize: 15,
+            lineHeight: '22px',
+            color: 'rgba(249,249,249,0.85)',
+            maxWidth: 280,
+          }}
+        >
           The fastest, most cost-effective way to get your teams using AI.
         </p>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5">
           {/*
             Botón outline "Our programs"
-            — mismo height que ShinyButton (42px = h-[2.625rem])
-            — borde #EA366B, sin fondo, sin efecto hover-box
-            — solo cambia opacidad del borde en hover
+            — misma altura que ShinyButton (h-10 = 40px)
+            — borde #EA366B 2px
+            — hover: fondo levísimo, SIN caja ni sombra
           */}
           <Link
             href="#programs"
-            className="
-              inline-flex items-center justify-center
-              h-[2.625rem] px-5 rounded-full
-              border-2 border-[#EA366B]
-              text-white font-bold text-[13px] whitespace-nowrap
-              transition-colors duration-200
-              hover:bg-[#EA366B]/10
-            "
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '2.5rem',
+              padding: '0 1.125rem',
+              borderRadius: 999,
+              border: '2px solid #EA366B',
+              fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+              fontSize: '0.8125rem',
+              fontWeight: 700,
+              color: '#ffffff',
+              whiteSpace: 'nowrap',
+              textDecoration: 'none',
+              transition: 'background .2s',
+              background: 'transparent',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.1)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
           >
             Our programs
           </Link>
 
-          {/* ShinyButton azul */}
           <ShinyButton href="#contact" variant="blue">
             Enroll a Rebel Today
           </ShinyButton>
         </div>
       </div>
-    </>
+    </div>
   );
 }

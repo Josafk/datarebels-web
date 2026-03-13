@@ -37,7 +37,7 @@ const SUCCESS_STORIES = [
   {
     id: "digital-hub-mty",
     company: "Digital Hub MTY",
-    logo: "/white-mdh.svg",
+    logo: "/mdh-white.svg",
     challenge:
       "Bridge the talent gap in the local digital economy by training high-performing students through real-world corporate projects and massive GenAI adoption.",
     tags: ["Talent Incubator", "Enterprise ROI"],

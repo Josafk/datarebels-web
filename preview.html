@@ -178,14 +178,14 @@
        BACKGROUND RESPONSIVO Hero→MTP
        ===================================================== */
     .hero-section-bg-html {
-      background-image: url('mobile-background.png');
+      background-image: url('public/mobile-background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
     @media (min-width: 640px) {
       .hero-section-bg-html {
-        background-image: url('background-principal.png');
+        background-image: url('public/background-principal.png');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -632,7 +632,7 @@
   <!-- Navbar - Inter semibold 16px/24px, animación scroll -->
   <nav id="navbar-header" class="fixed top-0 z-50 w-full border-b border-white/10" style="background-color: #000;">
     <div class="navbar-inner max-w-7xl mx-auto px-6 tablet-px h-16 flex items-center justify-between">
-      <a href="#" class="flex-shrink-0"><img src="logo-white.svg" alt="Data Rebels" class="h-5 w-auto" /></a>
+      <a href="#" class="flex-shrink-0"><img src="public/Logo-white.svg" alt="Data Rebels" class="h-5 w-auto" /></a>
 
       <!-- Desktop lg+: links de navegación -->
       <div class="hidden lg:flex items-center gap-8">
@@ -730,22 +730,22 @@
         <div class="hero-images-scroll w-screen relative mb-6" style="transform: translateX(-50%); left: 50%; padding-left:1rem; padding-right:1rem;">
           <div class="hero-images-inner flex items-stretch gap-3 w-full">
             <div class="hero-img-item relative flex-1 overflow-hidden rounded-2xl" style="aspect-ratio: 3/4; min-width:0; transition: transform 0.3s ease;">
-              <img src="hero-1.png" alt="Semillero de talento - Demoday" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="public/hero-1.png" alt="Semillero de talento - Demoday" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="hero-img-item relative flex-1 overflow-hidden rounded-2xl" style="aspect-ratio: 3/4; min-width:0; transition: transform 0.3s ease;">
-              <img src="hero-2.png" alt="Presentación Machine Learning y análisis de datos" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+              <img src="public/hero-2.png" alt="Presentación Machine Learning y análisis de datos" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
             </div>
             <div class="hero-img-item relative flex-1 overflow-hidden rounded-2xl" style="aspect-ratio: 3/4; min-width:0; transition: transform 0.3s ease;">
-              <img src="hero-3.png" alt="Rebel en espacio Data Rebels" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="public/hero-3.png" alt="Rebel en espacio Data Rebels" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="hero-img-item relative flex-1 overflow-hidden rounded-2xl" style="aspect-ratio: 3/4; min-width:0; transition: transform 0.3s ease;">
-              <img src="hero-4.png" alt="Presentación en evento Data Rebels" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="public/hero-4.png" alt="Presentación en evento Data Rebels" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="hero-img-item relative flex-1 overflow-hidden rounded-2xl" style="aspect-ratio: 3/4; min-width:0; transition: transform 0.3s ease;">
-              <img src="hero-5.png" alt="Análisis exploratorio y visualización - presentación" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="public/hero-5.png" alt="Análisis exploratorio y visualización - presentación" style="width:100%;height:100%;object-fit:cover;" />
             </div>
             <div class="hero-img-item relative flex-1 overflow-hidden rounded-2xl" style="aspect-ratio: 3/4; min-width:0; transition: transform 0.3s ease;">
-              <img src="hero-6.png" alt="Equipo Data Rebels en reunión colaborativa" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="public/hero-6.png" alt="Equipo Data Rebels en reunión colaborativa" style="width:100%;height:100%;object-fit:cover;" />
             </div>
           </div>
         </div>
@@ -808,7 +808,7 @@
           <!-- BLOQUE SUPERIOR: texto + imagen (solo en lg+) -->
           <div class="w-full lg:relative lg:flex lg:items-end lg:overflow-visible lg:min-h-[380px]">
             <div class="flex flex-col p-8 md:p-10 lg:p-16 lg:max-w-xl relative z-10">
-              <div class="mb-5"><img src="isologo.svg" alt="" class="w-10 h-8 object-contain" /></div>
+              <div class="mb-5"><img src="public/isologo.svg" alt="" class="w-10 h-8 object-contain" /></div>
               <!-- Título: Ambit Semibold — 24px mobile/tablet, 36px desktop -->
               <h2 class="font-title text-slate-900 text-2xl lg:text-4xl font-semibold mb-4">Our economy demands a new approach</h2>
               <!-- Body: Inter Regular 14px/18px mobile·tablet; 15px/relaxed desktop -->
@@ -821,7 +821,7 @@
 
             <!-- Imagen: SOLO en desktop (lg+) -->
             <div class="hidden lg:block lg:absolute lg:right-0 lg:bottom-0 lg:w-[48%] lg:min-w-[280px] lg:h-full lg:max-h-[450px] z-10">
-              <img src="image-girl.png" alt="Data Rebels team member" class="absolute inset-0 w-full h-full object-contain object-bottom pointer-events-none" />
+              <img src="public/image-girl.png" alt="Data Rebels team member" class="absolute inset-0 w-full h-full object-contain object-bottom pointer-events-none" />
             </div>
           </div>
 
@@ -871,31 +871,23 @@
           <div class="logo-cloud-fade logo-cloud-fade-left"></div>
           <div class="logo-cloud-fade logo-cloud-fade-right"></div>
           <div class="flex flex-row items-center gap-16 py-4 px-10 logo-cloud-track" style="width: max-content;">
-            <div class="logo-box logo-box-standard"><img src="gray-ac.svg" alt="Arca Continental" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-thin"><img src="gray-alfa.svg" alt="Alfa" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-oval"><img src="gray-bimbo.svg" alt="Grupo Bimbo" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-horizontal"><img src="gray-cemex.svg" alt="Cemex" class="grayscale opacity-40" loading="lazy" /></div>
-            <div class="logo-box logo-box-horizontal"><img src="gray-deacero.svg" alt="Deacero" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-heavy"><img src="gray-femsa.svg" alt="Femsa" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-gbm.svg" alt="GBM" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-lamosa.svg" alt="Lamosa" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-liverpool"><img src="gray-liverpool.svg" alt="Liverpool" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-oxxo.svg" alt="Oxxo" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-sigma.svg" alt="Sigma" class="grayscale opacity-50" loading="lazy" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-ternium.svg" alt="Ternium" class="grayscale opacity-50" loading="lazy" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-CEMEX.svg" alt="Cemex" class="grayscale opacity-40" loading="lazy" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-DEACERO.svg" alt="Deacero" class="grayscale opacity-50" loading="lazy" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-GBM.svg" alt="GBM" class="grayscale opacity-50" loading="lazy" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-LAMOSA.svg" alt="Lamosa" class="grayscale opacity-50" loading="lazy" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-LIVERPOOL.svg" alt="Liverpool" class="grayscale opacity-50" loading="lazy" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-OXXO.svg" alt="Oxxo" class="grayscale opacity-50" loading="lazy" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-BIMBO.svg" alt="Grupo Bimbo" class="grayscale opacity-50" loading="lazy" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-TERNIUM.svg" alt="Ternium" class="grayscale opacity-50" loading="lazy" /></div>
             <!-- Duplicados para loop infinito -->
-            <div class="logo-box logo-box-standard"><img src="gray-ac.svg" alt="Arca Continental" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-thin"><img src="gray-alfa.svg" alt="Alfa" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-oval"><img src="gray-bimbo.svg" alt="Grupo Bimbo" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-horizontal"><img src="gray-cemex.svg" alt="Cemex" class="grayscale opacity-40" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-horizontal"><img src="gray-deacero.svg" alt="Deacero" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-heavy"><img src="gray-femsa.svg" alt="Femsa" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-gbm.svg" alt="GBM" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-lamosa.svg" alt="Lamosa" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-liverpool"><img src="gray-liverpool.svg" alt="Liverpool" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-oxxo.svg" alt="Oxxo" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-sigma.svg" alt="Sigma" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
-            <div class="logo-box logo-box-standard"><img src="gray-ternium.svg" alt="Ternium" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-CEMEX.svg" alt="Cemex" class="grayscale opacity-40" loading="lazy" aria-hidden="true" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-DEACERO.svg" alt="Deacero" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-GBM.svg" alt="GBM" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-LAMOSA.svg" alt="Lamosa" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
+            <div class="logo-box logo-box-liverpool"><img src="public/GRAY-LIVERPOOL.svg" alt="Liverpool" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-OXXO.svg" alt="Oxxo" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-BIMBO.svg" alt="Grupo Bimbo" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
+            <div class="logo-box logo-box-standard"><img src="public/GRAY-TERNIUM.svg" alt="Ternium" class="grayscale opacity-50" loading="lazy" aria-hidden="true" /></div>
           </div>
         </div>
       </div>

@@ -135,7 +135,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
           {/* Logo en la transición exacta entre imagen y cuerpo blanco */}
           <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 z-10">
             <Image
-              src="/beyond-data.svg"
+              src="/beyon-data.svg"
               alt="BEYOND DATA"
               width={92}
               height={30}
@@ -220,7 +220,7 @@ export function BeyondData() {
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5 md:gap-8 mb-8 md:mb-10">
             <div className="order-1 md:order-2 flex-shrink-0 md:self-start">
               <Image
-                src="/beyond-data.svg"
+                src="/beyon-data.svg"
                 alt="BEYOND DATA"
                 width={180}
                 height={80}
