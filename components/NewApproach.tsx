@@ -1,121 +1,228 @@
 "use client";
 
-import React from "react";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import gsap from "gsap";
 import { ShinyButton } from "@/components/ui/shiny-button";
+import { useGSAP } from "@gsap/react";
+import { HERO_SECTION_IMAGES } from "@/lib/hero-images";
 
-const stats = [
-  { value: "1,135", label: "Rebels Graduated" },
-  { value: "+357",  label: "Proyectos implementados" },
-  { value: "8x",   label: "Average ROI on AI Implementations" },
-  { value: "91%",  label: "de CSAT alcanzado" },
-];
+gsap.registerPlugin(useGSAP);
 
-export function NewApproach() {
+const HERO_ALTS: Record<string, string> = {
+  "/hero-1.png": "Semillero de talento - Demoday",
+  "/hero-2.png": "Presentación Machine Learning y análisis de datos",
+  "/hero-3.png": "Rebel en espacio Data Rebels",
+  "/hero-4.png": "Presentación en evento Data Rebels",
+  "/hero-5.png": "Análisis exploratorio y visualización - presentación",
+  "/hero-6.png": "Equipo Data Rebels en reunión colaborativa",
+};
+
+const profiles = HERO_SECTION_IMAGES.map((src) => ({
+  src,
+  alt: HERO_ALTS[src] ?? "Rebel Data Rebels",
+}));
+
+export function Hero() {
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+
+  useGSAP(() => {
+    if (!h1Ref.current) return;
+    gsap.from(h1Ref.current, {
+      opacity: 0,
+      y: 16,
+      duration: 0.8,
+      ease: "power3.out",
+      delay: 0.1,
+    });
+  }, []);
+
   return (
-    <section className="bg-gray-100 pt-8 lg:pt-10 pb-0 w-full relative z-10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    /*
+      paddingBottom: 32px → espacio hacia "The Problem".
+      La galería en mobile usa negative margins para romper el padding
+      del contenedor padre (px-6) y llegar a los bordes.
+    */
+    <div style={{ paddingBottom: 32 }}>
 
-        <div className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
+      {/* Título */}
+      <h1
+        ref={h1Ref}
+        style={{
+          fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
+          fontSize: 'clamp(28px, 3.8vw, 48px)',
+          fontWeight: 600,
+          lineHeight: 'clamp(34px, 4.6vw, 56px)',
+          color: '#ffffff',
+          margin: 0,
+          marginBottom: 20,
+        }}
+      >
+        The Future of AI is Built Here.
+        <br />
+        Become One of Our 100K Rebels.
+      </h1>
 
-          {/* FILA SUPERIOR: texto + foto */}
-          <div className="flex flex-col lg:flex-row relative" style={{ minHeight: 0 }}>
+      {/*
+        ── GALERÍA — UN SOLO BLOQUE con comportamiento responsivo ──
 
-            <div className="flex-1 pt-6 pb-6 px-8 flex flex-col justify-center z-20">
+        Mobile (<sm):
+          - overflow-x scroll horizontal
+          - negative margin-x para romper el px-6 del padre y llegar al borde
+          - fotos de 140px de ancho fijo, 180px alto
+          - padding horizontal para que la primera foto no pegue al borde
 
-              <div className="mb-4 h-8 flex items-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/isologo.svg" alt="Data Rebels" className="h-8 w-auto" />
-              </div>
+        Desktop (sm+):
+          - flex fila normal, height clamp, hover effects
+      */}
 
-              <h2 className="font-title text-slate-900 font-semibold mb-2 text-[26px] lg:text-[30px] leading-tight text-left">
-                Our economy demands a{" "}
-                <br className="hidden lg:block" />
-                new approach
-              </h2>
-
-              <p className="font-sans text-gray-600 text-[13px] leading-relaxed mb-5 max-w-[340px] text-left">
-                We aim to solve this problem by eliminating uncertainty. We achieve
-                this by mapping the precise skills required by the global GenAI
-                market, moving beyond traditional curricula.
-              </p>
-
-              <div className="flex justify-start">
-                <ShinyButton href="#contact" variant="blue" className="h-10 px-5 text-[14px] min-w-0 w-auto">
-                  <span className="flex items-center gap-2">
-                    Enroll a Rebel Today
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14m-7-7 7 7-7 7" />
-                    </svg>
-                  </span>
-                </ShinyButton>
-              </div>
+      {/* Mobile: full-bleed carousel */}
+      <div
+        className="sm:hidden"
+        style={{
+          marginLeft: -24,   /* cancela px-6 (24px) del padre en page.tsx */
+          marginRight: -24,
+          marginBottom: 20,
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          display: 'flex',
+          gap: 8,
+          paddingLeft: 24,
+          paddingRight: 24,
+          paddingBottom: 2,
+        }}
+      >
+        <style>{`
+          .hero-mobile-gallery::-webkit-scrollbar { display: none; }
+        `}</style>
+        <div
+          className="hero-mobile-gallery"
+          style={{
+            display: 'flex',
+            gap: 8,
+            flexShrink: 0,
+          }}
+        >
+          {profiles.map((p) => (
+            <div
+              key={p.src}
+              style={{
+                position: 'relative',
+                flexShrink: 0,
+                width: 140,
+                height: 180,
+                borderRadius: 14,
+                overflow: 'hidden',
+                scrollSnapAlign: 'start',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
+              }}
+            >
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                sizes="140px"
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                priority
+              />
             </div>
-
-            {/* Foto — solo desktop */}
-            <div className="hidden lg:flex absolute right-0 bottom-0 w-[46%] h-full z-10 pointer-events-none items-end justify-end">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/image-girl.png" alt="Rebel" className="w-auto object-contain object-right-bottom max-h-full" />
-            </div>
-          </div>
-
-          {/*
-            NUMERALIA
-            ─ Mobile (<lg):  1 columna — cada stat ocupa toda la fila
-            ─ Desktop (lg+): 4 columnas — layout original
-            
-            whiteSpace: nowrap eliminado → los labels largos pueden wrappear
-          */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 border-t border-gray-100 bg-white relative z-30">
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className={[
-                  "flex flex-row lg:flex-col items-center lg:items-start justify-between lg:justify-center",
-                  "py-4 px-6 lg:py-5",
-                  /* separadores */
-                  i > 0 ? "border-t lg:border-t-0 lg:border-l border-gray-100" : "",
-                ].join(" ")}
-              >
-                {/*
-                  Mobile: número a la izquierda, label a la derecha (flex-row)
-                  Desktop: número arriba, label abajo (flex-col)
-                  Número: Ambit 600 — 40px mobile / 48px desktop
-                */}
-                <div
-                  style={{
-                    fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
-                    fontSize: 'clamp(36px, 5vw, 48px)',
-                    fontWeight: 600,
-                    lineHeight: 1,
-                    color: '#1330F4',
-                    flexShrink: 0,
-                  }}
-                >
-                  <AnimatedCounter value={stat.value} />
-                </div>
-
-                <span
-                  style={{
-                    fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-                    fontSize: 12,
-                    lineHeight: '18px',
-                    fontWeight: 400,
-                    color: '#64748b',
-                    /* Mobile: alineado a la derecha; Desktop: texto izquierda */
-                    textAlign: 'right',
-                    maxWidth: 160,       /* permite wrap sin overflow */
-                  }}
-                  className="lg:text-left lg:max-w-[140px]"
-                >
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-
+          ))}
         </div>
       </div>
-    </section>
+
+      {/* Desktop: flex fila con hover */}
+      <div
+        className="hidden sm:flex group"
+        style={{
+          alignItems: 'stretch',
+          gap: 8,
+          height: 'clamp(150px, 19vw, 220px)',
+          marginBottom: 20,
+        }}
+      >
+        {profiles.map((p) => (
+          <div
+            key={p.src}
+            style={{
+              position: 'relative',
+              flex: '1 1 0',
+              minWidth: 0,
+              borderRadius: 14,
+              overflow: 'hidden',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
+              transition: 'transform .4s ease, opacity .4s ease',
+            }}
+            className="group-hover:opacity-40 group-hover:scale-95 hover:!opacity-100 hover:!scale-105 hover:z-20"
+          >
+            <Image
+              src={p.src}
+              alt={p.alt}
+              fill
+              sizes="(max-width: 768px) 33vw, 16vw"
+              style={{ objectFit: 'cover', objectPosition: 'center top' }}
+              priority
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Tagline + CTAs */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 16,
+          flexWrap: 'wrap',
+        }}
+      >
+        <p
+          style={{
+            fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+            fontSize: 15,
+            lineHeight: '22px',
+            color: 'rgba(249,249,249,0.82)',
+            maxWidth: 260,
+            margin: 0,
+          }}
+        >
+          The fastest, most cost-effective way to get your teams using AI.
+        </p>
+
+        {/* CTAs: columna apilada en mobile, fila en desktop */}
+        <div className="flex flex-col sm:flex-row w-full sm:w-auto" style={{ gap: 10 }}>
+          <Link
+            href="#programs"
+            className="flex items-center justify-center w-full sm:w-auto"
+            style={{
+              height: 40,
+              padding: '0 18px',
+              borderRadius: 999,
+              border: '2px solid #EA366B',
+              fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#fff',
+              whiteSpace: 'nowrap',
+              textDecoration: 'none',
+              background: 'transparent',
+              transition: 'background .2s',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.12)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+          >
+            Our programs
+          </Link>
+
+          <ShinyButton href="#contact" variant="blue" className="w-full sm:w-auto flex justify-center">
+            Enroll a Rebel Today
+          </ShinyButton>
+        </div>
+      </div>
+    </div>
   );
 }
