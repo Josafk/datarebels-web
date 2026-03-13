@@ -12,11 +12,11 @@ gsap.registerPlugin(useGSAP);
 
 const HERO_ALTS: Record<string, string> = {
   "/hero-1.png": "Semillero de talento - Demoday",
-  "/hero-2.png": "Presentación Machine Learning y análisis de datos",
+  "/hero-2.png": "Presentación Machine Learning",
   "/hero-3.png": "Rebel en espacio Data Rebels",
   "/hero-4.png": "Presentación en evento Data Rebels",
-  "/hero-5.png": "Análisis exploratorio y visualización - presentación",
-  "/hero-6.png": "Equipo Data Rebels en reunión colaborativa",
+  "/hero-5.png": "Análisis exploratorio - presentación",
+  "/hero-6.png": "Equipo Data Rebels en reunión",
 };
 
 const profiles = HERO_SECTION_IMAGES.map((src) => ({
@@ -29,83 +29,76 @@ export function Hero() {
 
   useGSAP(() => {
     if (!h1Ref.current) return;
-    gsap.from(h1Ref.current, { opacity: 0, y: 20, duration: 0.9, ease: "power3.out", delay: 0.2 });
+    gsap.from(h1Ref.current, { opacity: 0, y: 16, duration: 0.8, ease: "power3.out", delay: 0.1 });
   }, []);
 
   return (
-    <div style={{ paddingTop: 4 }}>
+    /*
+      El page.tsx ya tiene pt-20 (80px) para compensar el header fijo.
+      Aquí solo añadimos 32px de respiro visual entre header y título.
+      paddingBottom: 40px — separación hacia la sección siguiente.
+    */
+    <div style={{ paddingTop: 32, paddingBottom: 40 }}>
 
-      {/*
-        Título: 2 líneas forzadas con <br>
-        Ambit Semibold 48px / line-height 56px
-        En mobile se reduce con clamp
-      */}
+      {/* Título 2 líneas */}
       <h1
         ref={h1Ref}
         style={{
           fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
-          fontSize: 'clamp(30px, 4.2vw, 48px)',
+          fontSize: 'clamp(28px, 3.8vw, 48px)',
           fontWeight: 600,
-          lineHeight: 'clamp(38px, 5.2vw, 56px)',
+          lineHeight: 'clamp(34px, 4.6vw, 56px)',
           color: '#ffffff',
           margin: 0,
-          marginBottom: '1rem',
-          // Sin max-width para que el salto de línea sea natural con el <br>
+          marginBottom: 20,
         }}
       >
-        The Future of AI is Built Here.{' '}
+        The Future of AI is Built Here.
         <br />
-        Become One of Our <span style={{ fontWeight: 600 }}>100K Rebels.</span>
+        Become One of Our 100K Rebels.
       </h1>
 
-      {/*
-        Galería de perfiles
-        Altura fija 220px en desktop (igual al Figma)
-        aspect-ratio 3/4 definido por la imagen, no por el contenedor
-        El contenedor usa h fija para que todas queden iguales
-      */}
-      <div style={{ marginBottom: 16, paddingBlock: 4 }}>
-        <div
-          className="group"
-          style={{
-            display: 'flex',
-            alignItems: 'stretch',
-            gap: 8,
-            height: 'clamp(160px, 22vw, 220px)',
-          }}
-        >
-          {profiles.map((p) => (
-            <div
-              key={p.src}
-              style={{
-                position: 'relative',
-                flex: '1 1 0',
-                minWidth: 0,
-                borderRadius: 14,
-                overflow: 'hidden',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
-                transition: 'transform .45s ease, opacity .45s ease',
-              }}
-              className="group-hover:opacity-40 group-hover:scale-95 hover:!opacity-100 hover:!scale-105 hover:z-20"
-            >
-              <Image
-                src={p.src}
-                alt={p.alt}
-                fill
-                sizes="(max-width: 768px) 33vw, 16vw"
-                style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                priority
-              />
-            </div>
-          ))}
-        </div>
+      {/* Galería */}
+      <div
+        className="group"
+        style={{
+          display: 'flex',
+          alignItems: 'stretch',
+          gap: 8,
+          height: 'clamp(150px, 19vw, 220px)',
+          marginBottom: 20,
+        }}
+      >
+        {profiles.map((p) => (
+          <div
+            key={p.src}
+            style={{
+              position: 'relative',
+              flex: '1 1 0',
+              minWidth: 0,
+              borderRadius: 14,
+              overflow: 'hidden',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
+              transition: 'transform .4s ease, opacity .4s ease',
+            }}
+            className="group-hover:opacity-40 group-hover:scale-95 hover:!opacity-100 hover:!scale-105 hover:z-20"
+          >
+            <Image
+              src={p.src}
+              alt={p.alt}
+              fill
+              sizes="(max-width: 768px) 33vw, 16vw"
+              style={{ objectFit: 'cover', objectPosition: 'center top' }}
+              priority
+            />
+          </div>
+        ))}
       </div>
 
       {/* Tagline + CTAs */}
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: 16,
@@ -126,24 +119,15 @@ export function Hero() {
         </p>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          {/* Outline button — misma h que ShinyButton (40px), sin hover box */}
           <Link
             href="#programs"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: 40,
-              padding: '0 18px',
-              borderRadius: 999,
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              height: 40, padding: '0 18px', borderRadius: 999,
               border: '2px solid #EA366B',
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-              fontSize: 13,
-              fontWeight: 700,
-              color: '#fff',
-              whiteSpace: 'nowrap',
-              textDecoration: 'none',
-              background: 'transparent',
+              fontSize: 13, fontWeight: 700, color: '#fff',
+              whiteSpace: 'nowrap', textDecoration: 'none', background: 'transparent',
               transition: 'background .2s',
             }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.12)'; }}

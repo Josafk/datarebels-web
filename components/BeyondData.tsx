@@ -57,7 +57,7 @@ const episodes = [
     date: "15 FEB, 2025",
     name: "Patricio Gil",
     title: "Director de Estrategia de Consumidor y Analitica de Oxxo",
-    image: "/podcast-06.png",
+    image: "/podcast6.png",
     watchUrl: "https://youtu.be/vcw3HsBpuhI?si=azAFa02xE_eT8wxR",
   },
   {
@@ -65,7 +65,7 @@ const episodes = [
     date: "09 FEB, 2025",
     name: "Enrico Robles",
     title: "Director of Data Analytics & Platform en Endeavor",
-    image: "/podcast-07.png",
+    image: "/podcast7.png",
     watchUrl: "https://youtu.be/gZbvuMpjI_M?si=juWDJeHxsxAYeYrE",
   },
   {
@@ -73,7 +73,7 @@ const episodes = [
     date: "20 JAN, 2025",
     name: "Eduardo de la Garza",
     title: "Por Talento Ganas o por Talento Pierdes",
-    image: "/podcast-08.png",
+    image: "/podcast8.png",
     watchUrl: "https://youtu.be/o4A26hzyyrs?si=Tw3ziTr8PXTggJgW",
   },
   {
@@ -81,7 +81,7 @@ const episodes = [
     date: "08 JAN, 2025",
     name: "Alberto de Armas",
     title: "HR Powered AI",
-    image: "/podcast-09.png",
+    image: "/podcast9.png",
     watchUrl: "https://youtu.be/zEPY40fmIfU?si=Ib4ordqyvXnBkjqP",
   },
   {
@@ -89,7 +89,7 @@ const episodes = [
     date: "22 DEC, 2024",
     name: "Karim Touma",
     title: "Data & AI como capacidad de negocios",
-    image: "/podcast-10.png",
+    image: "/podcast10.png",
     watchUrl: "https://youtu.be/SgEVj-6g41k?si=JWAMWiDzG-r1MQvS",
   },
   {
@@ -97,7 +97,7 @@ const episodes = [
     date: "10 DEC, 2024",
     name: "David Puente",
     title: "De AI a ROI: Modelos de captura de valor",
-    image: "/podcast-11.png",
+    image: "/podcast11.png",
     watchUrl: "https://youtu.be/w-dBaJPByKE?si=aElOIXtf5ztnE5S7",
   },
 ];

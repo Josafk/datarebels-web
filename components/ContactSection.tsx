@@ -44,7 +44,7 @@ export function ContactSection() {
             <div className="flex flex-col">
               <div className="mb-8">
                 <Image
-                  src="/beyond-data-isologo.svg" 
+                  src="/isologo.svg"
                   alt="Data Rebels"
                   width={60}
                   height={50}

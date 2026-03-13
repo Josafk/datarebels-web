@@ -5,7 +5,7 @@ import { Globe, LayoutGrid, Users, Network } from "lucide-react";
 import { ImageSwiper } from "@/components/ui/image-swiper";
 
 const COMMUNITY_IMAGES =
-  "/community-global-01.png,/community-global-02.png,/community-global-03.png,/community-global-04.png,/community-global-05.png,/community-global-06.png";
+  "/community-carousel-01.png,/community-carousel-02.png,/community-carousel-03.png,/community-carousel-04.png,/community-carousel-05.png,/community-carousel-06.png,/community-carousel-07.png";
 
 const benefits = [
   {

@@ -11,7 +11,7 @@ const SUCCESS_STORIES = [
   {
     id: "arca-continental",
     company: "Arca Continental",
-    logo: "/white-arca-continental.svg",
+    logo: "/arcacontal-white.svg",
     challenge:
       "Scale data literacy and product ownership across a global organization by building specialized tracks for technical and business roles.",
     tags: ["Data Literacy", "Product Ownership"],
@@ -24,7 +24,7 @@ const SUCCESS_STORIES = [
   {
     id: "cemex",
     company: "Cemex",
-    logo: "/white-cemex.svg",
+    logo: "/cemex-white.svg",
     challenge:
       "Improve data discovery time from business users & reduce cost to serve new data requirements",
     tags: ["Cost-optimization", "GenAI expert"],
@@ -50,7 +50,7 @@ const SUCCESS_STORIES = [
   {
     id: "deacero",
     company: "Deacero",
-    logo: "/white-deacero.svg",
+    logo: "/deacero-white.svg",
     challenge:
       "Scale GenAI adoption across 200 business users in under 30 days while unlocking the ROI of previously underutilized licenses",
     tags: ["Massive Adoption", "Business Productivity"],
