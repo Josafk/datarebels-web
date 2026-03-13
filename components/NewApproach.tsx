@@ -18,10 +18,9 @@ export function NewApproach() {
 
         <div className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
 
-          {/* FILA SUPERIOR: texto + foto — altura compacta */}
+          {/* FILA SUPERIOR: texto + foto */}
           <div className="flex flex-col lg:flex-row relative" style={{ minHeight: 0 }}>
 
-            {/* COLUMNA TEXTO — menos padding vertical */}
             <div className="flex-1 pt-6 pb-6 px-8 flex flex-col justify-center z-20">
 
               <div className="mb-4 h-8 flex items-center">
@@ -53,54 +52,61 @@ export function NewApproach() {
               </div>
             </div>
 
-            {/* FOTO */}
+            {/* Foto — solo desktop */}
             <div className="hidden lg:flex absolute right-0 bottom-0 w-[46%] h-full z-10 pointer-events-none items-end justify-end">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/image-girl.png" alt="Rebel" className="w-auto object-contain object-right-bottom max-h-full" />
             </div>
           </div>
 
-          {/* NUMERALIA */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-gray-100 bg-white relative z-30">
+          {/*
+            NUMERALIA
+            ─ Mobile (<lg):  1 columna — cada stat ocupa toda la fila
+            ─ Desktop (lg+): 4 columnas — layout original
+            
+            whiteSpace: nowrap eliminado → los labels largos pueden wrappear
+          */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 border-t border-gray-100 bg-white relative z-30">
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
                 className={[
-                  "flex flex-col items-start justify-center py-5 px-6",
-                  i > 0 ? "lg:border-l border-gray-100" : "",
-                  i >= 2 ? "border-t lg:border-t-0 border-gray-100" : "",
+                  "flex flex-row lg:flex-col items-center lg:items-start justify-between lg:justify-center",
+                  "py-4 px-6 lg:py-5",
+                  /* separadores */
+                  i > 0 ? "border-t lg:border-t-0 lg:border-l border-gray-100" : "",
                 ].join(" ")}
               >
                 {/*
-                  Fuente Ambit SemiBold 48px / line-height 56px — igual al Figma.
-                  AnimatedCounter hereda font-family del padre vía CSS var.
+                  Mobile: número a la izquierda, label a la derecha (flex-row)
+                  Desktop: número arriba, label abajo (flex-col)
+                  Número: Ambit 600 — 40px mobile / 48px desktop
                 */}
                 <div
                   style={{
                     fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
-                    fontSize: 48,
+                    fontSize: 'clamp(36px, 5vw, 48px)',
                     fontWeight: 600,
-                    lineHeight: '56px',
+                    lineHeight: 1,
                     color: '#1330F4',
-                    marginBottom: 2,
+                    flexShrink: 0,
                   }}
                 >
                   <AnimatedCounter value={stat.value} />
                 </div>
-                {/*
-                  Label en una sola línea — whitespace-nowrap evita el salto.
-                  Font-size reducido a 11px para que "Average ROI on AI Implementations"
-                  quepa en una línea sin overflow.
-                */}
+
                 <span
                   style={{
                     fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-                    fontSize: 11,
-                    lineHeight: '16px',
+                    fontSize: 12,
+                    lineHeight: '18px',
                     fontWeight: 400,
                     color: '#64748b',
-                    whiteSpace: 'nowrap',
+                    /* Mobile: alineado a la derecha; Desktop: texto izquierda */
+                    textAlign: 'right',
+                    maxWidth: 160,       /* permite wrap sin overflow */
                   }}
+                  className="lg:text-left lg:max-w-[140px]"
                 >
                   {stat.label}
                 </span>

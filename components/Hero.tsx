@@ -39,15 +39,9 @@ export function Hero() {
   }, []);
 
   return (
-    /*
-      layout.tsx tiene pt-20 (80px) en <main> → compensa el header fijo.
-      page.tsx añade pt-24 en la <section> Hero para el respiro visual.
-      Este componente NO añade padding-top propio.
-      paddingBottom: 32px → espacio hacia "The Problem".
-    */
     <div style={{ paddingBottom: 32 }}>
 
-      {/* Título — 2 líneas forzadas con <br> */}
+      {/* Título */}
       <h1
         ref={h1Ref}
         style={{
@@ -65,11 +59,70 @@ export function Hero() {
         Become One of Our 100K Rebels.
       </h1>
 
-      {/* Galería de fotos */}
+      {/*
+        GALERÍA
+        ─ Desktop (sm+): flex fila, todas las fotos visibles, hover effect
+        ─ Mobile (<sm): scroll horizontal, fotos de ancho fijo 140px con snap
+      */}
+
+      {/* Mobile: carousel con scroll horizontal */}
       <div
-        className="group"
+        className="sm:hidden"
         style={{
           display: 'flex',
+          gap: 8,
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          WebkitOverflowScrolling: 'touch',
+          marginBottom: 20,
+          paddingBottom: 4,         /* espacio para que no se corte el shadow */
+          scrollbarWidth: 'none',   /* Firefox */
+          msOverflowStyle: 'none',  /* IE */
+        }}
+      >
+        <style>{`.hero-carousel::-webkit-scrollbar { display: none; }`}</style>
+        <div
+          className="hero-carousel"
+          style={{
+            display: 'flex',
+            gap: 8,
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none',
+          }}
+        >
+          {profiles.map((p) => (
+            <div
+              key={p.src}
+              style={{
+                position: 'relative',
+                flexShrink: 0,
+                width: 120,           /* ancho fijo — 3 fotos visibles aprox */
+                height: 160,
+                borderRadius: 14,
+                overflow: 'hidden',
+                scrollSnapAlign: 'start',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
+              }}
+            >
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                sizes="120px"
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                priority
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: flex fila con hover */}
+      <div
+        className="hidden sm:flex group"
+        style={{
           alignItems: 'stretch',
           gap: 8,
           height: 'clamp(150px, 19vw, 220px)',
@@ -125,14 +178,19 @@ export function Hero() {
           The fastest, most cost-effective way to get your teams using AI.
         </p>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          {/* Outline button Our programs */}
+        {/*
+          CTAs:
+          ─ Mobile: columna apilada, full-width
+          ─ Desktop: fila
+        */}
+        <div
+          className="flex flex-col sm:flex-row w-full sm:w-auto"
+          style={{ gap: 10 }}
+        >
           <Link
             href="#programs"
+            className="flex items-center justify-center w-full sm:w-auto"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               height: 40,
               padding: '0 18px',
               borderRadius: 999,
@@ -156,7 +214,11 @@ export function Hero() {
             Our programs
           </Link>
 
-          <ShinyButton href="#contact" variant="blue">
+          <ShinyButton
+            href="#contact"
+            variant="blue"
+            className="w-full sm:w-auto flex justify-center"
+          >
             Enroll a Rebel Today
           </ShinyButton>
         </div>
