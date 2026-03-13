@@ -49,33 +49,56 @@ export function GenAITalentGap() {
       id="solutions"
       aria-label="Close the GenAI Talent Gap"
       className="relative z-10 py-20 overflow-hidden scroll-mt-20"
-      style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #0d0b1a 100%)' }}
     >
+      {/* ── Fondo: imagen B&W + overlay oscuro ── */}
+      <div className="absolute inset-0 z-0">
+        {/* Imagen comunidad en B&W — grayscale + muy baja opacidad */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/whatsapp-image-2025-12-18-at-16.33.20-3.jpeg"
+          alt=""
+          aria-hidden
+          className="w-full h-full object-cover"
+          style={{ filter: 'grayscale(100%)', opacity: 0.08 }}
+        />
+        {/* Overlay gradiente oscuro encima */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(180deg, #08060f 0%, #0d0b1a 40%, #0d0b1a 60%, #08060f 100%)' }}
+        />
+      </div>
+
       {/* ── Header ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-10">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
 
-          <div className="flex items-start gap-4 max-w-lg">
+          {/* Title — Figma: Ambit 600, 32px, line-height 34px */}
+          <div className="flex items-start gap-4 max-w-[480px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/isologo-white.svg" alt="" aria-hidden className="h-10 w-auto flex-shrink-0 mt-1" />
+            <img src="/isologo-white.svg" alt="" aria-hidden className="w-10 h-10 flex-shrink-0 mt-1" />
             <h2 style={{
               fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
-              fontSize: 'clamp(24px, 3vw, 36px)',
+              fontSize: 32,
               fontWeight: 600,
-              lineHeight: 1.2,
-              color: '#fff',
+              lineHeight: '34px',
+              color: '#F9F9F9',           /* var(--Gray-Gray-50) del Figma */
+              margin: 0,
             }}>
               Close the GenAI{' '}
-              <span style={{ color: '#a78bfa' }}>Talent Gap.</span>{' '}
+              <span style={{ color: '#CDACFC' }}>  {/* var(--Violet-100) del Figma */}
+                Talent Gap.
+              </span>{' '}
               Enroll a Rebel Today.
             </h2>
           </div>
 
+          {/* Format pills */}
           <div className="flex items-center gap-3 flex-wrap">
             <span style={{
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
               fontSize: 11, fontWeight: 600, letterSpacing: '2px',
               textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)',
+              whiteSpace: 'nowrap',
             }}>
               Our Formats
             </span>
@@ -83,8 +106,8 @@ export function GenAITalentGap() {
               <span key={f} style={{
                 display: 'inline-flex', alignItems: 'center', gap: 6,
                 padding: '6px 14px', borderRadius: 999,
-                border: '1px solid rgba(255,255,255,0.15)',
-                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                background: 'rgba(255,255,255,0.06)',
                 fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
                 fontSize: 13, fontWeight: 500, color: '#fff', whiteSpace: 'nowrap',
               }}>
@@ -95,8 +118,8 @@ export function GenAITalentGap() {
         </div>
       </div>
 
-      {/* ── Cards ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* ── Cards grid ── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {CARDS.map((card) => {
             const Icon = card.icon;
@@ -104,15 +127,21 @@ export function GenAITalentGap() {
               <div
                 key={card.title}
                 className="relative rounded-[10px] p-px"
-                style={{ background: 'rgba(255,255,255,0.06)' }}
+                style={{ background: 'rgba(255,255,255,0.08)' }}
               >
-                {/* GlowingEffect — usa el variant del repo, sigue al cursor */}
+                {/*
+                  GlowingEffect más visible:
+                  - borderWidth 2 → stroke más grueso
+                  El opacity en el animate dentro del componente
+                  está en 0.4 — para reforzarlo sin tocarlo aquí
+                  pasamos glow=false y dejamos que el hover sea intenso
+                */}
                 <GlowingEffect
                   disabled={false}
                   variant={card.variant}
-                  spread={60}
-                  proximity={80}
-                  borderWidth={1}
+                  spread={80}
+                  proximity={100}
+                  borderWidth={2}
                   glow={false}
                 />
 
@@ -120,13 +149,13 @@ export function GenAITalentGap() {
                 <div
                   className="relative rounded-[9px] flex flex-col"
                   style={{
-                    background: 'rgba(12, 10, 20, 0.95)',
+                    background: 'rgba(10, 8, 20, 0.92)',
                     padding: '32px 16px 16px 16px',
                     gap: 24,
                     minHeight: 200,
                   }}
                 >
-                  {/* Title + icon */}
+                  {/* Title + icon row */}
                   <div style={{
                     display: 'flex', alignItems: 'flex-start',
                     justifyContent: 'space-between', gap: 12,
