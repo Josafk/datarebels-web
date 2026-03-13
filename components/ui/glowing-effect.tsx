@@ -57,9 +57,9 @@ const GlowingEffect = memo(
 
         const rect = container.getBoundingClientRect();
         const padding = proximity;
-        const expandedLeft = rect.left - padding;
-        const expandedTop = rect.top - padding;
-        const expandedRight = rect.right + padding;
+        const expandedLeft   = rect.left   - padding;
+        const expandedTop    = rect.top    - padding;
+        const expandedRight  = rect.right  + padding;
         const expandedBottom = rect.bottom + padding;
 
         const isInside =
@@ -79,24 +79,20 @@ const GlowingEffect = memo(
         }
 
         isPointerInsideRef.current = true;
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const angle = Math.atan2(
-          clientY - centerY,
-          clientX - centerX
-        );
+        const centerX = rect.left + rect.width  / 2;
+        const centerY = rect.top  + rect.height / 2;
+        const angle    = Math.atan2(clientY - centerY, clientX - centerX);
         const angleDeg = (angle * 180) / Math.PI + 90;
 
         angleRef.current = angleDeg;
         const spreadHalf = spread / 2;
         const startAngle = angleDeg - spreadHalf;
-        const endAngle = angleDeg + spreadHalf;
 
         gradient.style.background = `conic-gradient(from ${startAngle}deg, ${getGradientColors()})`;
         animate(
           gradient,
-          { opacity: glow || isInside ? 0.4 : 0 } as any, // 1. Agregamos 'as any'
-          { duration: 0.15, ease: "easeOut" }              // 2. Cambiamos a 'easeOut'
+          { opacity: glow || isInside ? 0.4 : 0 } as any,
+          { duration: 0.15, ease: "easeOut" }
         );
       },
       [glow, proximity, spread, movementDuration, getGradientColors]
@@ -143,6 +139,4 @@ const GlowingEffect = memo(
 );
 
 GlowingEffect.displayName = "GlowingEffect";
-
 export { GlowingEffect };
-// Lanzamiento final
