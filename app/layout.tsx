@@ -36,8 +36,11 @@ export default function RootLayout({
         <GlassFilter />
         <NeuralBackground />
         <Header />
-        {/* pt-20 = 80px, compensa exactamente el header fijo */}
-        <main className="relative z-10 pt-20 overflow-x-hidden bg-transparent min-h-screen flex flex-col">
+        {/*
+          pt-[80px] = exactamente 80px en cualquier configuración de Tailwind.
+          Evita que pt-20 compile diferente si la escala base está customizada.
+        */}
+        <main className="relative z-10 pt-[80px] overflow-x-hidden bg-transparent min-h-screen flex flex-col">
           {children}
           <Footer />
         </main>

@@ -63,51 +63,45 @@ export function Header() {
   }, [open]);
 
   /*
-   * ─── ARQUITECTURA ─────────────────────────────────────────────
+   * ─── ARQUITECTURA FINAL ───────────────────────────────────────
    *
-   * El problema raíz de la "masa negra": el <header> tenía
-   * background:#000 y height fija → aunque el inner pill se
-   * comprimiera, el fondo negro siempre ocupaba toda la altura.
+   * ESTADO BASE (top):
+   *   • <header> = barra negra full-width, exactamente h=80px.
+   *     background: #000. Sin sobrante porque height = inner height.
    *
-   * Solución:
-   *   • <header> = contenedor TRANSPARENTE, pointer-events:none
-   *     Solo define la zona de posicionamiento (top:0, full-width).
-   *     NO tiene fondo propio.
+   * ESTADO SCROLL (desktop ≥1024px):
+   *   • <header> = contenedor TRANSPARENTE, h=64px (8+48+8).
+   *     background: transparent → no hay negro sobrante.
+   *   • #header-inner = la píldora negra centrada (max-w 860, h 48).
    *
-   *   • Estado BASE (top de página, desktop):
-   *     Inner div = full-width, h=80px, bg=#000 (la barra negra real).
+   * La transición entre ambos estados:
+   *   - background: '#000' → 'transparent'  (con transition en CSS)
+   *   - height: 80 → 64
+   *   - inner: full-width/h80 → pill/h48
    *
-   *   • Estado SCROLL (desktop):
-   *     Inner div = píldora centrada, max-w=860px, h=48px, bg=#000.
-   *     Con margin-top=8px.
-   *     Al ser el ÚNICO elemento con fondo, no hay negro sobrante.
-   *
-   *   • MOBILE: siempre barra full-width h=80px via CSS override.
-   *     pointer-events:auto solo en el inner.
+   * MOBILE: siempre estado base (barra negra h=80) via CSS override.
    * ─────────────────────────────────────────────────────────────
    */
 
   return (
     <>
-      {/* Capa fija transparente — solo posiciona, no pinta */}
       <header
         id="site-header"
         style={{
-          position: 'fixed', top: 0, left: 0, right: 0,
-          zIndex: 50,
-          // TRANSPARENTE — el fondo negro está solo en #header-inner
-          background: 'transparent',
-          // Pointer-events none para no bloquear clicks bajo la píldora
-          pointerEvents: 'none',
-          // Padding top da el offset de la píldora en scroll
-          paddingTop: scrolled ? 8 : 0,
-          transition: 'padding-top .38s ease',
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+          // BASE: negro full. SCROLL desktop: transparente (solo la píldora pinta).
+          background: scrolled ? 'transparent' : '#000',
+          height: scrolled ? 64 : 80,
           display: 'flex',
+          alignItems: scrolled ? 'flex-start' : 'center',
           justifyContent: 'center',
-          alignItems: 'flex-start',
+          paddingTop: scrolled ? 8 : 0,
+          // pointer-events none solo en scroll (la píldora los recupera)
+          // En base pointerEvents auto porque ocupa toda la barra
+          pointerEvents: scrolled ? 'none' : 'auto',
+          transition: 'background .38s ease, height .38s ease, padding-top .38s ease',
         }}
       >
-        {/* Inner: la única pieza con fondo negro */}
         <div
           id="header-inner"
           style={{
@@ -236,7 +230,7 @@ export function Header() {
       </AnimatePresence>
 
       <style>{`
-        /* DESKTOP ≥1024px */
+        /* DESKTOP ≥1024px: nav+CTA visibles, hamburger oculto */
         @media (min-width: 1024px) {
           #header-hamburger { display: none !important; }
           #header-nav       { display: flex !important; }
@@ -244,13 +238,20 @@ export function Header() {
           #mobile-card      { display: none !important; }
           #mobile-backdrop  { display: none !important; }
         }
-        /* MOBILE <1024px */
+
+        /* MOBILE <1024px: hamburger visible, nav+CTA ocultos */
         @media (max-width: 1023px) {
           #header-hamburger { display: flex !important; }
           #header-nav       { display: none !important; }
           #header-cta       { display: none !important; }
-          /* Sin píldora en mobile */
-          #site-header  { padding-top: 0 !important; align-items: center !important; }
+          /* Siempre barra negra full en mobile — nunca pill */
+          #site-header {
+            background: #000 !important;
+            height: 80px !important;
+            padding-top: 0 !important;
+            align-items: center !important;
+            pointer-events: auto !important;
+          }
           #header-inner {
             max-width: 100%  !important;
             height: 80px     !important;
