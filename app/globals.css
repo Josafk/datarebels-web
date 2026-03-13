@@ -59,8 +59,6 @@
   }
 }
 
-/* Perfiles Hero: hover via Tailwind (group-hover + hover:!) en el componente */
-
 /* Outline CTA homologado - stroke #EA366B, texto blanco Inter Semibold 16px/24px */
 .outline-cta {
   border: 2px solid #EA366B !important;
@@ -249,4 +247,40 @@
   font-size: 1rem;
   color: #22c55e;
   padding: 1rem 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SPACING PATCH — TheProblem, ExplosiveDemand, MTP
+   Usa los aria-label de los <section> en page.tsx como selectores.
+   Ajusta gap título→párrafo a 16px y centra el bloque MTP.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Título seguido de párrafo: 16px de separación */
+[aria-label="The Problem"] h2,
+[aria-label="The Problem"] h3,
+[aria-label="Explosive Demand"] h2,
+[aria-label="Explosive Demand"] h3 {
+  margin-bottom: 16px !important;
+}
+
+[aria-label="The Problem"] p,
+[aria-label="Explosive Demand"] p {
+  margin-top: 0 !important;
+}
+
+/* MTP — centrado completo */
+[aria-label="MTP"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+[aria-label="MTP"] h2,
+[aria-label="MTP"] h3,
+[aria-label="MTP"] p,
+[aria-label="MTP"] button,
+[aria-label="MTP"] a {
+  text-align: center;
 }
