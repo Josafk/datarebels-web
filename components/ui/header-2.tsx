@@ -62,19 +62,51 @@ export function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
+  /*
+    ╔═══════════════════════════════════════════════════════╗
+    ║  LÓGICA DE ALTURAS                                    ║
+    ║                                                        ║
+    ║  Estado BASE (top):                                    ║
+    ║   • <header> h=80px, bg=#000, full-width              ║
+    ║   • Inner: full-width, h=80px, sin border-radius      ║
+    ║                                                        ║
+    ║  Estado SCROLL (desktop ≥1024):                        ║
+    ║   • <header> h=64px — exactamente el alto de la       ║
+    ║     píldora (48px) + 8px padding arriba + 8px abajo   ║
+    ║     → NO queda masa negra sobrante                     ║
+    ║   • Inner: píldora max-w 860px, h=48px, border-radius ║
+    ║                                                        ║
+    ║  MOBILE (<1024):                                       ║
+    ║   • <header> siempre h=80px via CSS override           ║
+    ║   • Inner siempre full-width, sin píldora             ║
+    ╚═══════════════════════════════════════════════════════╝
+  */
+
+  // Desktop: header shrinks to wrap the pill tightly (pill 48px + 8px top + 8px bottom = 64px)
+  // Mobile: always 80px via CSS override
+  const headerH = scrolled ? 64 : 80;
+  // Pill top padding inside header
+  const pillPaddingTop = scrolled ? 8 : 0;
+
   return (
     <>
       <header
         id="site-header"
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-          height: 80,
+          // La altura del header mismo transiciona → desaparece el negro sobrante
+          height: headerH,
           background: '#000',
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           justifyContent: 'center',
+          paddingTop: pillPaddingTop,
+          transition: 'height .38s ease, padding-top .38s ease',
+          // overflow hidden para que la píldora no desborde
+          overflow: 'visible',
         }}
       >
+        {/* Inner pill/bar */}
         <div
           id="header-inner"
           style={{
@@ -87,7 +119,7 @@ export function Header() {
             boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,0.5)' : 'none',
             padding: scrolled ? '0 20px' : '0 40px',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            transition: 'max-width .38s ease, height .38s ease, border-radius .38s ease, padding .38s ease, box-shadow .38s ease',
+            transition: 'max-width .38s ease, height .38s ease, border-radius .38s ease, padding .38s ease, box-shadow .38s ease, border-color .38s ease',
           }}
         >
           {/* Logo */}
@@ -95,7 +127,7 @@ export function Header() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo-white.svg" alt="Data Rebels"
-              style={{ height: scrolled ? 16 : 20, width: 'auto', transition: 'height .38s ease' }}
+              style={{ height: scrolled ? 15 : 20, width: 'auto', transition: 'height .38s ease' }}
             />
           </Link>
 
@@ -142,19 +174,22 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile card */}
+        {/* Mobile card — se posiciona relativo al header */}
         <AnimatePresence>
           {open && (
-            <motion.div key="card" id="mobile-card"
+            <motion.div key="card"
               variants={cardV} initial="hidden" animate="visible" exit="exit"
               style={{
                 transformOrigin: 'top right',
-                position: 'absolute', top: 88, right: 20,
+                position: 'absolute',
+                top: 88,
+                right: 20,
                 width: 'min(300px, calc(100vw - 40px))',
                 background: '#1a1a1a', borderRadius: 20, overflow: 'hidden',
                 boxShadow: '0 0 0 1px rgba(255,255,255,0.07), 0 20px 60px rgba(0,0,0,0.8)',
-                zIndex: 60,
+                zIndex: 10,
               }}
+              id="mobile-card"
             >
               <nav style={{ display: 'flex', flexDirection: 'column', padding: '20px 24px 8px' }}>
                 {NAV.map((link, i) => (
@@ -197,7 +232,7 @@ export function Header() {
         </AnimatePresence>
       </header>
 
-      {/* Backdrop */}
+      {/* Backdrop mobile */}
       <AnimatePresence>
         {open && (
           <motion.div key="bd" id="mobile-backdrop"
@@ -209,26 +244,29 @@ export function Header() {
         )}
       </AnimatePresence>
 
-      {/*
-        Toda la lógica responsiva en un solo bloque CSS.
-        Los IDs son más específicos que las clases Tailwind → no hay conflicto.
-      */}
       <style>{`
-        /* DESKTOP ≥1024px: nav + CTA visibles, hamburger oculto */
+        /* DESKTOP ≥1024px */
         @media (min-width: 1024px) {
           #header-hamburger { display: none !important; }
           #header-nav       { display: flex !important; }
           #header-cta       { display: block !important; }
+          #mobile-card      { display: none !important; }
+          #mobile-backdrop  { display: none !important; }
         }
 
-        /* MOBILE <1024px: hamburger visible, nav + CTA ocultos, sin píldora */
+        /* MOBILE <1024px: hamburger sí, nav+CTA no, sin píldora nunca */
         @media (max-width: 1023px) {
           #header-hamburger { display: flex !important; }
           #header-nav       { display: none !important; }
           #header-cta       { display: none !important; }
-          #mobile-card      { display: block !important; }
 
-          /* Forzar estado plano — nunca pill en mobile */
+          /* Header siempre 80px en mobile — sin compresión */
+          #site-header {
+            height: 80px        !important;
+            padding-top: 0      !important;
+            align-items: center !important;
+          }
+          /* Inner siempre full-width, sin píldora */
           #header-inner {
             max-width: 100%  !important;
             height: 80px     !important;
