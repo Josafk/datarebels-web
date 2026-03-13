@@ -12,11 +12,11 @@ gsap.registerPlugin(useGSAP);
 
 const HERO_ALTS: Record<string, string> = {
   "/hero-1.png": "Semillero de talento - Demoday",
-  "/hero-2.png": "Presentación Machine Learning",
+  "/hero-2.png": "Presentación Machine Learning y análisis de datos",
   "/hero-3.png": "Rebel en espacio Data Rebels",
   "/hero-4.png": "Presentación en evento Data Rebels",
-  "/hero-5.png": "Análisis exploratorio - presentación",
-  "/hero-6.png": "Equipo Data Rebels en reunión",
+  "/hero-5.png": "Análisis exploratorio y visualización - presentación",
+  "/hero-6.png": "Equipo Data Rebels en reunión colaborativa",
 };
 
 const profiles = HERO_SECTION_IMAGES.map((src) => ({
@@ -29,20 +29,25 @@ export function Hero() {
 
   useGSAP(() => {
     if (!h1Ref.current) return;
-    gsap.from(h1Ref.current, { opacity: 0, y: 16, duration: 0.8, ease: "power3.out", delay: 0.1 });
+    gsap.from(h1Ref.current, {
+      opacity: 0,
+      y: 16,
+      duration: 0.8,
+      ease: "power3.out",
+      delay: 0.1,
+    });
   }, []);
 
   return (
     /*
-      layout.tsx tiene pt-20 (80px) → compensa el header fijo.
-      page.tsx ya no añade pt extra a la sección Hero.
-      Aquí solo ponemos 24px de aire visual entre el borde del
-      header y el título — más ajustado al Figma.
-      paddingBottom: 32px → hacia The Problem.
+      layout.tsx tiene pt-20 (80px) en <main> → compensa el header fijo.
+      page.tsx añade pt-24 en la <section> Hero para el respiro visual.
+      Este componente NO añade padding-top propio.
+      paddingBottom: 32px → espacio hacia "The Problem".
     */
-    <div style={{ paddingTop: 24, paddingBottom: 32 }}>
+    <div style={{ paddingBottom: 32 }}>
 
-      {/* Título — 2 líneas con <br> */}
+      {/* Título — 2 líneas forzadas con <br> */}
       <h1
         ref={h1Ref}
         style={{
@@ -60,7 +65,7 @@ export function Hero() {
         Become One of Our 100K Rebels.
       </h1>
 
-      {/* Galería */}
+      {/* Galería de fotos */}
       <div
         className="group"
         style={{
@@ -121,19 +126,32 @@ export function Hero() {
         </p>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          {/* Outline button Our programs */}
           <Link
             href="#programs"
             style={{
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              height: 40, padding: '0 18px', borderRadius: 999,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 40,
+              padding: '0 18px',
+              borderRadius: 999,
               border: '2px solid #EA366B',
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-              fontSize: 13, fontWeight: 700, color: '#fff',
-              whiteSpace: 'nowrap', textDecoration: 'none', background: 'transparent',
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#fff',
+              whiteSpace: 'nowrap',
+              textDecoration: 'none',
+              background: 'transparent',
               transition: 'background .2s',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.12)'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.12)';
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.background = 'transparent';
+            }}
           >
             Our programs
           </Link>

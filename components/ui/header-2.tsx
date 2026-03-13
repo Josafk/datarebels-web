@@ -63,70 +63,71 @@ export function Header() {
   }, [open]);
 
   /*
-    ╔═══════════════════════════════════════════════════════╗
-    ║  LÓGICA DE ALTURAS                                    ║
-    ║                                                        ║
-    ║  Estado BASE (top):                                    ║
-    ║   • <header> h=80px, bg=#000, full-width              ║
-    ║   • Inner: full-width, h=80px, sin border-radius      ║
-    ║                                                        ║
-    ║  Estado SCROLL (desktop ≥1024):                        ║
-    ║   • <header> h=64px — exactamente el alto de la       ║
-    ║     píldora (48px) + 8px padding arriba + 8px abajo   ║
-    ║     → NO queda masa negra sobrante                     ║
-    ║   • Inner: píldora max-w 860px, h=48px, border-radius ║
-    ║                                                        ║
-    ║  MOBILE (<1024):                                       ║
-    ║   • <header> siempre h=80px via CSS override           ║
-    ║   • Inner siempre full-width, sin píldora             ║
-    ╚═══════════════════════════════════════════════════════╝
-  */
-
-  // Desktop: header shrinks to wrap the pill tightly (pill 48px + 8px top + 8px bottom = 64px)
-  // Mobile: always 80px via CSS override
-  const headerH = scrolled ? 64 : 80;
-  // Pill top padding inside header
-  const pillPaddingTop = scrolled ? 8 : 0;
+   * ─── ARQUITECTURA ─────────────────────────────────────────────
+   *
+   * El problema raíz de la "masa negra": el <header> tenía
+   * background:#000 y height fija → aunque el inner pill se
+   * comprimiera, el fondo negro siempre ocupaba toda la altura.
+   *
+   * Solución:
+   *   • <header> = contenedor TRANSPARENTE, pointer-events:none
+   *     Solo define la zona de posicionamiento (top:0, full-width).
+   *     NO tiene fondo propio.
+   *
+   *   • Estado BASE (top de página, desktop):
+   *     Inner div = full-width, h=80px, bg=#000 (la barra negra real).
+   *
+   *   • Estado SCROLL (desktop):
+   *     Inner div = píldora centrada, max-w=860px, h=48px, bg=#000.
+   *     Con margin-top=8px.
+   *     Al ser el ÚNICO elemento con fondo, no hay negro sobrante.
+   *
+   *   • MOBILE: siempre barra full-width h=80px via CSS override.
+   *     pointer-events:auto solo en el inner.
+   * ─────────────────────────────────────────────────────────────
+   */
 
   return (
     <>
+      {/* Capa fija transparente — solo posiciona, no pinta */}
       <header
         id="site-header"
         style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-          // La altura del header mismo transiciona → desaparece el negro sobrante
-          height: headerH,
-          background: '#000',
+          position: 'fixed', top: 0, left: 0, right: 0,
+          zIndex: 50,
+          // TRANSPARENTE — el fondo negro está solo en #header-inner
+          background: 'transparent',
+          // Pointer-events none para no bloquear clicks bajo la píldora
+          pointerEvents: 'none',
+          // Padding top da el offset de la píldora en scroll
+          paddingTop: scrolled ? 8 : 0,
+          transition: 'padding-top .38s ease',
           display: 'flex',
-          alignItems: 'flex-start',
           justifyContent: 'center',
-          paddingTop: pillPaddingTop,
-          transition: 'height .38s ease, padding-top .38s ease',
-          // overflow hidden para que la píldora no desborde
-          overflow: 'visible',
+          alignItems: 'flex-start',
         }}
       >
-        {/* Inner pill/bar */}
+        {/* Inner: la única pieza con fondo negro */}
         <div
           id="header-inner"
           style={{
+            pointerEvents: 'auto',
             width: '100%',
-            maxWidth: scrolled ? 860 : 1280,
+            maxWidth: scrolled ? 860 : '100%',
             height: scrolled ? 48 : 80,
-            background: scrolled ? '#000' : 'transparent',
+            background: '#000',
             borderRadius: scrolled ? 9999 : 0,
             border: scrolled ? '1px solid rgba(255,255,255,0.1)' : 'none',
             boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,0.5)' : 'none',
             padding: scrolled ? '0 20px' : '0 40px',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            transition: 'max-width .38s ease, height .38s ease, border-radius .38s ease, padding .38s ease, box-shadow .38s ease, border-color .38s ease',
+            transition: 'max-width .38s ease, height .38s ease, border-radius .38s ease, padding .38s ease, box-shadow .38s ease',
           }}
         >
           {/* Logo */}
           <Link href="/" style={{ flexShrink: 0, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo-white.svg" alt="Data Rebels"
+            <img src="/logo-white.svg" alt="Data Rebels"
               style={{ height: scrolled ? 15 : 20, width: 'auto', transition: 'height .38s ease' }}
             />
           </Link>
@@ -134,14 +135,13 @@ export function Header() {
           {/* Nav DESKTOP */}
           <nav id="header-nav" style={{ display: 'flex', alignItems: 'center', gap: scrolled ? 22 : 36, transition: 'gap .38s ease' }}>
             {NAV.map(({ label, href }) => (
-              <Link key={href} href={href}
-                style={{
-                  fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-                  fontSize: scrolled ? 13 : 16, fontWeight: 600,
-                  color: '#E5E7FB', textDecoration: 'none',
-                  whiteSpace: 'nowrap', flexShrink: 0,
-                  transition: 'color .15s, font-size .38s ease',
-                }}
+              <Link key={href} href={href} style={{
+                fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+                fontSize: scrolled ? 13 : 16, fontWeight: 600,
+                color: '#E5E7FB', textDecoration: 'none',
+                whiteSpace: 'nowrap', flexShrink: 0,
+                transition: 'color .15s, font-size .38s ease',
+              }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#fff'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = '#E5E7FB'; }}
               >{label}</Link>
@@ -160,36 +160,27 @@ export function Header() {
             <span style={{
               fontSize: 11, fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase',
               color: open ? 'rgba(255,255,255,0.45)' : '#fff', transition: 'color .18s',
-            }}>
-              {open ? 'Close' : 'Menu'}
-            </span>
-            <button type="button" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} onClick={() => setOpen(v => !v)}
-              style={{
-                width: 34, height: 34, borderRadius: 8, background: '#1330F4',
-                border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}
+            }}>{open ? 'Close' : 'Menu'}</span>
+            <button type="button" aria-label={open ? 'Cerrar' : 'Menú'} onClick={() => setOpen(v => !v)}
+              style={{ width: 34, height: 34, borderRadius: 8, background: '#1330F4', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
               <HamburgerIcon open={open} />
             </button>
           </div>
         </div>
 
-        {/* Mobile card — se posiciona relativo al header */}
+        {/* Mobile card */}
         <AnimatePresence>
           {open && (
-            <motion.div key="card"
+            <motion.div key="card" id="mobile-card"
               variants={cardV} initial="hidden" animate="visible" exit="exit"
               style={{
-                transformOrigin: 'top right',
-                position: 'absolute',
-                top: 88,
-                right: 20,
+                transformOrigin: 'top right', position: 'absolute', top: 88, right: 20,
                 width: 'min(300px, calc(100vw - 40px))',
                 background: '#1a1a1a', borderRadius: 20, overflow: 'hidden',
                 boxShadow: '0 0 0 1px rgba(255,255,255,0.07), 0 20px 60px rgba(0,0,0,0.8)',
-                zIndex: 10,
+                zIndex: 10, pointerEvents: 'auto',
               }}
-              id="mobile-card"
             >
               <nav style={{ display: 'flex', flexDirection: 'column', padding: '20px 24px 8px' }}>
                 {NAV.map((link, i) => (
@@ -238,7 +229,7 @@ export function Header() {
           <motion.div key="bd" id="mobile-backdrop"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: .18 }}
-            style={{ position: 'fixed', inset: 0, zIndex: 49, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }}
+            style={{ position: 'fixed', inset: 0, zIndex: 49, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)', pointerEvents: 'auto' }}
             onClick={() => setOpen(false)} aria-hidden
           />
         )}
@@ -253,20 +244,13 @@ export function Header() {
           #mobile-card      { display: none !important; }
           #mobile-backdrop  { display: none !important; }
         }
-
-        /* MOBILE <1024px: hamburger sí, nav+CTA no, sin píldora nunca */
+        /* MOBILE <1024px */
         @media (max-width: 1023px) {
           #header-hamburger { display: flex !important; }
           #header-nav       { display: none !important; }
           #header-cta       { display: none !important; }
-
-          /* Header siempre 80px en mobile — sin compresión */
-          #site-header {
-            height: 80px        !important;
-            padding-top: 0      !important;
-            align-items: center !important;
-          }
-          /* Inner siempre full-width, sin píldora */
+          /* Sin píldora en mobile */
+          #site-header  { padding-top: 0 !important; align-items: center !important; }
           #header-inner {
             max-width: 100%  !important;
             height: 80px     !important;
