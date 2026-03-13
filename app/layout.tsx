@@ -34,11 +34,10 @@ export default function RootLayout({
     <html lang="es" className={`${fontAmbit.variable} ${fontInter.variable} overflow-x-hidden`}>
       <body className="min-h-screen text-white antialiased font-sans bg-transparent overflow-x-hidden">
         <GlassFilter />
-        {/* NeuralBackground: primer hijo del body, fixed inset-0 z-0 - shader 21st.dev */}
         <NeuralBackground />
         <Header />
-        {/* Main: strictly relative z-10 bg-transparent - sin fondos sólidos */}
-        <main className="relative z-10 pt-16 overflow-x-hidden bg-transparent min-h-screen flex flex-col">
+        {/* pt-20 = 80px, compensa exactamente el header fijo */}
+        <main className="relative z-10 pt-20 overflow-x-hidden bg-transparent min-h-screen flex flex-col">
           {children}
           <Footer />
         </main>

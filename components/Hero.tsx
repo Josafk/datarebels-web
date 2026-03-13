@@ -34,13 +34,15 @@ export function Hero() {
 
   return (
     /*
-      El page.tsx ya tiene pt-20 (80px) para compensar el header fijo.
-      Aquí solo añadimos 32px de respiro visual entre header y título.
-      paddingBottom: 40px — separación hacia la sección siguiente.
+      layout.tsx tiene pt-20 (80px) → compensa el header fijo.
+      page.tsx ya no añade pt extra a la sección Hero.
+      Aquí solo ponemos 24px de aire visual entre el borde del
+      header y el título — más ajustado al Figma.
+      paddingBottom: 32px → hacia The Problem.
     */
-    <div style={{ paddingTop: 32, paddingBottom: 40 }}>
+    <div style={{ paddingTop: 24, paddingBottom: 32 }}>
 
-      {/* Título 2 líneas */}
+      {/* Título — 2 líneas con <br> */}
       <h1
         ref={h1Ref}
         style={{
