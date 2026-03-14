@@ -60,94 +60,127 @@ export function Hero() {
       </h1>
 
       {/*
-        GALERÍA
-        ─ Desktop (sm+): flex fila, todas las fotos visibles, hover effect
-        ─ Mobile (<sm): scroll horizontal, fotos de ancho fijo 140px con snap
+        ── GALERÍA ──────────────────────────────────────────────────
+        UN SOLO BLOQUE. Comportamiento por breakpoint:
+
+        Mobile (<768px / md):
+          - Scroll horizontal con snap
+          - Negative margin compensa exactamente el px-6 (24px) del padre
+          - paddingLeft/Right 24px para que las fotos respeten el borde
+          - Las fotos se ven ligeramente cortadas al borde → full-bleed visual
+
+        Desktop (≥768px):
+          - flex fila estática, todas visibles, hover effects
+          - height clamp para escalar con viewport
+
+        Usamos --gallery-mode vía className para separar comportamientos
+        sin duplicar el DOM (evita el bug de imágenes duplicadas).
+        ─────────────────────────────────────────────────────────────
       */}
+      <style>{`
+        .hero-gallery-scroll::-webkit-scrollbar { display: none; }
+        /* Mobile: scroll horizontal full-bleed */
+        @media (max-width: 767px) {
+          .hero-gallery {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            gap: 8px;
+            /* Bleed: cancela px-6=24px del padre */
+            margin-left: -24px;
+            margin-right: -24px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-bottom: 4px;
+            margin-bottom: 20px;
+          }
+          .hero-gallery-item {
+            flex-shrink: 0;
+            width: 140px;
+            height: 180px;
+            border-radius: 14px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+            position: relative;
+          }
+          /* Desktop styles no aplican en mobile */
+          .hero-gallery { flex-wrap: nowrap; align-items: unset; height: auto; }
+          .hero-gallery-item { flex: none; }
+        }
+        /* Tablet md (768px-1023px): bleed compensa px-10=40px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .hero-gallery {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            gap: 8px;
+            margin-left: -40px;
+            margin-right: -40px;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 4px;
+            margin-bottom: 20px;
+          }
+          .hero-gallery-item {
+            flex-shrink: 0;
+            width: 160px;
+            height: 200px;
+            border-radius: 14px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+            position: relative;
+          }
+        }
+        /* Desktop ≥1024px: flex fila estática con hover */
+        @media (min-width: 1024px) {
+          .hero-gallery {
+            display: flex;
+            align-items: stretch;
+            gap: 8px;
+            height: clamp(150px, 19vw, 220px);
+            margin-bottom: 20px;
+            overflow: visible;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0;
+          }
+          .hero-gallery-item {
+            position: relative;
+            flex: 1 1 0;
+            min-width: 0;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+            transition: transform .4s ease, opacity .4s ease;
+            height: auto;
+            width: auto;
+            flex-shrink: unset;
+          }
+          .hero-gallery:hover .hero-gallery-item {
+            opacity: 0.4;
+            transform: scale(0.95);
+          }
+          .hero-gallery-item:hover {
+            opacity: 1 !important;
+            transform: scale(1.05) !important;
+            z-index: 20;
+          }
+        }
+      `}</style>
 
-      {/* Mobile: carousel con scroll horizontal */}
-      <div
-        className="sm:hidden"
-        style={{
-          display: 'flex',
-          gap: 8,
-          overflowX: 'auto',
-          scrollSnapType: 'x mandatory',
-          WebkitOverflowScrolling: 'touch',
-          marginBottom: 20,
-          paddingBottom: 4,         /* espacio para que no se corte el shadow */
-          scrollbarWidth: 'none',   /* Firefox */
-          msOverflowStyle: 'none',  /* IE */
-        }}
-      >
-        <style>{`.hero-carousel::-webkit-scrollbar { display: none; }`}</style>
-        <div
-          className="hero-carousel"
-          style={{
-            display: 'flex',
-            gap: 8,
-            overflowX: 'auto',
-            scrollSnapType: 'x mandatory',
-            WebkitOverflowScrolling: 'touch',
-            scrollbarWidth: 'none',
-          }}
-        >
-          {profiles.map((p) => (
-            <div
-              key={p.src}
-              style={{
-                position: 'relative',
-                flexShrink: 0,
-                width: 120,           /* ancho fijo — 3 fotos visibles aprox */
-                height: 160,
-                borderRadius: 14,
-                overflow: 'hidden',
-                scrollSnapAlign: 'start',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
-              }}
-            >
-              <Image
-                src={p.src}
-                alt={p.alt}
-                fill
-                sizes="120px"
-                style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                priority
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop: flex fila con hover */}
-      <div
-        className="hidden sm:flex group"
-        style={{
-          alignItems: 'stretch',
-          gap: 8,
-          height: 'clamp(150px, 19vw, 220px)',
-          marginBottom: 20,
-        }}
-      >
+      <div className="hero-gallery hero-gallery-scroll">
         {profiles.map((p) => (
-          <div
-            key={p.src}
-            style={{
-              position: 'relative',
-              flex: '1 1 0',
-              minWidth: 0,
-              borderRadius: 14,
-              overflow: 'hidden',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
-              transition: 'transform .4s ease, opacity .4s ease',
-            }}
-            className="group-hover:opacity-40 group-hover:scale-95 hover:!opacity-100 hover:!scale-105 hover:z-20"
-          >
+          <div key={p.src} className="hero-gallery-item">
             <Image
               src={p.src}
               alt={p.alt}
               fill
-              sizes="(max-width: 768px) 33vw, 16vw"
+              sizes="(max-width: 767px) 140px, (max-width: 1023px) 160px, 16vw"
               style={{ objectFit: 'cover', objectPosition: 'center top' }}
               priority
             />
@@ -156,69 +189,36 @@ export function Hero() {
       </div>
 
       {/* Tagline + CTAs */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: 16,
-          flexWrap: 'wrap',
-        }}
-      >
-        <p
-          style={{
-            fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-            fontSize: 15,
-            lineHeight: '22px',
-            color: 'rgba(249,249,249,0.82)',
-            maxWidth: 260,
-            margin: 0,
-          }}
-        >
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+        <p style={{
+          fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+          fontSize: 15, lineHeight: '22px',
+          color: 'rgba(249,249,249,0.82)',
+          maxWidth: 260, margin: 0,
+        }}>
           The fastest, most cost-effective way to get your teams using AI.
         </p>
 
-        {/*
-          CTAs:
-          ─ Mobile: columna apilada, full-width
-          ─ Desktop: fila
-        */}
-        <div
-          className="flex flex-col sm:flex-row w-full sm:w-auto"
-          style={{ gap: 10 }}
-        >
+        {/* CTAs: columna full-width en mobile, fila en md+ */}
+        <div className="flex flex-col md:flex-row w-full md:w-auto" style={{ gap: 10 }}>
           <Link
             href="#programs"
-            className="flex items-center justify-center w-full sm:w-auto"
+            className="flex items-center justify-center w-full md:w-auto"
             style={{
-              height: 40,
-              padding: '0 18px',
-              borderRadius: 999,
+              height: 40, padding: '0 18px', borderRadius: 999,
               border: '2px solid #EA366B',
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-              fontSize: 13,
-              fontWeight: 700,
-              color: '#fff',
-              whiteSpace: 'nowrap',
-              textDecoration: 'none',
-              background: 'transparent',
-              transition: 'background .2s',
+              fontSize: 13, fontWeight: 700, color: '#fff',
+              whiteSpace: 'nowrap', textDecoration: 'none',
+              background: 'transparent', transition: 'background .2s',
             }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.12)';
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.background = 'transparent';
-            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.12)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
           >
             Our programs
           </Link>
 
-          <ShinyButton
-            href="#contact"
-            variant="blue"
-            className="w-full sm:w-auto flex justify-center"
-          >
+          <ShinyButton href="#contact" variant="blue" className="w-full md:w-auto flex justify-center">
             Enroll a Rebel Today
           </ShinyButton>
         </div>

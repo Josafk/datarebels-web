@@ -14,35 +14,48 @@ const stats = [
 export function NewApproach() {
   return (
     <section className="bg-gray-100 pt-8 lg:pt-10 pb-0 w-full relative z-10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
+      {/*
+        max-w-5xl centra la tarjeta en desktop.
+        En mobile: px-4 (16px) para que el card no pegue al borde
+        pero tampoco quede muy apretado.
+      */}
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl overflow-hidden border border-gray-100">
 
-          {/* FILA SUPERIOR: texto + foto */}
+          {/* ── FILA SUPERIOR: texto + foto ── */}
           <div className="flex flex-col lg:flex-row relative" style={{ minHeight: 0 }}>
 
-            <div className="flex-1 pt-6 pb-6 px-8 flex flex-col justify-center z-20">
+            {/*
+              Padding interno: px-6 mobile (24px), px-8 desktop (32px)
+              Esto alinea el texto con la numeralia de abajo
+            */}
+            <div className="flex-1 pt-6 pb-6 px-6 lg:px-8 flex flex-col justify-center z-20">
 
               <div className="mb-4 h-8 flex items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/isologo.svg" alt="Data Rebels" className="h-8 w-auto" />
               </div>
 
-              <h2 className="font-title text-slate-900 font-semibold mb-2 text-[26px] lg:text-[30px] leading-tight text-left">
+              <h2 className="font-title text-slate-900 font-semibold mb-2 text-[24px] lg:text-[30px] leading-tight text-left">
                 Our economy demands a{" "}
                 <br className="hidden lg:block" />
                 new approach
               </h2>
 
-              <p className="font-sans text-gray-600 text-[13px] leading-relaxed mb-5 max-w-[340px] text-left">
+              <p className="font-sans text-gray-600 text-[13px] leading-relaxed mb-5 text-left" style={{ maxWidth: 340 }}>
                 We aim to solve this problem by eliminating uncertainty. We achieve
                 this by mapping the precise skills required by the global GenAI
                 market, moving beyond traditional curricula.
               </p>
 
-              <div className="flex justify-start">
-                <ShinyButton href="#contact" variant="blue" className="h-10 px-5 text-[14px] min-w-0 w-auto">
-                  <span className="flex items-center gap-2">
+              {/* Botón full-width en mobile, auto en desktop */}
+              <div className="flex justify-start w-full lg:w-auto">
+                <ShinyButton
+                  href="#contact"
+                  variant="blue"
+                  className="w-full lg:w-auto h-10 px-5 text-[14px]"
+                >
+                  <span className="flex items-center justify-center gap-2">
                     Enroll a Rebel Today
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M5 12h14m-7-7 7 7-7 7" />
@@ -60,34 +73,30 @@ export function NewApproach() {
           </div>
 
           {/*
-            NUMERALIA — layout responsivo:
-            ─ Mobile (<sm):   1 columna — número arriba, label abajo, padding compacto
-            ─ Tablet (sm–lg): 2 columnas (2x2) — número arriba, label abajo
-            ─ Desktop (lg+):  4 columnas en fila — número arriba, label abajo
+            ── NUMERALIA ──
+            Mobile (<md):   1 col — número arriba, label abajo
+            Tablet (md-lg): 2×2  — número arriba, label abajo
+            Desktop (lg+):  4 col en fila
 
-            Figma: padding 24px top/bottom, 16px left/right por celda
-            Siempre flex-col: número arriba, label abajo (nunca lado a lado)
+            px-6 igual al texto arriba → alineación perfecta
           */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-gray-100 bg-white relative z-30">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-gray-100 bg-white relative z-30">
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
                 className={[
-                  // Siempre flex-col — número arriba, label abajo
-                  "flex flex-col items-start justify-center",
-                  // Padding: Figma 24px vertical, 16px horizontal
-                  "py-6 px-4",
-                  // Separadores mobile: border-t entre todas las filas
+                  "flex flex-col items-start justify-center py-5 px-6",
+                  /* ── Separadores mobile: border-t entre cada fila ── */
                   i > 0 ? "border-t border-gray-100" : "",
-                  // Separadores tablet: border-l en columna derecha, quitar border-t en fila 2
-                  i === 1 ? "sm:border-l sm:border-t-0" : "",
-                  i === 2 ? "sm:border-t sm:border-l-0" : "",
-                  i === 3 ? "sm:border-t sm:border-l" : "",
-                  // Separadores desktop: solo border-l, sin border-t
+                  /* ── Tablet overrides ── */
+                  i === 1 ? "md:border-l md:border-t-0" : "",
+                  i === 2 ? "md:border-t  md:border-l-0" : "",
+                  i === 3 ? "md:border-t  md:border-l" : "",
+                  /* ── Desktop overrides: solo border-l, sin border-t ── */
                   i > 0 ? "lg:border-t-0 lg:border-l" : "",
                 ].join(" ")}
               >
-                {/* Número — Ambit 600, 48px — siempre arriba */}
+                {/* Número — Ambit 600 48px */}
                 <div
                   style={{
                     fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
@@ -101,7 +110,7 @@ export function NewApproach() {
                   <AnimatedCounter value={stat.value} />
                 </div>
 
-                {/* Label — siempre abajo, permite wrap */}
+                {/* Label debajo — puede wrappear */}
                 <span
                   style={{
                     fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',

@@ -15,39 +15,48 @@ import { ContactSection } from "@/components/ContactSection";
 export default function Home() {
   return (
     <div className="w-full flex-1 flex flex-col text-white overflow-x-hidden font-sans bg-transparent">
-
-      {/* Bloque con fondo Background-Principal: Hero → MTP */}
+      {/* Contenedor con fondo Background-Principal desde Hero hasta MTP */}
       <div className="relative w-full min-h-screen">
         <div className="absolute inset-0 hero-section-bg" />
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-8">
-
-          {/* 1. Hero */}
-          <section className="pt-24 pb-8 bg-transparent" aria-label="Hero">
+        {/*
+          px-6 en mobile, px-10 en md, px-8 en lg
+          Hero usará CSS var --page-px para el bleed del carrusel
+        */}
+        <div
+          className="relative z-10 flex-1 max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-8 bg-transparent"
+          style={{ '--page-px': '24px' } as React.CSSProperties}
+        >
+          {/* 1. Hero
+              pt reducido: 80px header + 16px respiro = 96px total en mobile
+              En md+ un poco más de aire */}
+          <section
+            className="pt-6 pb-8 md:pt-10 md:pb-12 min-h-[70vh] flex flex-col justify-center bg-transparent"
+            aria-label="Hero"
+          >
             <Hero />
           </section>
 
           {/* 2. The Problem */}
-          <section className="pb-8 max-w-xl bg-transparent" aria-label="The Problem">
+          <section className="py-12 max-w-2xl bg-transparent" aria-label="The Problem">
             <TheProblem />
           </section>
 
           {/* 3. Explosive Demand */}
-          <section className="pb-8 md:ml-auto max-w-xl text-left md:text-right bg-transparent" aria-label="Explosive Demand">
+          <section className="py-12 md:ml-auto max-w-2xl text-left md:text-right bg-transparent" aria-label="Explosive Demand">
             <ExplosiveDemand />
           </section>
 
           {/* 4. MTP */}
-          <section className="pb-16 flex flex-col items-center text-center bg-transparent" aria-label="MTP">
+          <section className="pt-16 pb-12 flex flex-col items-center bg-transparent" aria-label="MTP">
             <MTP />
           </section>
-
         </div>
       </div>
 
-      {/* 5. New Approach — sin margin-bottom, LogoCloud pega directo abajo */}
+      {/* 5. New Approach & Stats */}
       <NewApproach />
 
-      {/* 6. LogoCloud — pega directo bajo NewApproach, sin gap */}
+      {/* 6. Logos */}
       <LogoCloudSection />
 
       {/* 7. Close the GenAI Talent Gap */}
