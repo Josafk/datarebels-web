@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="w-full flex-1 flex flex-col text-white overflow-x-hidden font-sans bg-transparent">
 
-      {/* Fondo solo visual — no fuerza altura */}
+      {/* Fondo visual */}
       <div className="relative w-full">
         <div className="absolute inset-0 hero-section-bg pointer-events-none" />
 
@@ -24,9 +24,13 @@ export default function Home() {
           className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-8 bg-transparent"
           style={{ '--page-px': '24px' } as React.CSSProperties}
         >
-          {/* 1. Hero — pt compensa header fijo (64px) + respiro */}
+          {/*
+            1. Hero
+            El <main> ya compensa el header con pt-[80px].
+            Solo añadimos un respiro visual pequeño: pt-6 mobile, pt-10 desktop.
+          */}
           <section
-            className="pt-24 pb-8 md:pt-28 md:pb-10 flex flex-col justify-center bg-transparent"
+            className="pt-6 pb-8 md:pt-10 md:pb-10 flex flex-col justify-center bg-transparent"
             aria-label="Hero"
           >
             <Hero />
@@ -70,7 +74,7 @@ export default function Home() {
       {/* 11. Beyond Data */}
       <BeyondData />
 
-      {/* 12. FAQ */}
+      {/* 12. FAQ */>}
       <FAQ />
 
       {/* 13. Contact */}

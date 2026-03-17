@@ -165,14 +165,14 @@ export function Hero() {
       </div>
 
       {/* Tagline + CTAs */}
-      {/* En mobile: columna (tagline arriba, botones abajo full-width) */}
-      {/* En md+: fila (tagline izquierda, botones derecha auto-width) */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <p style={{
           fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-          fontSize: 15, lineHeight: '22px',
+          fontSize: 15,
+          lineHeight: '22px',
           color: 'rgba(249,249,249,0.82)',
-          maxWidth: 260, margin: 0,
+          maxWidth: 260,
+          margin: 0,
         }}>
           The fastest, most cost-effective way to get your teams using AI.
         </p>
@@ -183,12 +183,18 @@ export function Hero() {
             href="#programs"
             className="flex items-center justify-center w-full md:w-auto"
             style={{
-              height: 44, padding: '0 20px', borderRadius: 999,
+              height: 44,
+              padding: '0 20px',
+              borderRadius: 999,
               border: '2px solid #EA366B',
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-              fontSize: 13, fontWeight: 700, color: '#fff',
-              whiteSpace: 'nowrap', textDecoration: 'none',
-              background: 'transparent', transition: 'background .2s',
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#fff',
+              whiteSpace: 'nowrap',
+              textDecoration: 'none',
+              background: 'transparent',
+              transition: 'background .2s',
             }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(234,54,107,0.12)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}

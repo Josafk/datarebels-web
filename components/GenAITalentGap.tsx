@@ -68,58 +68,66 @@ export function GenAITalentGap() {
 
       {/* ── Header ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-10">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
-          {/* Title */}
-          <div className="flex items-start gap-3 w-full lg:w-auto">
+          {/* Isologo + Título */}
+          <div className="flex items-center gap-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/isologo-white.svg"
               alt=""
               aria-hidden
-              className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0 mt-1"
+              className="w-10 h-10 flex-shrink-0"
             />
-            {/*
-              Mobile/tablet: fluye libre en una línea o dos naturalmente
-              Desktop (lg): tamaño fijo 32px, max-width ajustado para
-              que "Close the GenAI Talent Gap." quepa en renglón 1
-              y "Enroll a Rebel Today." en renglón 2 exacto.
-            */}
             <h2
-              className="text-[22px] md:text-[24px] lg:text-[32px]"
               style={{
                 fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
                 fontWeight: 600,
-                lineHeight: '1.2',
+                fontSize: 'clamp(22px, 2.4vw, 36px)',
+                lineHeight: '1.15',
                 color: '#F9F9F9',
                 margin: 0,
-                maxWidth: '16ch', /* en lg a 32px, 16ch ≈ 480px — fuerza el quiebre */
+                /*
+                  En desktop a 36px, ~22 chars por línea.
+                  "Close the GenAI Talent Gap." = 29 chars → 1 línea
+                  "Enroll a Rebel Today."       = 21 chars → 1 línea
+                  El <br> fuerza el quiebre exacto.
+                */
               }}
             >
-              Close the GenAI{' '}
-              <span style={{ color: '#CDACFC' }}>Talent Gap.</span>
-              {' '}Enroll a Rebel Today.
+              Close the GenAI <span style={{ color: '#CDACFC' }}>Talent Gap.</span>
+              <br />
+              Enroll a Rebel Today.
             </h2>
           </div>
 
           {/* Format pills */}
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap lg:flex-nowrap">
             <span style={{
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-              fontSize: 11, fontWeight: 600, letterSpacing: '2px',
-              textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)',
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.4)',
               whiteSpace: 'nowrap',
             }}>
               Our Formats
             </span>
             {['Live Sessions', 'On-demand', 'Hybrid'].map((f) => (
               <span key={f} style={{
-                display: 'inline-flex', alignItems: 'center', gap: 6,
-                padding: '6px 14px', borderRadius: 999,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                padding: '6px 14px',
+                borderRadius: 999,
                 border: '1px solid rgba(255,255,255,0.18)',
                 background: 'rgba(255,255,255,0.06)',
                 fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-                fontSize: 13, fontWeight: 500, color: '#fff', whiteSpace: 'nowrap',
+                fontSize: 13,
+                fontWeight: 500,
+                color: '#fff',
+                whiteSpace: 'nowrap',
               }}>
                 {f}
               </span>
@@ -130,13 +138,17 @@ export function GenAITalentGap() {
 
       {/* ── Cards grid ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/*
+          items-stretch fuerza que todas las cards tengan la misma altura.
+          El inner div usa h-full para ocupar toda la altura disponible.
+        */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           {CARDS.map((card) => {
             const Icon = card.icon;
             return (
               <div
                 key={card.title}
-                className="relative rounded-[10px] p-px"
+                className="relative rounded-[10px] p-px h-full"
                 style={{ background: 'rgba(255,255,255,0.08)' }}
               >
                 <GlowingEffect
@@ -147,30 +159,39 @@ export function GenAITalentGap() {
                   borderWidth={2}
                   glow={false}
                 />
+                {/* h-full para que todos los cards tengan igual altura en la fila */}
                 <div
-                  className="relative rounded-[9px] flex flex-col"
+                  className="relative rounded-[9px] flex flex-col h-full"
                   style={{
-                    background: 'rgba(10, 8, 20, 0.92)',
-                    padding: '32px 16px 16px 16px',
-                    gap: 24,
-                    minHeight: 200,
+                    background: 'rgba(10, 8, 20, 0.96)',
+                    padding: '24px 16px 20px 16px',
+                    gap: 16,
                   }}
                 >
                   <div style={{
-                    display: 'flex', alignItems: 'flex-start',
-                    justifyContent: 'space-between', gap: 12,
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    justifyContent: 'space-between',
+                    gap: 12,
                   }}>
                     <h3 style={{
                       fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-                      fontSize: 15, fontWeight: 600, lineHeight: '22px',
-                      color: '#fff', margin: 0,
+                      fontSize: 15,
+                      fontWeight: 600,
+                      lineHeight: '22px',
+                      color: '#fff',
+                      margin: 0,
                     }}>
                       {card.title}
                     </h3>
                     <span style={{
-                      width: 32, height: 32, borderRadius: '50%',
+                      width: 32,
+                      height: 32,
+                      borderRadius: '50%',
                       background: 'rgba(255,255,255,0.08)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       flexShrink: 0,
                     }}>
                       <Icon size={15} color="rgba(255,255,255,0.7)" />
@@ -178,8 +199,10 @@ export function GenAITalentGap() {
                   </div>
                   <p style={{
                     fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
-                    fontSize: 13, lineHeight: '20px',
-                    color: 'rgba(255,255,255,0.55)', margin: 0,
+                    fontSize: 13,
+                    lineHeight: '20px',
+                    color: 'rgba(255,255,255,0.55)',
+                    margin: 0,
                   }}>
                     {card.body}
                   </p>
