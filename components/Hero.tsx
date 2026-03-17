@@ -40,7 +40,6 @@ export function Hero() {
 
   return (
     <div>
-      {/* Título */}
       <h1
         ref={h1Ref}
         style={{
@@ -177,7 +176,6 @@ export function Hero() {
           The fastest, most cost-effective way to get your teams using AI.
         </p>
 
-        {/* Botones: full-width en mobile, auto en md+ */}
         <div className="flex flex-col md:flex-row w-full md:w-auto gap-2">
           <Link
             href="#programs"

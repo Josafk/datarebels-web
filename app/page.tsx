@@ -23,8 +23,9 @@ export default function Home() {
           className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-8 bg-transparent"
           style={{ '--page-px': '24px' } as React.CSSProperties}
         >
+          {/* Hero — main ya tiene pt-[80px], solo respiro visual mínimo */}
           <section
-            className="pt-6 pb-8 md:pt-10 md:pb-10 flex flex-col justify-center bg-transparent"
+            className="pt-2 pb-8 md:pt-10 md:pb-10 flex flex-col justify-center bg-transparent"
             aria-label="Hero"
           >
             <Hero />

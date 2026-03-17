@@ -48,7 +48,7 @@ export function GenAITalentGap() {
     <section
       id="solutions"
       aria-label="Close the GenAI Talent Gap"
-      className="relative z-10 py-20 overflow-hidden scroll-mt-20"
+      className="relative z-10 py-12 md:py-16 lg:py-20 overflow-hidden scroll-mt-20"
     >
       {/* Fondo */}
       <div className="absolute inset-0 z-0">
@@ -67,42 +67,40 @@ export function GenAITalentGap() {
       </div>
 
       {/* ── Header ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-10">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-8 md:mb-10">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
 
-          {/* Isologo + Título */}
-          <div className="flex items-center gap-4">
+          {/*
+            Mobile/tablet: isologo arriba solo, título abajo full-width
+            Desktop: isologo + título en fila horizontal
+          */}
+          <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/isologo-white.svg"
               alt=""
               aria-hidden
-              className="w-10 h-10 flex-shrink-0"
+              className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0"
             />
             <h2
               style={{
                 fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
                 fontWeight: 600,
-                fontSize: 'clamp(22px, 2.4vw, 36px)',
+                fontSize: 'clamp(26px, 2.4vw, 36px)',
                 lineHeight: '1.15',
                 color: '#F9F9F9',
                 margin: 0,
-                /*
-                  En desktop a 36px, ~22 chars por línea.
-                  "Close the GenAI Talent Gap." = 29 chars → 1 línea
-                  "Enroll a Rebel Today."       = 21 chars → 1 línea
-                  El <br> fuerza el quiebre exacto.
-                */
               }}
             >
-              Close the GenAI <span style={{ color: '#CDACFC' }}>Talent Gap.</span>
+              Close the GenAI{' '}
+              <span style={{ color: '#CDACFC' }}>Talent Gap.</span>
               <br />
               Enroll a Rebel Today.
             </h2>
           </div>
 
           {/* Format pills */}
-          <div className="flex items-center gap-2 flex-wrap lg:flex-nowrap">
+          <div className="flex items-center gap-2 flex-wrap">
             <span style={{
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
               fontSize: 11,
@@ -138,10 +136,6 @@ export function GenAITalentGap() {
 
       {/* ── Cards grid ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/*
-          items-stretch fuerza que todas las cards tengan la misma altura.
-          El inner div usa h-full para ocupar toda la altura disponible.
-        */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           {CARDS.map((card) => {
             const Icon = card.icon;
@@ -159,7 +153,6 @@ export function GenAITalentGap() {
                   borderWidth={2}
                   glow={false}
                 />
-                {/* h-full para que todos los cards tengan igual altura en la fila */}
                 <div
                   className="relative rounded-[9px] flex flex-col h-full"
                   style={{
