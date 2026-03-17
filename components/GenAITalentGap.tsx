@@ -71,22 +71,29 @@ export function GenAITalentGap() {
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-6">
 
           {/* Title */}
-          <div className="flex items-start gap-3 w-full lg:w-auto lg:max-w-[480px]">
+          <div className="flex items-start gap-3 w-full lg:w-auto lg:max-w-[520px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/isologo-white.svg" alt="" aria-hidden className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0 mt-1" />
+            <img
+              src="/isologo-white.svg"
+              alt=""
+              aria-hidden
+              className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0 mt-1"
+            />
             <h2
-              className="text-[22px] md:text-[26px] lg:text-[32px]"
               style={{
                 fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
                 fontWeight: 600,
-                lineHeight: '1.15',
+                fontSize: 'clamp(22px, 3vw, 32px)',
+                lineHeight: '1.18',
                 color: '#F9F9F9',
                 margin: 0,
               }}
             >
+              {/* Renglón 1: siempre junto */}
               Close the GenAI{' '}
-              <span style={{ color: '#CDACFC' }}>Talent Gap.</span>{' '}
-              <br className="hidden lg:block" />
+              <span style={{ color: '#CDACFC' }}>Talent Gap.</span>
+              {/* Renglón 2: forzado en desktop con <br>, fluye en mobile */}
+              <br />
               Enroll a Rebel Today.
             </h2>
           </div>
