@@ -39,8 +39,7 @@ export function Hero() {
   }, []);
 
   return (
-    <div style={{ paddingBottom: 32 }}>
-
+    <div>
       {/* Título */}
       <h1
         ref={h1Ref}
@@ -59,27 +58,8 @@ export function Hero() {
         Become One of Our 100K Rebels.
       </h1>
 
-      {/*
-        ── GALERÍA ──────────────────────────────────────────────────
-        UN SOLO BLOQUE. Comportamiento por breakpoint:
-
-        Mobile (<768px / md):
-          - Scroll horizontal con snap
-          - Negative margin compensa exactamente el px-6 (24px) del padre
-          - paddingLeft/Right 24px para que las fotos respeten el borde
-          - Las fotos se ven ligeramente cortadas al borde → full-bleed visual
-
-        Desktop (≥768px):
-          - flex fila estática, todas visibles, hover effects
-          - height clamp para escalar con viewport
-
-        Usamos --gallery-mode vía className para separar comportamientos
-        sin duplicar el DOM (evita el bug de imágenes duplicadas).
-        ─────────────────────────────────────────────────────────────
-      */}
       <style>{`
         .hero-gallery-scroll::-webkit-scrollbar { display: none; }
-        /* Mobile: scroll horizontal full-bleed */
         @media (max-width: 767px) {
           .hero-gallery {
             display: flex;
@@ -88,7 +68,6 @@ export function Hero() {
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             gap: 8px;
-            /* Bleed: cancela px-6=24px del padre */
             margin-left: -24px;
             margin-right: -24px;
             padding-left: 24px;
@@ -106,11 +85,9 @@ export function Hero() {
             box-shadow: 0 4px 16px rgba(0,0,0,0.35);
             position: relative;
           }
-          /* Desktop styles no aplican en mobile */
           .hero-gallery { flex-wrap: nowrap; align-items: unset; height: auto; }
           .hero-gallery-item { flex: none; }
         }
-        /* Tablet md (768px-1023px): bleed compensa px-10=40px */
         @media (min-width: 768px) and (max-width: 1023px) {
           .hero-gallery {
             display: flex;
@@ -136,7 +113,6 @@ export function Hero() {
             position: relative;
           }
         }
-        /* Desktop ≥1024px: flex fila estática con hover */
         @media (min-width: 1024px) {
           .hero-gallery {
             display: flex;
@@ -189,7 +165,9 @@ export function Hero() {
       </div>
 
       {/* Tagline + CTAs */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+      {/* En mobile: columna (tagline arriba, botones abajo full-width) */}
+      {/* En md+: fila (tagline izquierda, botones derecha auto-width) */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <p style={{
           fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
           fontSize: 15, lineHeight: '22px',
@@ -199,13 +177,13 @@ export function Hero() {
           The fastest, most cost-effective way to get your teams using AI.
         </p>
 
-        {/* CTAs: columna full-width en mobile, fila en md+ */}
-        <div className="flex flex-col md:flex-row w-full md:w-auto" style={{ gap: 10 }}>
+        {/* Botones: full-width en mobile, auto en md+ */}
+        <div className="flex flex-col md:flex-row w-full md:w-auto gap-2">
           <Link
             href="#programs"
             className="flex items-center justify-center w-full md:w-auto"
             style={{
-              height: 40, padding: '0 18px', borderRadius: 999,
+              height: 44, padding: '0 20px', borderRadius: 999,
               border: '2px solid #EA366B',
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
               fontSize: 13, fontWeight: 700, color: '#fff',
@@ -218,7 +196,11 @@ export function Hero() {
             Our programs
           </Link>
 
-          <ShinyButton href="#contact" variant="blue" className="w-full md:w-auto flex justify-center">
+          <ShinyButton
+            href="#contact"
+            variant="blue"
+            className="w-full md:w-auto flex justify-center"
+          >
             Enroll a Rebel Today
           </ShinyButton>
         </div>
