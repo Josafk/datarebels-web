@@ -15,7 +15,8 @@ export function NewApproach() {
   return (
     <section className="bg-gray-100 pt-8 lg:pt-10 pb-0 w-full relative z-10">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl border border-gray-100"
+        <div
+          className="bg-white rounded-[2rem] shadow-xl mx-auto max-w-5xl border border-gray-100"
           style={{ overflow: 'visible' }}
         >
 
@@ -41,13 +42,11 @@ export function NewApproach() {
                 market, moving beyond traditional curricula.
               </p>
 
-              {/* Botón — en mobile ocupa todo el ancho disponible */}
               <div className="flex justify-start w-full lg:w-auto pb-2">
                 <ShinyButton
                   href="#contact"
                   variant="blue"
-                  className="w-full lg:w-auto"
-                  style={{ height: 44, paddingLeft: 20, paddingRight: 20, fontSize: 14 }}
+                  className="w-full lg:w-auto h-11 px-5 text-sm"
                 >
                   <span className="flex items-center justify-center gap-2 whitespace-nowrap">
                     Enroll a Rebel Today
