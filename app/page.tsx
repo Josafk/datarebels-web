@@ -18,36 +18,30 @@ export default function Home() {
       {/* Contenedor con fondo Background-Principal desde Hero hasta MTP */}
       <div className="relative w-full min-h-screen">
         <div className="absolute inset-0 hero-section-bg" />
-        {/*
-          px-6 en mobile, px-10 en md, px-8 en lg
-          Hero usará CSS var --page-px para el bleed del carrusel
-        */}
         <div
           className="relative z-10 flex-1 max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-8 bg-transparent"
           style={{ '--page-px': '24px' } as React.CSSProperties}
         >
-          {/* 1. Hero
-              pt reducido: 80px header + 16px respiro = 96px total en mobile
-              En md+ un poco más de aire */}
+          {/* 1. Hero */}
           <section
-            className="pt-6 pb-8 md:pt-10 md:pb-12 min-h-[70vh] flex flex-col justify-center bg-transparent"
+            className="pt-6 pb-6 md:pt-10 md:pb-10 min-h-[70vh] flex flex-col justify-center bg-transparent"
             aria-label="Hero"
           >
             <Hero />
           </section>
 
           {/* 2. The Problem */}
-          <section className="py-12 max-w-2xl bg-transparent" aria-label="The Problem">
+          <section className="py-6 md:py-10 max-w-2xl bg-transparent" aria-label="The Problem">
             <TheProblem />
           </section>
 
           {/* 3. Explosive Demand */}
-          <section className="py-12 md:ml-auto max-w-2xl text-left md:text-right bg-transparent" aria-label="Explosive Demand">
+          <section className="py-6 md:py-10 md:ml-auto max-w-2xl text-left md:text-right bg-transparent" aria-label="Explosive Demand">
             <ExplosiveDemand />
           </section>
 
           {/* 4. MTP */}
-          <section className="pt-16 pb-12 flex flex-col items-center bg-transparent" aria-label="MTP">
+          <section className="pt-10 pb-10 md:pt-14 md:pb-12 flex flex-col items-center bg-transparent" aria-label="MTP">
             <MTP />
           </section>
         </div>

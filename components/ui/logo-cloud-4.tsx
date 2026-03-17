@@ -9,7 +9,7 @@ type Logo = {
   className?: string;
   boxClass?: string;
   imgClassName?: string;
-  imgWidth?: number;   // Para SVGs sin viewBox — fuerza dimensiones en px
+  imgWidth?: number;
   imgHeight?: number;
 };
 
@@ -46,8 +46,9 @@ export function LogoCloud({ logos, gradientFrom = "from-gray-100", className, ..
         })}
       </InfiniteSlider>
 
-      <ProgressiveBlur blurIntensity={1} className="pointer-events-none absolute top-0 left-0 h-full w-32" direction="left" />
-      <ProgressiveBlur blurIntensity={1} className="pointer-events-none absolute top-0 right-0 h-full w-32" direction="right" />
+      {/* w-32 (128px) en desktop, w-12 (48px) en mobile para no tapar los logos */}
+      <ProgressiveBlur blurIntensity={1} className="pointer-events-none absolute top-0 left-0 h-full w-12 md:w-24 lg:w-32" direction="left" />
+      <ProgressiveBlur blurIntensity={1} className="pointer-events-none absolute top-0 right-0 h-full w-12 md:w-24 lg:w-32" direction="right" />
     </div>
   );
 }

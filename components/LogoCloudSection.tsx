@@ -4,13 +4,13 @@ import { LogoCloud } from "@/components/ui/logo-cloud-4";
 
 const LOGOS = [
   {
-    src: "/gray-arcacontal.svg",  // ← nombre real del archivo en /public
+    src: "/gray-arcacontal.svg",
     alt: "Arca Continental",
     boxClass: "flex items-center justify-center w-[140px] h-[52px] flex-shrink-0",
   },
   { src: "/gray-alfa.svg",      alt: "Alfa",        boxClass: "flex items-center justify-center w-[80px]  h-[52px] flex-shrink-0" },
   { src: "/gray-bimbo.svg",     alt: "Grupo Bimbo", boxClass: "flex items-center justify-center w-[120px] h-[52px] flex-shrink-0" },
-  { src: "/gray-cemex.svg",     alt: "Cemex",       boxClass: "flex items-center justify-center w-[110px] h-[48px] flex-shrink-0", imgClassName: "opacity-40" },
+  { src: "/gray-cemex.svg",     alt: "Cemex",       boxClass: "flex items-center justify-center w-[110px] h-[48px] flex-shrink-0" },
   { src: "/gray-deacero.svg",   alt: "Deacero",     boxClass: "flex items-center justify-center w-[120px] h-[48px] flex-shrink-0" },
   { src: "/gray-femsa.svg",     alt: "Femsa",       boxClass: "flex items-center justify-center w-[100px] h-[52px] flex-shrink-0" },
   { src: "/gray-gbm.svg",       alt: "GBM",         boxClass: "flex items-center justify-center w-[90px]  h-[52px] flex-shrink-0" },

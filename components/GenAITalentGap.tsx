@@ -50,9 +50,8 @@ export function GenAITalentGap() {
       aria-label="Close the GenAI Talent Gap"
       className="relative z-10 py-20 overflow-hidden scroll-mt-20"
     >
-      {/* ── Fondo: imagen B&W + overlay oscuro ── */}
+      {/* Fondo */}
       <div className="absolute inset-0 z-0">
-        {/* Imagen comunidad en B&W — grayscale + muy baja opacidad */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/whatsapp-image-2025-12-18-at-16.33.20-3.jpeg"
@@ -61,7 +60,6 @@ export function GenAITalentGap() {
           className="w-full h-full object-cover"
           style={{ filter: 'grayscale(100%)', opacity: 0.08 }}
         />
-        {/* Overlay gradiente oscuro encima */}
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(180deg, #08060f 0%, #0d0b1a 40%, #0d0b1a 60%, #08060f 100%)' }}
@@ -70,30 +68,31 @@ export function GenAITalentGap() {
 
       {/* ── Header ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-10">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-6">
 
-          {/* Title — Figma: Ambit 600, 32px, line-height 34px */}
-          <div className="flex items-start gap-4 max-w-[480px]">
+          {/* Title */}
+          <div className="flex items-start gap-3 w-full lg:w-auto lg:max-w-[480px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/isologo-white.svg" alt="" aria-hidden className="w-10 h-10 flex-shrink-0 mt-1" />
-            <h2 style={{
-              fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
-              fontSize: 32,
-              fontWeight: 600,
-              lineHeight: '34px',
-              color: '#F9F9F9',           /* var(--Gray-Gray-50) del Figma */
-              margin: 0,
-            }}>
+            <img src="/isologo-white.svg" alt="" aria-hidden className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0 mt-1" />
+            <h2
+              className="text-[22px] md:text-[26px] lg:text-[32px]"
+              style={{
+                fontFamily: 'var(--font-ambit), ui-sans-serif, system-ui, sans-serif',
+                fontWeight: 600,
+                lineHeight: '1.15',
+                color: '#F9F9F9',
+                margin: 0,
+              }}
+            >
               Close the GenAI{' '}
-              <span style={{ color: '#CDACFC' }}>  {/* var(--Violet-100) del Figma */}
-                Talent Gap.
-              </span>{' '}
+              <span style={{ color: '#CDACFC' }}>Talent Gap.</span>{' '}
+              <br className="hidden lg:block" />
               Enroll a Rebel Today.
             </h2>
           </div>
 
           {/* Format pills */}
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
             <span style={{
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
               fontSize: 11, fontWeight: 600, letterSpacing: '2px',
@@ -129,13 +128,6 @@ export function GenAITalentGap() {
                 className="relative rounded-[10px] p-px"
                 style={{ background: 'rgba(255,255,255,0.08)' }}
               >
-                {/*
-                  GlowingEffect más visible:
-                  - borderWidth 2 → stroke más grueso
-                  El opacity en el animate dentro del componente
-                  está en 0.4 — para reforzarlo sin tocarlo aquí
-                  pasamos glow=false y dejamos que el hover sea intenso
-                */}
                 <GlowingEffect
                   disabled={false}
                   variant={card.variant}
@@ -144,8 +136,6 @@ export function GenAITalentGap() {
                   borderWidth={2}
                   glow={false}
                 />
-
-                {/* Inner card */}
                 <div
                   className="relative rounded-[9px] flex flex-col"
                   style={{
@@ -155,7 +145,6 @@ export function GenAITalentGap() {
                     minHeight: 200,
                   }}
                 >
-                  {/* Title + icon row */}
                   <div style={{
                     display: 'flex', alignItems: 'flex-start',
                     justifyContent: 'space-between', gap: 12,
@@ -176,8 +165,6 @@ export function GenAITalentGap() {
                       <Icon size={15} color="rgba(255,255,255,0.7)" />
                     </span>
                   </div>
-
-                  {/* Body */}
                   <p style={{
                     fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
                     fontSize: 13, lineHeight: '20px',
@@ -191,7 +178,6 @@ export function GenAITalentGap() {
           })}
         </div>
 
-        {/* CTA */}
         <div className="flex justify-center mt-10">
           <ShinyButton href="#contact" variant="blue">
             Enroll now! →
