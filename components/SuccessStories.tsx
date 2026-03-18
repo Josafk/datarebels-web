@@ -74,7 +74,7 @@ function CaseStudyCard({
   const isExpanded = activeCardId === data.id;
 
   return (
-    <div className="group relative rounded-2xl p-[2px] bg-white/[0.10] transition-all duration-300">
+    <div className="group relative rounded-2xl p-[2px] bg-white/[0.10]">
       <GlowingEffect
         spread={40}
         glow={false}
@@ -83,30 +83,28 @@ function CaseStudyCard({
         inactiveZone={0.01}
         borderWidth={2}
         variant={
-          data.id === "cemex" ||
-          data.id === "digital-hub-mty" ||
-          data.id === "deacero"
+          data.id === "cemex" || data.id === "digital-hub-mty" || data.id === "deacero"
             ? "rainbow"
             : "default"
         }
       />
-      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-5 flex flex-col">
-        {/* Logo */}
-        <div className="flex items-center justify-start h-10 flex-shrink-0 mb-4">
+      {/* h-full hace que todos los cards tengan la misma altura base en el grid */}
+      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-6 flex flex-col h-full">
+
+        {/* Logo — altura fija para alinear entre cards */}
+        <div className="flex items-center h-10 flex-shrink-0 mb-6">
           <Image
             src={data.logo}
             alt={data.company}
             width={160}
-            height={56}
+            height={40}
             className={`w-auto object-contain brightness-0 invert opacity-95 ${
-              data.id === "digital-hub-mty"
-                ? "max-h-[24px]"
-                : "max-h-[40px]"
+              data.id === "digital-hub-mty" ? "max-h-[24px]" : "max-h-[40px]"
             }`}
           />
         </div>
 
-        {/* Challenge */}
+        {/* Challenge — flex-1 empuja pills y botón al fondo */}
         <div className="flex-1">
           <h3 className="font-title text-white font-semibold text-[22px] leading-[26px] mb-2">
             Challenge
@@ -116,13 +114,13 @@ function CaseStudyCard({
           </p>
         </div>
 
-        {/* Pills + toggle */}
-        <div className="mt-4 flex flex-col gap-2">
+        {/* Pills + toggle + resultados */}
+        <div className="mt-5 flex flex-col gap-3">
           <div className="flex flex-wrap gap-1.5">
             {data.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex px-2.5 py-1 rounded-full font-sans font-normal text-[12px] leading-[16px] text-white border border-white/20 bg-white/5"
+                className="inline-flex px-2.5 py-1 rounded-full font-sans text-[12px] leading-[16px] text-white border border-white/20 bg-white/5"
               >
                 {tag}
               </span>
@@ -132,7 +130,7 @@ function CaseStudyCard({
           <button
             type="button"
             onClick={() => onToggle(data.id)}
-            className="flex items-center gap-2 text-white font-sans text-[13px] font-medium hover:text-white/80 transition-colors w-fit mt-1"
+            className="flex items-center gap-2 text-white font-sans text-[13px] font-medium hover:text-white/80 transition-colors w-fit"
           >
             View results
             <ChevronDown
@@ -152,11 +150,11 @@ function CaseStudyCard({
                 transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
                 className="overflow-hidden"
               >
-                <ul className="border-t border-white/10 pt-3 space-y-2.5">
+                <ul className="border-t border-white/10 pt-3 space-y-3">
                   {data.results.map((result, idx) => (
                     <li
                       key={idx}
-                      className="flex items-start gap-2.5 font-sans font-normal text-[13px] leading-[18px] text-white/90"
+                      className="flex items-start gap-2.5 font-sans text-[13px] leading-[18px] text-white/90"
                     >
                       <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-emerald-500 flex items-center justify-center mt-0.5">
                         <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
@@ -184,7 +182,7 @@ export function SuccessStories() {
   return (
     <section
       id="case-studies"
-      className="relative z-10 py-12 md:py-16 lg:py-20 overflow-hidden scroll-mt-20"
+      className="relative z-10 py-10 md:py-12 lg:py-16 overflow-hidden scroll-mt-20"
       aria-label="Success Stories"
     >
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/95 via-[#0a0612] to-black/95" />
@@ -202,21 +200,16 @@ export function SuccessStories() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-8 lg:mb-12">
-          <h2 className="font-title text-white text-[26px] md:text-[28px] lg:text-[36px] font-semibold leading-tight">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-8 lg:mb-10">
+          <h2 className="font-title text-white text-[26px] md:text-[28px] lg:text-[36px] font-semibold leading-tight flex-shrink-0">
             Read some of the{' '}
             <span className="text-violet-300">1,000+</span>
             <br />rebel success stories
           </h2>
-          <div className="flex flex-col gap-3 lg:min-w-[480px] lg:max-w-[520px]">
-            <p className="hidden lg:block font-sans text-white/90 text-[15px] leading-relaxed">
+          <div className="flex flex-col gap-3 lg:max-w-[420px]">
+            <p className="hidden lg:block font-sans text-white/70 text-[14px] leading-relaxed">
               Our programs are custom-built, not templated. We build skills on foundational mastery, not temporary trends.
             </p>
-            {/*
-              Botón homologado al resto: misma altura 44px, mismo border-radius 999,
-              mismo estilo outline rosa que "Our programs" en el Hero.
-              w-full en mobile, w-fit en md+
-            */}
             <Link
               href="#programs"
               className="flex items-center justify-center w-full md:w-fit"
@@ -242,8 +235,12 @@ export function SuccessStories() {
           </div>
         </div>
 
-        {/* Cards — items-start para que solo la card activa crezca */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4">
+        {/*
+          items-stretch: todos los cards tienen la misma altura base.
+          Al expandirse uno, su article crece — los demás mantienen su altura.
+          overflow-hidden en el grid evita que el card expandido tape a los vecinos.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {SUCCESS_STORIES.map((story) => (
             <CaseStudyCard
               key={story.id}
