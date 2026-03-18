@@ -88,10 +88,9 @@ function CaseStudyCard({
             : "default"
         }
       />
-      {/* h-full hace que todos los cards tengan la misma altura base en el grid */}
-      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-6 flex flex-col h-full">
+      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-6 flex flex-col">
 
-        {/* Logo — altura fija para alinear entre cards */}
+        {/* Logo */}
         <div className="flex items-center h-10 flex-shrink-0 mb-6">
           <Image
             src={data.logo}
@@ -104,7 +103,7 @@ function CaseStudyCard({
           />
         </div>
 
-        {/* Challenge — flex-1 empuja pills y botón al fondo */}
+        {/* Challenge */}
         <div className="flex-1">
           <h3 className="font-title text-white font-semibold text-[22px] leading-[26px] mb-2">
             Challenge
@@ -235,12 +234,8 @@ export function SuccessStories() {
           </div>
         </div>
 
-        {/*
-          items-stretch: todos los cards tienen la misma altura base.
-          Al expandirse uno, su article crece — los demás mantienen su altura.
-          overflow-hidden en el grid evita que el card expandido tape a los vecinos.
-        */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+        {/* Cards — items-start: cada card mantiene su altura natural */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start">
           {SUCCESS_STORIES.map((story) => (
             <CaseStudyCard
               key={story.id}
