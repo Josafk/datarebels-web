@@ -180,13 +180,17 @@ export function SuccessStories() {
   const articleRefs = useRef<(HTMLElement | null)[]>([]);
 
   const measureHeight = useCallback(() => {
+    // Solo aplicar minHeight en desktop (lg = 1024px+)
+    if (window.innerWidth < 1024) {
+      setMinHeight(0);
+      return;
+    }
     const heights = articleRefs.current.map((el) => el?.offsetHeight ?? 0);
     const max = Math.max(...heights);
     if (max > 0) setMinHeight(max);
   }, []);
 
   useEffect(() => {
-    // Medir después del render inicial
     const timer = setTimeout(measureHeight, 100);
     window.addEventListener("resize", measureHeight);
     return () => {
@@ -253,7 +257,6 @@ export function SuccessStories() {
           </div>
         </div>
 
-        {/* items-start: cada card su altura propia, minHeight igualado por JS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start">
           {SUCCESS_STORIES.map((story, i) => (
             <CaseStudyCard
