@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Check } from "lucide-react";
@@ -62,15 +62,19 @@ function CaseStudyCard({
   data,
   activeCardId,
   onToggle,
+  minHeight,
+  articleRef,
 }: {
   data: (typeof SUCCESS_STORIES)[number];
   activeCardId: string | null;
   onToggle: (id: string) => void;
+  minHeight: number;
+  articleRef: (el: HTMLElement | null) => void;
 }) {
   const isExpanded = activeCardId === data.id;
 
   return (
-    <div className="group relative rounded-2xl p-[2px] bg-white/[0.10] h-full">
+    <div className="group relative rounded-2xl p-[2px] bg-white/[0.10]">
       <GlowingEffect
         spread={40}
         glow={false}
@@ -84,9 +88,12 @@ function CaseStudyCard({
             : "default"
         }
       />
-      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-5 flex flex-col justify-between h-full">
-
-        {/* Bloque superior: logo + challenge */}
+      <article
+        ref={articleRef}
+        className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-5 flex flex-col justify-between"
+        style={{ minHeight: minHeight > 0 ? minHeight : undefined }}
+      >
+        {/* Bloque superior */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center h-14 flex-shrink-0">
             <Image
@@ -109,7 +116,7 @@ function CaseStudyCard({
           </div>
         </div>
 
-        {/* Bloque inferior: siempre al fondo */}
+        {/* Bloque inferior */}
         <div className="flex flex-col gap-3 mt-4">
           <div className="flex flex-wrap gap-1.5">
             {data.tags.map((tag) => (
@@ -169,6 +176,24 @@ function CaseStudyCard({
 
 export function SuccessStories() {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const [minHeight, setMinHeight] = useState(0);
+  const articleRefs = useRef<(HTMLElement | null)[]>([]);
+
+  const measureHeight = useCallback(() => {
+    const heights = articleRefs.current.map((el) => el?.offsetHeight ?? 0);
+    const max = Math.max(...heights);
+    if (max > 0) setMinHeight(max);
+  }, []);
+
+  useEffect(() => {
+    // Medir después del render inicial
+    const timer = setTimeout(measureHeight, 100);
+    window.addEventListener("resize", measureHeight);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", measureHeight);
+    };
+  }, [measureHeight]);
 
   const handleToggle = (id: string) => {
     setActiveCardId((prev) => (prev === id ? null : id));
@@ -228,13 +253,16 @@ export function SuccessStories() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
-          {SUCCESS_STORIES.map((story) => (
+        {/* items-start: cada card su altura propia, minHeight igualado por JS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start">
+          {SUCCESS_STORIES.map((story, i) => (
             <CaseStudyCard
               key={story.id}
               data={story}
               activeCardId={activeCardId}
               onToggle={handleToggle}
+              minHeight={minHeight}
+              articleRef={(el) => { articleRefs.current[i] = el; }}
             />
           ))}
         </div>
