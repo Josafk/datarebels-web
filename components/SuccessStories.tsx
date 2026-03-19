@@ -70,7 +70,7 @@ function CaseStudyCard({
   const isExpanded = activeCardId === data.id;
 
   return (
-    <div className="group relative rounded-2xl p-[2px] bg-white/[0.10]">
+    <div className="group relative rounded-2xl p-[2px] bg-white/[0.10] h-full">
       <GlowingEffect
         spread={40}
         glow={false}
@@ -84,16 +84,10 @@ function CaseStudyCard({
             : "default"
         }
       />
-      {/*
-        min-h-[420px]: altura mínima uniforme para todos los cards en desktop.
-        El card con más contenido marca la altura visual,
-        los demás llegan a ese mínimo con flex justify-between.
-      */}
-      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-5 flex flex-col justify-between min-h-[420px]">
+      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-5 flex flex-col justify-between h-full">
 
         {/* Bloque superior: logo + challenge */}
         <div className="flex flex-col gap-4">
-          {/* Logo más grande */}
           <div className="flex items-center h-14 flex-shrink-0">
             <Image
               src={data.logo}
@@ -105,7 +99,6 @@ function CaseStudyCard({
               }`}
             />
           </div>
-
           <div>
             <h3 className="font-title text-white font-semibold text-[20px] leading-[24px] mb-2">
               Challenge
@@ -116,7 +109,7 @@ function CaseStudyCard({
           </div>
         </div>
 
-        {/* Bloque inferior: pills + toggle + resultados */}
+        {/* Bloque inferior: siempre al fondo */}
         <div className="flex flex-col gap-3 mt-4">
           <div className="flex flex-wrap gap-1.5">
             {data.tags.map((tag) => (
@@ -235,8 +228,7 @@ export function SuccessStories() {
           </div>
         </div>
 
-        {/* items-start: cada card crece solo al expandirse */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {SUCCESS_STORIES.map((story) => (
             <CaseStudyCard
               key={story.id}
