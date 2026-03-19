@@ -70,7 +70,6 @@ function CaseStudyCard({
   const isExpanded = activeCardId === data.id;
 
   return (
-    /* Sin h-full — cada card tiene su altura natural */
     <div className="group relative rounded-2xl p-[2px] bg-white/[0.10]">
       <GlowingEffect
         spread={40}
@@ -85,84 +84,91 @@ function CaseStudyCard({
             : "default"
         }
       />
-      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-4 flex flex-col gap-3">
+      {/*
+        min-h-[420px]: altura mínima uniforme para todos los cards en desktop.
+        El card con más contenido marca la altura visual,
+        los demás llegan a ese mínimo con flex justify-between.
+      */}
+      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-5 flex flex-col justify-between min-h-[420px]">
 
-        {/* Logo grande como en Cursor */}
-        <div className="flex items-center h-12 flex-shrink-0">
-          <Image
-            src={data.logo}
-            alt={data.company}
-            width={180}
-            height={48}
-            className={`w-auto object-contain brightness-0 invert opacity-95 ${
-              data.id === "digital-hub-mty" ? "max-h-[28px]" : "max-h-[48px]"
-            }`}
-          />
+        {/* Bloque superior: logo + challenge */}
+        <div className="flex flex-col gap-4">
+          {/* Logo más grande */}
+          <div className="flex items-center h-14 flex-shrink-0">
+            <Image
+              src={data.logo}
+              alt={data.company}
+              width={200}
+              height={56}
+              className={`w-auto object-contain brightness-0 invert opacity-95 ${
+                data.id === "digital-hub-mty" ? "max-h-[32px]" : "max-h-[56px]"
+              }`}
+            />
+          </div>
+
+          <div>
+            <h3 className="font-title text-white font-semibold text-[20px] leading-[24px] mb-2">
+              Challenge
+            </h3>
+            <p className="font-sans text-slate-300 text-[13px] leading-[18px]">
+              {data.challenge}
+            </p>
+          </div>
         </div>
 
-        {/* Challenge */}
-        <div>
-          <h3 className="font-title text-white font-semibold text-[20px] leading-[24px] mb-1.5">
-            Challenge
-          </h3>
-          <p className="font-sans text-slate-300 text-[13px] leading-[18px]">
-            {data.challenge}
-          </p>
+        {/* Bloque inferior: pills + toggle + resultados */}
+        <div className="flex flex-col gap-3 mt-4">
+          <div className="flex flex-wrap gap-1.5">
+            {data.tags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex px-2.5 py-1 rounded-full font-sans text-[12px] leading-[16px] text-white border border-white/20 bg-white/5"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onToggle(data.id)}
+            className="flex items-center gap-2 text-white font-sans text-[13px] font-medium hover:text-white/80 transition-colors w-fit"
+          >
+            View results
+            <ChevronDown
+              className={`w-4 h-4 text-[#EA366B] transition-transform duration-200 ${
+                isExpanded ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+
+          <AnimatePresence initial={false}>
+            {isExpanded && (
+              <motion.div
+                key="results"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+                className="overflow-hidden"
+              >
+                <ul className="border-t border-white/10 pt-3 space-y-3">
+                  {data.results.map((result, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2.5 font-sans text-[13px] leading-[18px] text-white/90"
+                    >
+                      <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-emerald-500 flex items-center justify-center mt-0.5">
+                        <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                      </span>
+                      <span>{result}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-
-        {/* Pills en línea */}
-        <div className="flex flex-wrap gap-1.5">
-          {data.tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-flex px-2.5 py-1 rounded-full font-sans text-[12px] leading-[16px] text-white border border-white/20 bg-white/5"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Toggle */}
-        <button
-          type="button"
-          onClick={() => onToggle(data.id)}
-          className="flex items-center gap-2 text-white font-sans text-[13px] font-medium hover:text-white/80 transition-colors w-fit"
-        >
-          View results
-          <ChevronDown
-            className={`w-4 h-4 text-[#EA366B] transition-transform duration-200 ${
-              isExpanded ? "rotate-180" : ""
-            }`}
-          />
-        </button>
-
-        {/* Resultados expandibles */}
-        <AnimatePresence initial={false}>
-          {isExpanded && (
-            <motion.div
-              key="results"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
-              className="overflow-hidden"
-            >
-              <ul className="border-t border-white/10 pt-3 space-y-3">
-                {data.results.map((result, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-start gap-2.5 font-sans text-[13px] leading-[18px] text-white/90"
-                  >
-                    <span className="flex-shrink-0 w-[18px] h-[18px] rounded-full bg-emerald-500 flex items-center justify-center mt-0.5">
-                      <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
-                    </span>
-                    <span>{result}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </article>
     </div>
   );
@@ -194,7 +200,6 @@ export function SuccessStories() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-8 lg:mb-10">
           <h2 className="font-title text-white text-[26px] md:text-[28px] lg:text-[36px] font-semibold leading-tight flex-shrink-0">
             Read some of the{' '}
@@ -230,7 +235,7 @@ export function SuccessStories() {
           </div>
         </div>
 
-        {/* items-start: cada card su altura natural, el expandido crece solo */}
+        {/* items-start: cada card crece solo al expandirse */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start">
           {SUCCESS_STORIES.map((story) => (
             <CaseStudyCard
