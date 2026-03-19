@@ -48,9 +48,8 @@ export function GenAITalentGap() {
     <section
       id="solutions"
       aria-label="Close the GenAI Talent Gap"
-      className="relative z-10 py-12 md:py-16 lg:py-20 overflow-hidden scroll-mt-20"
+      className="relative z-10 py-10 md:py-12 overflow-hidden scroll-mt-20"
     >
-      {/* Fondo */}
       <div className="absolute inset-0 z-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -66,14 +65,8 @@ export function GenAITalentGap() {
         />
       </div>
 
-      {/* ── Header ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-8 md:mb-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-6 md:mb-8">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
-
-          {/*
-            Mobile/tablet: isologo arriba solo, título abajo full-width
-            Desktop: isologo + título en fila horizontal
-          */}
           <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -99,7 +92,6 @@ export function GenAITalentGap() {
             </h2>
           </div>
 
-          {/* Format pills */}
           <div className="flex items-center gap-2 flex-wrap">
             <span style={{
               fontFamily: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
@@ -134,7 +126,6 @@ export function GenAITalentGap() {
         </div>
       </div>
 
-      {/* ── Cards grid ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           {CARDS.map((card) => {
@@ -205,7 +196,7 @@ export function GenAITalentGap() {
           })}
         </div>
 
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-8">
           <ShinyButton href="#contact" variant="blue">
             Enroll now! →
           </ShinyButton>

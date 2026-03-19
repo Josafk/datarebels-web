@@ -93,7 +93,6 @@ function CaseStudyCard({
         className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-5 flex flex-col justify-between"
         style={{ minHeight: minHeight > 0 ? minHeight : undefined }}
       >
-        {/* Bloque superior */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center h-14 flex-shrink-0">
             <Image
@@ -116,7 +115,6 @@ function CaseStudyCard({
           </div>
         </div>
 
-        {/* Bloque inferior */}
         <div className="flex flex-col gap-3 mt-4">
           <div className="flex flex-wrap gap-1.5">
             {data.tags.map((tag) => (
@@ -180,7 +178,6 @@ export function SuccessStories() {
   const articleRefs = useRef<(HTMLElement | null)[]>([]);
 
   const measureHeight = useCallback(() => {
-    // Solo aplicar minHeight en desktop (lg = 1024px+)
     if (window.innerWidth < 1024) {
       setMinHeight(0);
       return;
@@ -206,7 +203,7 @@ export function SuccessStories() {
   return (
     <section
       id="case-studies"
-      className="relative z-10 py-10 md:py-12 lg:py-16 overflow-hidden scroll-mt-20"
+      className="relative z-10 py-8 md:py-10 lg:py-12 overflow-hidden scroll-mt-20"
       aria-label="Success Stories"
     >
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/95 via-[#0a0612] to-black/95" />
@@ -222,7 +219,7 @@ export function SuccessStories() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-8 lg:mb-10">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-6 lg:mb-8">
           <h2 className="font-title text-white text-[26px] md:text-[28px] lg:text-[36px] font-semibold leading-tight flex-shrink-0">
             Read some of the{' '}
             <span className="text-violet-300">1,000+</span>
