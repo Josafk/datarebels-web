@@ -74,7 +74,14 @@ function CaseStudyCard({
   const isExpanded = activeCardId === data.id;
 
   return (
-    <div className="group relative rounded-2xl p-[2px] bg-white/[0.10]">
+    /*
+      h-full en el wrapper + article h-full:
+      el grid con items-stretch fuerza todos los wrappers a la misma altura.
+      El article ocupa toda esa altura con flex-col.
+      Al expandirse, solo ese wrapper crece — los demás mantienen su altura
+      porque el grid recalcula solo la fila afectada.
+    */
+    <div className="group relative rounded-2xl p-[2px] bg-white/[0.10] h-full">
       <GlowingEffect
         spread={40}
         glow={false}
@@ -88,10 +95,11 @@ function CaseStudyCard({
             : "default"
         }
       />
-      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] p-6 flex flex-col">
+      {/* px-4 = 16px laterales, py-6 = 24px arriba/abajo — igual que Figma */}
+      <article className="relative z-10 rounded-[calc(1rem-2px)] bg-[#0a0a0b] px-4 py-6 flex flex-col h-full">
 
-        {/* Logo */}
-        <div className="flex items-center h-10 flex-shrink-0 mb-6">
+        {/* Logo — h-10 fija alinea logos entre cards */}
+        <div className="flex items-center h-10 flex-shrink-0 mb-5">
           <Image
             src={data.logo}
             alt={data.company}
@@ -103,7 +111,7 @@ function CaseStudyCard({
           />
         </div>
 
-        {/* Challenge */}
+        {/* Challenge — flex-1 empuja pills y botón al fondo */}
         <div className="flex-1">
           <h3 className="font-title text-white font-semibold text-[22px] leading-[26px] mb-2">
             Challenge
@@ -113,7 +121,7 @@ function CaseStudyCard({
           </p>
         </div>
 
-        {/* Pills + toggle + resultados */}
+        {/* Pills + toggle + resultados — siempre al fondo del card */}
         <div className="mt-5 flex flex-col gap-3">
           <div className="flex flex-wrap gap-1.5">
             {data.tags.map((tag) => (
@@ -234,8 +242,13 @@ export function SuccessStories() {
           </div>
         </div>
 
-        {/* Cards — items-start: cada card mantiene su altura natural */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start">
+        {/*
+          items-stretch: todos los wrappers tienen la misma altura (la del más alto).
+          Cuando uno se expande, solo su fila crece.
+          Los cards en la misma fila se estiran igual — esto es CSS Grid behavior normal.
+          En lg (4 cols, 1 fila): todos iguales en base, el expandido crece solo.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {SUCCESS_STORIES.map((story) => (
             <CaseStudyCard
               key={story.id}
