@@ -67,7 +67,7 @@ export function RebelCurriculum() {
               project-based and anchored in real-world industry demands
             </p>
             <div className="lg:hidden mt-1">
-              
+              <a
                 href="#contact"
                 className="font-sans inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
               >
@@ -76,7 +76,7 @@ export function RebelCurriculum() {
             </div>
           </div>
           <div className="hidden lg:flex lg:shrink-0 lg:pt-1">
-            
+            <a
               href="#contact"
               className="font-sans inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
             >
