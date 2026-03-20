@@ -53,7 +53,7 @@ export function RebelCurriculum() {
       className="relative z-10 py-10 md:py-12 lg:py-16 bg-slate-50 scroll-mt-20"
       aria-label="The Rebel Curriculum"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 lg:gap-8 mb-6 lg:mb-8">
           <div className="flex flex-col gap-3 max-w-lg">
             <h2 className="font-title text-slate-900 text-[26px] md:text-[28px] lg:text-[32px] font-semibold leading-tight">
@@ -67,7 +67,7 @@ export function RebelCurriculum() {
               project-based and anchored in real-world industry demands
             </p>
             <div className="lg:hidden mt-1">
-              <a
+              
                 href="#contact"
                 className="font-sans inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
               >
@@ -76,7 +76,7 @@ export function RebelCurriculum() {
             </div>
           </div>
           <div className="hidden lg:flex lg:shrink-0 lg:pt-1">
-            <a
+            
               href="#contact"
               className="font-sans inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
             >
@@ -84,12 +84,9 @@ export function RebelCurriculum() {
             </a>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
           {curriculumCourses.map((course, index) => (
-            <div
-              key={index}
-              className="h-[480px] sm:h-[460px] lg:h-[500px]"
-            >
+            <div key={index} className="h-[420px] sm:h-[440px] lg:h-[480px]">
               <CurriculumCard
                 imageUrl={course.imageUrl}
                 title={course.title}
