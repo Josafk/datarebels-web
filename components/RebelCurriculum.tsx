@@ -54,7 +54,6 @@ export function RebelCurriculum() {
       aria-label="The Rebel Curriculum"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-8">
-
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-8 lg:mb-10">
           <div>
             <h2 className="font-title text-slate-900 text-[26px] md:text-[28px] lg:text-[32px] font-semibold leading-tight">
@@ -77,7 +76,6 @@ export function RebelCurriculum() {
             </a>
           </div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {curriculumCourses.map((course, index) => (
             <div
