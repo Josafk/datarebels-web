@@ -54,33 +54,48 @@ export function RebelCurriculum() {
       aria-label="The Rebel Curriculum"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-8 lg:mb-10">
-          <div>
+
+        {/* Header: título + descripción apilados, botón a la derecha solo en lg */}
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 lg:gap-8 mb-6 lg:mb-8">
+          <div className="flex flex-col gap-3 max-w-lg">
             <h2 className="font-title text-slate-900 text-[26px] md:text-[28px] lg:text-[32px] font-semibold leading-tight">
               The Rebel Curriculum:
               <br />
               Master your future
             </h2>
-            <p className="font-sans text-slate-600 text-[14px] leading-[20px] mt-3 max-w-lg">
+            <p className="font-sans text-slate-600 text-[14px] leading-[20px]">
               We offer custom-engineered programs designed to close the GenAI
               talent gap and accelerate your career. Every course is
               project-based and anchored in real-world industry demands
             </p>
+            {/* Botón visible solo en mobile/tablet, debajo del texto */}
+            <div className="lg:hidden mt-1">
+              
+                href="#contact"
+                className="font-sans inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
+              >
+                Secure your spot now! →
+              </a>
+            </div>
           </div>
-          <div className="lg:pt-1 lg:shrink-0">
-            <a
+
+          {/* Botón solo en desktop, alineado arriba a la derecha */}
+          <div className="hidden lg:flex lg:shrink-0 lg:pt-1">
+            
               href="#contact"
-              className="font-sans inline-flex w-full lg:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
+              className="font-sans inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
             >
               Secure your spot now! →
             </a>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+
+        {/* Grid de cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
           {curriculumCourses.map((course, index) => (
             <div
               key={index}
-              className="aspect-[3/4] md:aspect-[3/4] lg:aspect-auto lg:min-h-[480px]"
+              className="h-[480px] sm:h-[460px] lg:h-[500px]"
             >
               <CurriculumCard
                 imageUrl={course.imageUrl}
@@ -93,6 +108,7 @@ export function RebelCurriculum() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
