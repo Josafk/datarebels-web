@@ -36,29 +36,20 @@ const CurriculumCard = React.forwardRef<HTMLDivElement, CurriculumCardProps>(
       >
         
           href={href}
-          className="relative flex flex-col w-full h-full rounded-xl overflow-hidden shadow-lg transition-all duration-500 ease-in-out group-hover:scale-[1.02] group-hover:shadow-[0_0_60px_-15px_hsl(var(--theme-color)/0.6)]"
+          className="relative flex flex-col w-full h-full rounded-xl overflow-hidden shadow-lg transition-all duration-500 ease-in-out group-hover:scale-[1.02]"
           aria-label={`Explore ${title}`}
           style={{ boxShadow: "0 0 40px -15px hsl(var(--theme-color) / 0.5)" }}
         >
-          {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110"
             style={{ backgroundImage: `url(${imageUrl})` }}
           />
-
-          {/* Overlays */}
           <div className="absolute inset-0 z-0 bg-black/50" />
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#682AC6] via-[#682AC6]/60 to-transparent" />
-
-          {/* Content — flex-col con justify-between para separar título de descripción+badges */}
           <div className="relative z-20 flex flex-col justify-between h-full p-6 text-white">
-
-            {/* Título arriba */}
-            <h3 className="font-title font-semibold text-[22px] md:text-[20px] lg:text-[22px] leading-[26px] text-white">
+            <h3 className="font-title font-semibold text-[22px] leading-[26px] text-white">
               {title}
             </h3>
-
-            {/* Descripción + badges abajo */}
             <div className="flex flex-col gap-3 mt-4">
               <p className="font-sans text-white/90 text-[13px] leading-[19px]">
                 {description}
