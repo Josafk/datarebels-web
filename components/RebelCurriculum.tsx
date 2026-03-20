@@ -6,8 +6,7 @@ const curriculumCourses = [
   {
     imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600",
     title: "Data Translator with GenAI",
-    description:
-      "Master the art of translating complex business challenges into actionable GenAI use cases. You will learn to frame organizational problems in a way that data teams can solve, ensuring every project is aligned with strategic ROI.",
+    description: "Master the art of translating complex business challenges into actionable GenAI use cases. You will learn to frame organizational problems in a way that data teams can solve, ensuring every project is aligned with strategic ROI.",
     badges: [
       { icon: "clock" as const, label: "8 Weeks" },
       { icon: "video" as const, label: "Live Remote" },
@@ -17,8 +16,7 @@ const curriculumCourses = [
   {
     imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600",
     title: "Data Product Owner with GenAI",
-    description:
-      "Build a business-first mindset for AI development. This course teaches you to identify, prioritize, and manage the creation of data products that solve real operational bottlenecks and deliver measurable business value.",
+    description: "Build a business-first mindset for AI development. This course teaches you to identify, prioritize, and manage the creation of data products that solve real operational bottlenecks and deliver measurable business value.",
     badges: [
       { icon: "clock" as const, label: "6 Weeks" },
       { icon: "eye" as const, label: "On demand" },
@@ -29,8 +27,7 @@ const curriculumCourses = [
   {
     imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600",
     title: "Python for Data Analysis with GenAI",
-    description:
-      "Supercharge your data analysis skills. Learn Python fundamentals and visualization in Google Colab, leveraging Gemini AI to write cleaner code faster and master the art of technical prompting.",
+    description: "Supercharge your data analysis skills. Learn Python fundamentals and visualization in Google Colab, leveraging Gemini AI to write cleaner code faster and master the art of technical prompting.",
     badges: [
       { icon: "clock" as const, label: "8 Weeks" },
       { icon: "video" as const, label: "Live Remote" },
@@ -40,8 +37,7 @@ const curriculumCourses = [
   {
     imageUrl: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600",
     title: "Advanced Data Translator (Level 2) with GenAI",
-    description:
-      "Elevate your strategic impact. Use advanced frameworks to justify Machine Learning models, master complex data storytelling, and ensure sophisticated AI solutions meet the specific needs of executive-level analysis.",
+    description: "Elevate your strategic impact. Use advanced frameworks to justify Machine Learning models, master complex data storytelling, and ensure sophisticated AI solutions meet the specific needs of executive-level analysis.",
     badges: [
       { icon: "clock" as const, label: "18 Weeks" },
       { icon: "video" as const, label: "Live Remote" },
@@ -59,7 +55,6 @@ export function RebelCurriculum() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-8">
 
-        {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-8 lg:mb-10">
           <div>
             <h2 className="font-title text-slate-900 text-[26px] md:text-[28px] lg:text-[32px] font-semibold leading-tight">
@@ -83,12 +78,6 @@ export function RebelCurriculum() {
           </div>
         </div>
 
-        {/* Grid */}
-        {/*
-          Mobile: 1 col, cards altura natural
-          Tablet: 2 col
-          Desktop: 4 col, todos igual altura via aspect-ratio
-        */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {curriculumCourses.map((course, index) => (
             <div
