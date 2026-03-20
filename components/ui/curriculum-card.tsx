@@ -15,7 +15,7 @@ interface CurriculumCardProps extends React.HTMLAttributes<HTMLDivElement> {
   description: string;
   badges: CurriculumBadge[];
   href: string;
-  themeColor: string; // e.g., "270 50% 30%" for purple
+  themeColor: string;
 }
 
 const iconMap = {
@@ -26,73 +26,57 @@ const iconMap = {
 };
 
 const CurriculumCard = React.forwardRef<HTMLDivElement, CurriculumCardProps>(
-  (
-    {
-      className,
-      imageUrl,
-      title,
-      description,
-      badges,
-      href,
-      themeColor,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, imageUrl, title, description, badges, href, themeColor, ...props }, ref) => {
     return (
       <div
         ref={ref}
-        style={
-          {
-            "--theme-color": themeColor,
-          } as React.CSSProperties & { "--theme-color": string }
-        }
+        style={{ "--theme-color": themeColor } as React.CSSProperties & { "--theme-color": string }}
         className={cn("group w-full h-full", className)}
         {...props}
       >
-        <a
+        
           href={href}
-          className="relative block w-full h-full min-h-[420px] rounded-xl overflow-hidden shadow-lg transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:shadow-[0_0_60px_-15px_hsl(var(--theme-color)/0.6)]"
+          className="relative flex flex-col w-full h-full rounded-xl overflow-hidden shadow-lg transition-all duration-500 ease-in-out group-hover:scale-[1.02] group-hover:shadow-[0_0_60px_-15px_hsl(var(--theme-color)/0.6)]"
           aria-label={`Explore ${title}`}
-          style={{
-            boxShadow: "0 0 40px -15px hsl(var(--theme-color) / 0.5)",
-          }}
+          style={{ boxShadow: "0 0 40px -15px hsl(var(--theme-color) / 0.5)" }}
         >
-          {/* Background Image with Parallax Zoom */}
+          {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110"
             style={{ backgroundImage: `url(${imageUrl})` }}
           />
 
-          {/* Doble capa: 1) Oscurecimiento base 2) Gradiente de marca #682AC6 (de abajo a arriba) */}
+          {/* Overlays */}
           <div className="absolute inset-0 z-0 bg-black/50" />
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#682AC6] via-[#682AC6]/60 to-transparent" />
 
-          {/* Content */}
-          <div className="relative z-20 flex flex-col justify-end h-full min-h-[420px] p-8 text-white">
-            <div className="h-[104px] flex flex-col justify-start mb-4">
-              <h3 className="font-title font-semibold text-[24px] leading-[26px] text-white">
-                {title}
-              </h3>
-            </div>
-            <p className="font-sans text-white/90 text-sm leading-relaxed min-h-[100px] mb-4">
-              {description}
-            </p>
+          {/* Content — flex-col con justify-between para separar título de descripción+badges */}
+          <div className="relative z-20 flex flex-col justify-between h-full p-6 text-white">
 
-            {/* Badges */}
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {badges.map((badge, i) => {
-                const Icon = iconMap[badge.icon];
-                return (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-white/90 text-[11px]"
-                  >
-                    <Icon className="w-3 h-3 flex-shrink-0 text-white/90" strokeWidth={2} />
-                    {badge.label}
-                  </span>
-                );
-              })}
+            {/* Título arriba */}
+            <h3 className="font-title font-semibold text-[22px] md:text-[20px] lg:text-[22px] leading-[26px] text-white">
+              {title}
+            </h3>
+
+            {/* Descripción + badges abajo */}
+            <div className="flex flex-col gap-3 mt-4">
+              <p className="font-sans text-white/90 text-[13px] leading-[19px]">
+                {description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {badges.map((badge, i) => {
+                  const Icon = iconMap[badge.icon];
+                  return (
+                    <span
+                      key={i}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-white/90 text-[11px]"
+                    >
+                      <Icon className="w-3 h-3 flex-shrink-0 text-white/90" strokeWidth={2} />
+                      {badge.label}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </a>
