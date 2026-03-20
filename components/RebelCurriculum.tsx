@@ -54,8 +54,6 @@ export function RebelCurriculum() {
       aria-label="The Rebel Curriculum"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-8">
-
-        {/* Header: título + descripción apilados, botón a la derecha solo en lg */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 lg:gap-8 mb-6 lg:mb-8">
           <div className="flex flex-col gap-3 max-w-lg">
             <h2 className="font-title text-slate-900 text-[26px] md:text-[28px] lg:text-[32px] font-semibold leading-tight">
@@ -68,7 +66,6 @@ export function RebelCurriculum() {
               talent gap and accelerate your career. Every course is
               project-based and anchored in real-world industry demands
             </p>
-            {/* Botón visible solo en mobile/tablet, debajo del texto */}
             <div className="lg:hidden mt-1">
               
                 href="#contact"
@@ -78,8 +75,6 @@ export function RebelCurriculum() {
               </a>
             </div>
           </div>
-
-          {/* Botón solo en desktop, alineado arriba a la derecha */}
           <div className="hidden lg:flex lg:shrink-0 lg:pt-1">
             
               href="#contact"
@@ -89,8 +84,6 @@ export function RebelCurriculum() {
             </a>
           </div>
         </div>
-
-        {/* Grid de cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
           {curriculumCourses.map((course, index) => (
             <div
@@ -108,7 +101,6 @@ export function RebelCurriculum() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
