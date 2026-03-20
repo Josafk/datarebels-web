@@ -6,7 +6,6 @@ import Link from "next/link";
 import { ChevronDown, Check } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const SUCCESS_STORIES = [
   {
@@ -207,11 +206,17 @@ export function SuccessStories() {
       className="relative z-10 py-8 md:py-10 lg:py-12 overflow-hidden scroll-mt-20"
       aria-label="Success Stories"
     >
-      {/* Fondo */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-[#0a0612] to-black/95" />
-        <AuroraBackground opacity={0.10} />
-      </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/95 via-[#0a0612] to-black/95" />
+      <div
+        className="absolute inset-0 z-0 opacity-[0.06]"
+        style={{
+          backgroundImage: "url('/WhatsApp Image 2025-12-18 at 16.33.20-3.jpeg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center right",
+          maskImage: "linear-gradient(to right, transparent 30%, black 70%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 30%, black 70%)",
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-8 mb-6 lg:mb-8">

@@ -3,7 +3,6 @@
 import { Sparkles, Users, MessageCircle, Zap, BarChart2, TrendingUp } from "lucide-react";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const CARDS = [
   {
@@ -51,13 +50,19 @@ export function GenAITalentGap() {
       aria-label="Close the GenAI Talent Gap"
       className="relative z-10 py-10 md:py-12 overflow-hidden scroll-mt-20"
     >
-      {/* Fondo */}
       <div className="absolute inset-0 z-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/whatsapp-image-2025-12-18-at-16.33.20-3.jpeg"
+          alt=""
+          aria-hidden
+          className="w-full h-full object-cover"
+          style={{ filter: 'grayscale(100%)', opacity: 0.08 }}
+        />
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(180deg, #08060f 0%, #0d0b1a 40%, #0d0b1a 60%, #08060f 100%)' }}
         />
-        <AuroraBackground opacity={0.13} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 mb-6 md:mb-8">
