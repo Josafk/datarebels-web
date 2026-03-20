@@ -69,7 +69,7 @@ export function RebelCurriculum() {
               project-based and anchored in real-world industry demands
             </p>
             <div>
-              
+              <a
                 href="#contact"
                 className="font-sans inline-flex w-full md:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
               >
