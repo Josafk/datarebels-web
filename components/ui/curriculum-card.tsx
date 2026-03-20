@@ -78,4 +78,3 @@ const CurriculumCard = React.forwardRef<HTMLDivElement, CurriculumCardProps>(
 CurriculumCard.displayName = "CurriculumCard";
 
 export { CurriculumCard };
-
