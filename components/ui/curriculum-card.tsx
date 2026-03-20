@@ -34,7 +34,7 @@ const CurriculumCard = React.forwardRef<HTMLDivElement, CurriculumCardProps>(
         className={cn("group w-full h-full", className)}
         {...props}
       >
-        
+        <a
           href={href}
           className="relative flex flex-col w-full h-full rounded-xl overflow-hidden shadow-lg transition-all duration-500 ease-in-out group-hover:scale-[1.02]"
           aria-label={`Explore ${title}`}
