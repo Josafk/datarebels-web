@@ -68,7 +68,7 @@ export function RebelCurriculum() {
             </p>
           </div>
           <div className="lg:pt-1 lg:shrink-0">
-            
+            <a
               href="#contact"
               className="font-sans inline-flex w-full lg:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
             >
