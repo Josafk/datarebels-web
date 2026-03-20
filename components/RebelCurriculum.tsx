@@ -54,39 +54,38 @@ export function RebelCurriculum() {
       aria-label="The Rebel Curriculum"
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 lg:gap-8 mb-6 lg:mb-8">
-          <div className="flex flex-col gap-3 max-w-lg">
-            <h2 className="font-title text-slate-900 text-[26px] md:text-[28px] lg:text-[32px] font-semibold leading-tight">
-              The Rebel Curriculum:
-              <br />
-              Master your future
-            </h2>
+
+        {/* Header mobile: columna. Tablet+: titulo izq, desc+boton der */}
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-8 mb-6 lg:mb-8">
+          <h2 className="font-title text-slate-900 text-[26px] md:text-[28px] lg:text-[32px] font-semibold leading-tight md:max-w-[280px] lg:max-w-xs shrink-0">
+            The Rebel Curriculum:
+            <br />
+            Master your future
+          </h2>
+          <div className="flex flex-col gap-3 md:max-w-sm lg:max-w-md">
             <p className="font-sans text-slate-600 text-[14px] leading-[20px]">
               We offer custom-engineered programs designed to close the GenAI
               talent gap and accelerate your career. Every course is
               project-based and anchored in real-world industry demands
             </p>
-            <div className="lg:hidden mt-1">
-              <a
+            <div>
+              
                 href="#contact"
-                className="font-sans inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
+                className="font-sans inline-flex w-full md:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
               >
                 Secure your spot now! →
               </a>
             </div>
           </div>
-          <div className="hidden lg:flex lg:shrink-0 lg:pt-1">
-            <a
-              href="#contact"
-              className="font-sans inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
-            >
-              Secure your spot now! →
-            </a>
-          </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+
+        {/* Cards: scroll horizontal en mobile/tablet, grid en desktop */}
+        <div className="lg:grid lg:grid-cols-4 lg:gap-4 flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0 lg:overflow-visible">
           {curriculumCourses.map((course, index) => (
-            <div key={index} className="h-[420px] sm:h-[440px] lg:h-[480px]">
+            <div
+              key={index}
+              className="snap-start shrink-0 w-[260px] md:w-[300px] lg:w-auto h-[420px] md:h-[440px] lg:h-[480px]"
+            >
               <CurriculumCard
                 imageUrl={course.imageUrl}
                 title={course.title}
@@ -98,6 +97,7 @@ export function RebelCurriculum() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
