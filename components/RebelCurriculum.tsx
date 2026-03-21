@@ -50,14 +50,14 @@ export function RebelCurriculum() {
   return (
     <section
       id="programs"
-      className="relative z-10 py-10 md:py-12 lg:py-16 bg-slate-50 scroll-mt-20"
+      className="relative z-10 py-6 md:py-8 lg:py-10 bg-slate-50 scroll-mt-20"
       aria-label="The Rebel Curriculum"
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-8">
 
         {/* Header mobile: columna. Tablet+: titulo izq, desc+boton der */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-8 mb-6 lg:mb-8">
-          <h2 className="font-title text-slate-900 text-[26px] md:text-[26px] lg:text-[28px] font-semibold leading-tight max-w-[260px] md:max-w-[220px] lg:max-w-[280px] shrink-0">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-8 mb-4 lg:mb-6">
+          <h2 className="font-title text-slate-900 text-[26px] md:text-[26px] lg:text-[28px] font-semibold leading-tight max-w-[260px] md:max-w-[240px] lg:max-w-[400px] shrink-0">
             The Rebel Curriculum:
             <br />
             Master your future
