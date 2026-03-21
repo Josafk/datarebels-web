@@ -291,16 +291,7 @@ export function BeyondData() {
                 onClick={() => carouselApi?.scrollPrev()}
                 disabled={!canScrollPrev}
                 aria-label="Anterior"
-                className={`
-                  h-8 w-8 rounded-full flex items-center justify-center
-                  outline-none shrink-0
-                  transition-colors duration-200
-                  disabled:pointer-events-none disabled:cursor-not-allowed
-                  ${canScrollPrev
-                    ? "bg-[#1330F4] text-white border border-transparent shadow-sm hover:bg-[#0f27cc]"
-                    : "bg-transparent text-slate-300 border border-slate-200"
-                  }
-                `}
+                className={`h-8 w-8 rounded-full flex items-center justify-center outline-none shrink-0 transition-colors duration-200 disabled:pointer-events-none disabled:cursor-not-allowed ${canScrollPrev ? "bg-[#1330F4] text-white border border-transparent shadow-sm hover:bg-[#0f27cc]" : "bg-transparent text-slate-300 border border-slate-200"}`}
               >
                 <ChevronLeft size={16} strokeWidth={2} />
               </button>
@@ -309,16 +300,7 @@ export function BeyondData() {
                 onClick={() => carouselApi?.scrollNext()}
                 disabled={!canScrollNext}
                 aria-label="Siguiente"
-                className={`
-                  h-8 w-8 rounded-full flex items-center justify-center
-                  outline-none shrink-0
-                  transition-colors duration-200
-                  disabled:pointer-events-none disabled:cursor-not-allowed
-                  ${canScrollNext
-                    ? "bg-[#1330F4] text-white border border-transparent shadow-sm hover:bg-[#0f27cc]"
-                    : "bg-transparent text-slate-300 border border-slate-200"
-                  }
-                `}
+                className={`h-8 w-8 rounded-full flex items-center justify-center outline-none shrink-0 transition-colors duration-200 disabled:pointer-events-none disabled:cursor-not-allowed ${canScrollNext ? "bg-[#1330F4] text-white border border-transparent shadow-sm hover:bg-[#0f27cc]" : "bg-transparent text-slate-300 border border-slate-200"}`}
               >
                 <ChevronRight size={16} strokeWidth={2} />
               </button>
