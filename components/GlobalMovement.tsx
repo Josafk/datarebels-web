@@ -71,11 +71,11 @@ export function GlobalMovement() {
                 key={benefit.title}
                 className="flex gap-4 items-start"
               >
-                <div className="flex-shrink-0 w-8 h-8 bg-[#1330F4] rounded-lg p-1.5 flex items-center justify-center">
-                  <benefit.icon className="w-4 h-4 text-white" />
+                <div className="flex-shrink-0 w-6 h-6 bg-[#1330F4] rounded-md p-1 flex items-center justify-center">
+                  <benefit.icon className="w-3.5 h-3.5 text-white" />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="font-sans text-[15px] leading-[20px] font-medium tracking-normal text-slate-900">
+                  <span className="font-sans text-[20px] leading-[24px] font-medium tracking-normal text-slate-900">
                     {benefit.title}
                   </span>
                   <span className="font-sans text-[14px] leading-[18px] font-normal text-slate-500">
@@ -88,7 +88,7 @@ export function GlobalMovement() {
         </div>
 
         {/* Columna Derecha: mobile al final / tablet derecha con aire */}
-        <div className="w-full md:w-[48%] lg:w-1/2 aspect-square max-h-[400px] md:max-h-[500px] sm:max-h-[700px] overflow-hidden rounded-3xl md:rounded-[40px] bg-slate-100 flex items-center justify-center">
+        <div className="w-full md:w-[48%] lg:w-1/2 overflow-hidden rounded-2xl bg-slate-100 flex items-stretch self-stretch">
           <ImageSwiper
             images={COMMUNITY_IMAGES}
             cardWidth={swiperDims.width}
