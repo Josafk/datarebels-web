@@ -30,7 +30,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
   const isExternal = watchUrl.startsWith("http");
   return (
     <article className="group border border-slate-200/80 rounded-2xl bg-white flex flex-col shrink-0 w-full h-full">
-      
+      <a
         href={watchUrl}
         className="flex flex-col flex-1 p-5 gap-4"
         {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
