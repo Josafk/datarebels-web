@@ -106,7 +106,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
   const watchUrl = episode.watchUrl ?? "#watch";
   const isExternal = watchUrl.startsWith("http");
   return (
-    <article className="group border border-slate-200/80 rounded-2xl overflow-hidden bg-white flex flex-col shrink-0 w-full">
+    <article className="group border border-slate-200/80 rounded-2xl overflow-hidden bg-white flex flex-col shrink-0 w-full h-full">
       <a
         href={watchUrl}
         className="flex flex-col flex-1"
@@ -151,7 +151,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
             className="font-sans inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-[13px] font-medium w-fit whitespace-nowrap transition-opacity group-hover:opacity-90"
             style={{ backgroundColor: "#1330F4" }}
           >
-            <Play className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+            <Play size={14} className="flex-shrink-0" strokeWidth={2.5} />
             Watch full episode
           </span>
         </div>
@@ -292,7 +292,7 @@ export function BeyondData() {
                 disabled={!canScrollPrev}
                 aria-label="Anterior"
                 className={`
-                  h-10 w-10 rounded-full flex items-center justify-center
+                  h-8 w-8 rounded-full flex items-center justify-center
                   outline-none shrink-0
                   transition-colors duration-200
                   disabled:pointer-events-none disabled:cursor-not-allowed
@@ -302,7 +302,7 @@ export function BeyondData() {
                   }
                 `}
               >
-                <ChevronLeft className="h-5 w-5" strokeWidth={2} />
+                <ChevronLeft size={16} strokeWidth={2} />
               </button>
               <button
                 type="button"
@@ -310,7 +310,7 @@ export function BeyondData() {
                 disabled={!canScrollNext}
                 aria-label="Siguiente"
                 className={`
-                  h-10 w-10 rounded-full flex items-center justify-center
+                  h-8 w-8 rounded-full flex items-center justify-center
                   outline-none shrink-0
                   transition-colors duration-200
                   disabled:pointer-events-none disabled:cursor-not-allowed
@@ -320,7 +320,7 @@ export function BeyondData() {
                   }
                 `}
               >
-                <ChevronRight className="h-5 w-5" strokeWidth={2} />
+                <ChevronRight size={16} strokeWidth={2} />
               </button>
             </div>
           </div>
