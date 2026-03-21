@@ -5,7 +5,7 @@ import { Globe, LayoutGrid, Users, Network } from "lucide-react";
 import { ImageSwiper } from "@/components/ui/image-swiper";
 
 const COMMUNITY_IMAGES =
-  "/community-carousel-01.png,/community-carousel-02.png,/community-carousel-03.png,/community-carousel-04.png,/community-carousel-05.png,/community-carousel-06.png,/community-carousel-07.png";
+  "/community-carousel-02.png,/community-carousel-03.png,/community-carousel-04.png,/community-carousel-05.png,/community-carousel-06.png,/community-carousel-07.png";
 
 const benefits = [
   {
@@ -71,11 +71,11 @@ export function GlobalMovement() {
                 key={benefit.title}
                 className="flex gap-4 items-start"
               >
-                <div className="flex-shrink-0 w-10 h-10 bg-[#1330F4] rounded-xl p-2 flex items-center justify-center">
-                  <benefit.icon className="w-5 h-5 text-white" />
+                <div className="flex-shrink-0 w-8 h-8 bg-[#1330F4] rounded-lg p-1.5 flex items-center justify-center">
+                  <benefit.icon className="w-4 h-4 text-white" />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="font-sans text-[20px] leading-[24px] font-medium tracking-normal text-slate-900">
+                  <span className="font-sans text-[15px] leading-[20px] font-medium tracking-normal text-slate-900">
                     {benefit.title}
                   </span>
                   <span className="font-sans text-[14px] leading-[18px] font-normal text-slate-500">
