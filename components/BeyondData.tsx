@@ -29,20 +29,13 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
   const watchUrl = episode.watchUrl ?? "#watch";
   const isExternal = watchUrl.startsWith("http");
   return (
-    <article className="group border border-slate-200/80 rounded-2xl bg-white flex flex-col shrink-0 w-full h-full">
+    <article className="group border border-slate-200/80 rounded-2xl overflow-hidden bg-white flex flex-col w-full h-full">
       <a
         href={watchUrl}
-        className="flex flex-col flex-1 p-5 gap-4"
+        className="flex flex-col flex-1"
         {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
-        <Image
-          src="/beyon-data.svg"
-          alt="BEYOND DATA"
-          width={90}
-          height={28}
-          className="h-6 w-auto object-contain"
-        />
-        <div className="relative h-36 w-full overflow-hidden rounded-xl shrink-0">
+        <div className="relative h-40 overflow-hidden shrink-0">
           <div className="podcast-thumb absolute inset-0" />
           <div className="podcast-thumb-pattern absolute inset-0" />
           <Image
@@ -54,25 +47,28 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
         </div>
-        <div className="flex flex-col gap-1 flex-1">
-          <p className="font-sans text-[11px] font-semibold leading-4 tracking-[0.04em] uppercase text-slate-400">
-            {episode.date}
-          </p>
-          <h3 className="font-sans text-slate-900 text-[15px] font-medium leading-5">
-            {episode.name}
-          </h3>
-          <p className="font-sans text-slate-500 text-[13px] leading-[18px] flex-1">
-            {episode.title}
-          </p>
+        <div className="p-5 flex flex-col gap-4 flex-1">
+          <div className="flex flex-col gap-1 flex-1">
+            <p className="font-sans text-[11px] font-semibold leading-4 tracking-[0.04em] uppercase text-slate-400">
+              {episode.date}
+            </p>
+            <h3 className="font-sans text-slate-900 text-[15px] font-medium leading-5">
+              {episode.name}
+            </h3>
+            <p className="font-sans text-slate-500 text-[13px] leading-[18px]">
+              {episode.title}
+            </p>
+          </div>
+          <span className="font-sans inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-[13px] font-medium w-fit whitespace-nowrap shrink-0" style={{ backgroundColor: "#1330F4" }}>
+            <Play size={14} className="flex-shrink-0" strokeWidth={2.5} />
+            Watch full episode
+          </span>
         </div>
-        <span className="font-sans inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-[13px] font-medium w-fit whitespace-nowrap shrink-0" style={{ backgroundColor: "#1330F4" }}>
-          <Play size={14} className="flex-shrink-0" strokeWidth={2.5} />
-          Watch full episode
-        </span>
       </a>
     </article>
   );
 }
+
 
 export function BeyondData() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
