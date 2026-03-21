@@ -269,17 +269,17 @@ export function BeyondData() {
             </CarouselContent>
           </Carousel>
 
-          <div className="flex items-center justify-between pt-5 mt-6">
+          <div className="flex items-center justify-between pt-3 mt-4">
             <div className="flex items-center gap-2">
               {Array.from({ length: Math.max(1, snapCount) }).map((_, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => carouselApi?.scrollTo(i)}
-                  className={`w-2 h-2 rounded-full shrink-0 transition-all border-none ${
+                  className={`h-2 rounded-full shrink-0 transition-all border-none ${
                     i === selectedIndex
-                      ? "bg-[#1330F4]"
-                      : "bg-slate-300"
+                      ? "w-6 bg-[#1330F4]"
+                      : "w-2 bg-slate-300"
                   }`}
                   aria-current={i === selectedIndex ? "true" : undefined}
                 />
