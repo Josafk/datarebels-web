@@ -71,7 +71,7 @@ export function GlobalMovement() {
                 key={benefit.title}
                 className="flex gap-4 items-start"
               >
-                <div className="flex-shrink-0 w-10 h-10 bg-[#1330F4] rounded-lg p-2 flex items-center justify-center shrink-0">
+                <div className="flex-shrink-0 w-10 h-10 bg-[#1330F4] rounded-lg p-2.5 flex items-center justify-center shrink-0">
                   <benefit.icon className="w-5 h-5 text-white" />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -88,7 +88,7 @@ export function GlobalMovement() {
         </div>
 
         {/* Columna Derecha: mobile al final / tablet derecha con aire */}
-        <div className="w-full md:w-[48%] lg:w-1/2 overflow-hidden rounded-2xl bg-slate-100 min-h-[400px] md:min-h-0 md:h-auto self-stretch">
+        <div className="w-full md:w-[48%] lg:w-1/2 overflow-hidden rounded-2xl self-stretch min-h-[500px]">
           <ImageSwiper
             images={COMMUNITY_IMAGES}
             cardWidth={swiperDims.width}
