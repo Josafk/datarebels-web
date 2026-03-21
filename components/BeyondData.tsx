@@ -209,7 +209,7 @@ export function BeyondData() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-8">
         <div className="bg-white rounded-[24px] md:rounded-[28px] p-6 md:p-8 lg:p-10 border border-violet-200/70 shadow-[0_0_0_1px_rgba(168,85,247,0.14),0_20px_50px_rgba(124,58,237,0.15)]">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6 mb-6 md:mb-8">
-            <div className="order-1 md:order-2 flex-shrink-0 md:self-start">
+            <div className="order-2 md:order-1 md:order-2 flex-shrink-0 md:self-start">
               <Image
                 src="/beyon-data.svg"
                 alt="BEYOND DATA"
@@ -218,7 +218,7 @@ export function BeyondData() {
                 className="h-11 md:h-14 w-auto object-contain"
               />
             </div>
-            <div className="order-2 md:order-1 max-w-2xl">
+            <div className="order-1 md:order-1 max-w-2xl">
               <h2 className="font-title text-slate-900 text-[24px] md:text-[24px] lg:text-[32px] font-semibold leading-[26px] lg:leading-[34px] tracking-normal mb-4 text-left">
                 Lessons from Business Leaders Implementing Data & IA Strategies
               </h2>
@@ -261,7 +261,7 @@ export function BeyondData() {
                 <CarouselItem
                   key={episode.id}
                   // Visibilidad estricta: 1 (sm) / 2 (md) / 3 (lg)
-                  className="!pl-0 pr-4 md:pr-6 flex-none basis-full md:basis-1/2 lg:basis-1/3"
+                  className="!pl-0 pr-3 md:pr-4 flex-none basis-full md:basis-1/2 lg:basis-1/3 flex"
                 >
                   <EpisodeCard episode={episode} />
                 </CarouselItem>
@@ -298,7 +298,7 @@ export function BeyondData() {
                   disabled:pointer-events-none disabled:cursor-not-allowed
                   ${canScrollPrev
                     ? "bg-white text-[#1330F4] border border-slate-200 shadow-sm hover:bg-slate-50"
-                    : "bg-white text-slate-300 border border-slate-200"
+                    : "bg-transparent text-slate-300 border border-slate-200"
                   }
                 `}
               >
