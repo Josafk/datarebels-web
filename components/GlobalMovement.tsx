@@ -57,7 +57,7 @@ export function GlobalMovement() {
       className="relative z-10 bg-slate-50"
       aria-label="Global Movement"
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:gap-x-12 lg:gap-x-16 gap-y-10 py-12 px-5 md:px-10 lg:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:gap-x-12 lg:gap-x-16 gap-y-8 py-8 px-5 md:px-10 lg:px-8">
         {/* Columna Izquierda: mobile stack / tablet dos columnas */}
         <div className="w-full md:w-[52%] lg:w-1/2 flex flex-col justify-center">
           <h2 className="font-title text-slate-900 text-[24px] md:text-[24px] lg:text-[32px] font-semibold leading-[26px] md:leading-[26px] lg:leading-[34px] tracking-normal mb-8">
@@ -71,8 +71,8 @@ export function GlobalMovement() {
                 key={benefit.title}
                 className="flex gap-4 items-start"
               >
-                <div className="flex-shrink-0 w-6 h-6 bg-[#1330F4] rounded-md p-1 flex items-center justify-center">
-                  <benefit.icon className="w-3.5 h-3.5 text-white" />
+                <div className="flex-shrink-0 w-10 h-10 bg-[#1330F4] rounded-xl p-2 flex items-center justify-center">
+                  <benefit.icon className="w-5 h-5 text-white" />
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="font-sans text-[20px] leading-[24px] font-medium tracking-normal text-slate-900">
@@ -94,7 +94,7 @@ export function GlobalMovement() {
             cardWidth={swiperDims.width}
             cardHeight={swiperDims.height}
             fill
-            className="rounded-3xl md:rounded-[40px] w-full h-full"
+            className="rounded-2xl w-full h-full object-cover"
           />
         </div>
       </div>
