@@ -115,7 +115,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
           rel: "noopener noreferrer",
         })}
       >
-        <div className="relative h-44 md:h-48 overflow-hidden">
+        <div className="relative h-36 md:h-40 overflow-hidden">
           <div className="podcast-thumb absolute inset-0" />
           <div className="podcast-thumb-pattern absolute inset-0" />
           <div className="absolute inset-0 flex overflow-hidden rounded-t-2xl">
@@ -132,18 +132,9 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
               />
             </div>
           </div>
-          {/* Logo en la transición exacta entre imagen y cuerpo blanco */}
-          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 z-10">
-            <Image
-              src="/beyon-data.svg"
-              alt="BEYOND DATA"
-              width={92}
-              height={30}
-              className="h-8 w-auto object-contain"
-            />
-          </div>
+
         </div>
-        <div className="p-5 pt-7 flex-1 flex flex-col">
+        <div className="p-4 flex-1 flex flex-col">
           <p
             className="font-sans text-[12px] font-semibold leading-4 tracking-[0.04em] uppercase mb-2"
             style={{ color: "#9CA3AF" }}
@@ -157,7 +148,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
             {episode.title}
           </p>
           <span
-            className="font-sans inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-medium w-fit transition-opacity group-hover:opacity-90"
+            className="font-sans inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-[13px] font-medium w-fit transition-opacity group-hover:opacity-90"
             style={{ backgroundColor: "#1330F4" }}
           >
             <Play className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
@@ -196,7 +187,7 @@ export function BeyondData() {
   return (
     <section
       id="podcast"
-      className="relative z-10 py-20 overflow-hidden scroll-mt-20"
+      className="relative z-10 py-10 overflow-hidden scroll-mt-20"
       aria-label="Lessons from Business Leaders - Beyond Data"
     >
       <div
@@ -217,7 +208,7 @@ export function BeyondData() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-8">
         <div className="bg-white rounded-[24px] md:rounded-[28px] p-6 md:p-8 lg:p-10 border border-violet-200/70 shadow-[0_0_0_1px_rgba(168,85,247,0.14),0_20px_50px_rgba(124,58,237,0.15)]">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5 md:gap-8 mb-8 md:mb-10">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6 mb-6 md:mb-8">
             <div className="order-1 md:order-2 flex-shrink-0 md:self-start">
               <Image
                 src="/beyon-data.svg"
