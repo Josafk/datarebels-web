@@ -47,7 +47,7 @@ const CurriculumCard = React.forwardRef<HTMLDivElement, CurriculumCardProps>(
           <div className="absolute inset-0 z-0 bg-black/30" />
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#4a1a9e] via-[#682AC6]/70 to-transparent" />
           <div className="relative z-20 flex flex-col h-full p-5 text-white">
-            <h3 className="font-title font-semibold text-[18px] leading-[24px] text-white mb-auto">
+            <h3 className="font-title font-semibold text-[24px] leading-[26px] text-white mb-auto">
               {title}
             </h3>
             <div className="flex flex-col gap-2 mt-4">

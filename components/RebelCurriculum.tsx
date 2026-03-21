@@ -57,7 +57,7 @@ export function RebelCurriculum() {
 
         {/* Header mobile: columna. Tablet+: titulo izq, desc+boton der */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-8 mb-6 lg:mb-8">
-          <h2 className="font-title text-slate-900 text-[26px] md:text-[28px] lg:text-[32px] font-semibold leading-tight md:max-w-[280px] lg:max-w-xs shrink-0">
+          <h2 className="font-title text-slate-900 text-[26px] md:text-[26px] lg:text-[28px] font-semibold leading-tight max-w-[260px] md:max-w-[220px] lg:max-w-[280px] shrink-0">
             The Rebel Curriculum:
             <br />
             Master your future
@@ -71,7 +71,7 @@ export function RebelCurriculum() {
             <div>
               <a
                 href="#contact"
-                className="font-sans inline-flex w-full md:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
+                className="font-sans inline-flex w-full md:w-auto items-center justify-center gap-2 px-5 py-2 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-colors text-[13px]"
               >
                 Secure your spot now! →
               </a>
