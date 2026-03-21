@@ -115,7 +115,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
           rel: "noopener noreferrer",
         })}
       >
-        <div className="relative h-36 md:h-40 overflow-hidden">
+        <div className="relative h-32 md:h-36 overflow-hidden">
           <div className="podcast-thumb absolute inset-0" />
           <div className="podcast-thumb-pattern absolute inset-0" />
           <div className="absolute inset-0 flex overflow-hidden rounded-t-2xl">
@@ -134,21 +134,21 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
           </div>
 
         </div>
-        <div className="p-4 flex-1 flex flex-col">
+        <div className="p-3 flex-1 flex flex-col">
           <p
-            className="font-sans text-[12px] font-semibold leading-4 tracking-[0.04em] uppercase mb-2"
+            className="font-sans text-[11px] font-semibold leading-4 tracking-[0.04em] uppercase mb-1"
             style={{ color: "#9CA3AF" }}
           >
             {episode.date}
           </p>
-          <h3 className="font-sans text-slate-900 text-[20px] font-medium leading-6 mb-1">
+          <h3 className="font-sans text-slate-900 text-[16px] font-medium leading-5 mb-1">
             {episode.name}
           </h3>
-          <p className="font-sans text-slate-500 text-sm mb-4 flex-1">
+          <p className="font-sans text-slate-500 text-[13px] leading-[18px] mb-3 flex-1">
             {episode.title}
           </p>
           <span
-            className="font-sans inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-[13px] font-medium w-fit transition-opacity group-hover:opacity-90"
+            className="font-sans inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-[13px] font-medium w-fit whitespace-nowrap transition-opacity group-hover:opacity-90"
             style={{ backgroundColor: "#1330F4" }}
           >
             <Play className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
@@ -276,7 +276,7 @@ export function BeyondData() {
                   key={i}
                   type="button"
                   onClick={() => carouselApi?.scrollTo(i)}
-                  className={`w-2.5 h-2.5 rounded-full shrink-0 transition-all border-none ${
+                  className={`w-2 h-2 rounded-full shrink-0 transition-all border-none ${
                     i === selectedIndex
                       ? "bg-[#1330F4]"
                       : "bg-slate-300"
