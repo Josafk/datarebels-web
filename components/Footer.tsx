@@ -32,10 +32,10 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-8 py-8 lg:py-10">
 
         {/* 2 columnas: izq logo+slogan / der CTA+social */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+        <div className="flex flex-col items-start lg:flex-row lg:items-center lg:justify-between gap-6">
 
           {/* Col izq: Logo + Slogan apilados */}
-          <div className="flex flex-col gap-3 max-w-xs lg:max-w-[340px]">
+          <div className="flex flex-col gap-3 lg:max-w-[340px]">
             <Image src="/logo-white.svg" alt="datarebels" width={130} height={20} className="h-5 w-auto mb-1" />
             <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px]">
               Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
