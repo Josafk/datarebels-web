@@ -94,7 +94,7 @@ export function FAQ() {
             >
               {faqItems.map((item) => (
                 <AccordionItem key={item.id} value={item.id}>
-                  <AccordionTrigger className="font-title text-slate-800 text-[20px] leading-[24px] font-semibold tracking-normal hover:no-underline">
+                  <AccordionTrigger className="font-title text-slate-800 text-[20px] leading-[24px] font-semibold tracking-normal hover:no-underline py-[24px] [&>svg]:w-6 [&>svg]:h-6 [&>svg]:shrink-0">
                     <span className="flex-1 pr-4">{item.question}</span>
                   </AccordionTrigger>
                   <AccordionContent className="transition-opacity duration-300 ease-in-out data-[state=closed]:opacity-0 data-[state=open]:opacity-100">
