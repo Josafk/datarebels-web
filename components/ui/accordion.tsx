@@ -149,14 +149,14 @@ function AccordionTrigger(
         {children}
         {indicator === "plus" && (
           <Plus
-            className="size-5 shrink-0 text-blue-600 transition-transform duration-200"
-            strokeWidth={2.5}
+            className="size-6 shrink-0 text-blue-600 transition-transform duration-200"
+            strokeWidth={2}
             aria-hidden
           />
         )}
         {indicator === "arrow" && (
           <ChevronDown
-            className="size-5 shrink-0 text-blue-600 transition-transform duration-200"
+            className="size-6 shrink-0 text-blue-600 transition-transform duration-200"
             strokeWidth={2.5}
             aria-hidden
           />
