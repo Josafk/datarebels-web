@@ -44,7 +44,7 @@ export function Footer() {
               Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
               <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
             </p>
-            <div className="flex flex-row items-center gap-3 flex-shrink-0" style={{flexWrap:"nowrap"}}>
+            <div className="flex flex-row items-center gap-2 flex-wrap">
               <ShinyButton href="#contact" variant="blue" className="whitespace-nowrap flex-shrink-0">
                 Enroll a Rebel Today
               </ShinyButton>
@@ -63,10 +63,10 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-white/10 mt-8 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <p className="font-sans text-white/40 text-[12px] font-semibold tracking-[2px] uppercase">
+          <p className="font-sans text-white/40 text-[11px] font-semibold tracking-[1.5px] uppercase whitespace-nowrap">
             ©2026 DATA REBELS. ALL RIGHTS RESERVED
           </p>
-          <div className="flex flex-wrap gap-4 sm:gap-6">
+          <div className="flex flex-row flex-wrap gap-3 sm:gap-6">
             {legalLinks.map(({ href, label }) => (
               <Link key={href} href={href}
                 className="font-sans text-white/40 hover:text-white text-[12px] font-semibold tracking-[2px] uppercase transition-colors">
