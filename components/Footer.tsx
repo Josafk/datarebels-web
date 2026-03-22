@@ -32,7 +32,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-8 py-8 lg:py-10">
 
         {/* 2 cols: logo izq | slogan+CTA+social der */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
 
           {/* Col izq: solo logo */}
           <Image src="/logo-white.svg" alt="datarebels" width={130} height={20}
