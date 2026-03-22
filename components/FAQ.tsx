@@ -41,13 +41,13 @@ const faqItems = [
 export function FAQ() {
   return (
     <section
-      className="bg-white py-20 lg:py-24 w-full"
+      className="bg-white py-12 lg:py-16 w-full"
       aria-label="Frequently asked questions"
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 xl:px-12">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16 gap-10">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-20 gap-8">
           {/* Columna izquierda: Info */}
-          <div className="w-full lg:w-[380px] lg:flex-shrink-0 lg:sticky lg:top-24">
+          <div className="w-full lg:w-[400px] lg:flex-shrink-0">
             <h2 className="font-title text-slate-900 text-[24px] md:text-[28px] lg:text-[32px] leading-[26px] md:leading-[30px] lg:leading-[36px] font-semibold tracking-normal mb-4">
               Frequently asked questions and answers
             </h2>
