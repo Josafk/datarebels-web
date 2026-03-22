@@ -29,7 +29,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
   const watchUrl = episode.watchUrl ?? "#watch";
   const isExternal = watchUrl.startsWith("http");
   return (
-    <article className="group border border-slate-200/80 rounded-2xl overflow-hidden bg-white flex flex-col w-full h-full">
+    <article className="group border border-slate-200/80 rounded-2xl overflow-hidden bg-white flex flex-col w-full">
       <a
         href={watchUrl}
         className="flex flex-col flex-1"
@@ -127,7 +127,7 @@ export function BeyondData() {
           >
             <CarouselContent className="!ml-0 flex flex-row flex-nowrap">
               {episodes.map((episode) => (
-                <CarouselItem key={episode.id} className="!pl-0 pr-3 md:pr-4 flex-none basis-full md:basis-1/2 lg:basis-1/3 flex">
+                <CarouselItem key={episode.id} className="!pl-0 pr-3 md:pr-4 flex-none basis-full md:basis-1/2 lg:basis-1/3">
                   <EpisodeCard episode={episode} />
                 </CarouselItem>
               ))}
@@ -135,13 +135,13 @@ export function BeyondData() {
           </Carousel>
 
           <div className="flex items-center justify-between pt-3 mt-3">
-            <div className="flex items-center gap-1.5" role="tablist" aria-label="Paginacion de episodios">
+            <div className="flex items-center gap-1 min-w-0 overflow-hidden" role="tablist" aria-label="Paginacion de episodios">
               {Array.from({ length: Math.max(1, snapCount) }).map((_, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => carouselApi?.scrollTo(i)}
-                  className={`h-2 rounded-full shrink-0 transition-all border-none ${i === selectedIndex ? "w-6 bg-[#1330F4]" : "w-2 bg-slate-300"}`}
+                  className={`h-1.5 rounded-full shrink-0 transition-all border-none ${i === selectedIndex ? "w-4 bg-[#1330F4]" : "w-1.5 bg-slate-300"}`}
                   aria-current={i === selectedIndex ? "true" : undefined}
                 />
               ))}
