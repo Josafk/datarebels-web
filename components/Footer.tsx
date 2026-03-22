@@ -36,7 +36,7 @@ export function Footer() {
 
           {/* Col izq: solo logo */}
           <Image src="/logo-white.svg" alt="datarebels" width={130} height={20}
-            className="h-5 w-auto flex-shrink-0" />
+            className="h-5 w-auto flex-shrink-0 max-w-[130px]" />
 
           {/* Col der: slogan arriba + CTA+social abajo */}
           <div className="flex flex-col gap-4">
@@ -52,8 +52,8 @@ export function Footer() {
               <div className="flex items-center gap-2 flex-shrink-0">
                 {socialLinks.map(({ href, icon: Icon, label }) => (
                   <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                    className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors flex-shrink-0">
-                    <Icon className="w-4 h-4" />
+                    className="w-7 h-7 rounded-md bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors flex-shrink-0">
+                    <Icon className="w-3.5 h-3.5" />
                   </a>
                 ))}
               </div>
@@ -62,7 +62,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 mt-8 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="border-t border-white/10 mt-6 pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
           <p className="font-sans text-white/40 text-[11px] font-semibold tracking-[1.5px] uppercase whitespace-nowrap">
             ©2026 DATA REBELS. ALL RIGHTS RESERVED
           </p>
