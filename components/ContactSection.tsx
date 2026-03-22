@@ -39,15 +39,15 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative w-full py-10 lg:py-16 flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      className="relative w-full py-10 lg:py-12 flex items-center justify-center bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/background-form.png')" }}
       aria-label="Contact"
     >
       <div className="max-w-6xl mx-auto w-full px-5 md:px-10 lg:px-8">
-        <div className="bg-white rounded-[1.5rem] p-6 sm:p-8 lg:p-16 shadow-2xl">
+        <div className="bg-white rounded-[1.5rem] p-6 sm:p-8 lg:p-20 shadow-2xl">
 
           {/* Grid principal */}
-          <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 lg:gap-16 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 lg:gap-[120px] text-left">
 
             {/* Columna izquierda */}
             <div className="flex flex-col">
