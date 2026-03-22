@@ -40,7 +40,7 @@ export function GlobalMovement() {
   useEffect(() => {
     const update = () => {
       if (window.innerWidth < 640) {
-        setSwiperDims({ width: window.innerWidth - 40, height: Math.round((window.innerWidth - 40) * 0.85) });
+        setSwiperDims({ width: window.innerWidth - 56, height: Math.round((window.innerWidth - 56) * 0.72) });
       } else if (window.innerWidth < 1024) {
         setSwiperDims({ width: window.innerWidth - 80, height: 440 });
       } else {
@@ -57,7 +57,7 @@ export function GlobalMovement() {
       className="relative z-10 bg-slate-50"
       aria-label="Global Movement"
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:gap-x-16 gap-y-8 py-6 px-5 md:px-10 lg:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:gap-x-16 gap-y-6 py-6 px-5 md:px-10 lg:px-8">
         {/* Columna Izquierda: mobile stack / tablet dos columnas */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center">
           <h2 className="font-title text-slate-900 text-[24px] md:text-[24px] lg:text-[32px] font-semibold leading-[26px] md:leading-[26px] lg:leading-[34px] tracking-normal mb-8">
@@ -88,7 +88,7 @@ export function GlobalMovement() {
         </div>
 
         {/* Columna Derecha: mobile al final / tablet derecha con aire */}
-        <div className="w-full lg:w-1/2 rounded-2xl min-h-[320px] md:min-h-[440px] lg:min-h-[500px] lg:self-stretch">
+        <div className="w-full lg:w-1/2 overflow-hidden rounded-2xl min-h-[320px] md:min-h-[440px] lg:min-h-[500px] lg:self-stretch">
           <ImageSwiper
             images={COMMUNITY_IMAGES}
             cardWidth={swiperDims.width}
