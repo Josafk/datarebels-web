@@ -40,9 +40,9 @@ export function GlobalMovement() {
   useEffect(() => {
     const update = () => {
       if (window.innerWidth < 640) {
-        setSwiperDims({ width: 360, height: 320 });
+        setSwiperDims({ width: window.innerWidth - 40, height: Math.round((window.innerWidth - 40) * 0.75) });
       } else if (window.innerWidth < 1024) {
-        setSwiperDims({ width: 700, height: 440 });
+        setSwiperDims({ width: window.innerWidth - 80, height: 440 });
       } else {
         setSwiperDims({ width: 650, height: 650 });
       }
