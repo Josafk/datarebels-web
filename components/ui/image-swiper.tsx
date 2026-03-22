@@ -200,8 +200,8 @@ export const ImageSwiper: React.FC<ImageSwiperProps> = ({
         touchAction: "none" as const,
         transformStyle: "preserve-3d" as const,
         "--card-perspective": "700px",
-        "--card-z-offset": "30px",
-        "--card-y-offset": "15px",
+        "--card-z-offset": "12px",
+        "--card-y-offset": "8px",
         "--card-max-z-index": imageList.length.toString(),
         "--card-swap-duration": "0.3s",
       }
