@@ -88,7 +88,7 @@ export function GlobalMovement() {
         </div>
 
         {/* Columna Derecha: mobile al final / tablet derecha con aire */}
-        <div className="w-full lg:w-1/2 overflow-hidden rounded-2xl min-h-[320px] md:min-h-[440px] lg:min-h-[500px] lg:self-stretch">
+        <div className="w-full lg:w-1/2 overflow-hidden rounded-2xl min-h-[380px] md:min-h-[480px] lg:min-h-[500px] lg:self-stretch">
           <ImageSwiper
             images={COMMUNITY_IMAGES}
             cardWidth={swiperDims.width}
