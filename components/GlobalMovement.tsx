@@ -40,9 +40,9 @@ export function GlobalMovement() {
   useEffect(() => {
     const update = () => {
       if (window.innerWidth < 640) {
-        setSwiperDims({ width: 320, height: 240 });
+        setSwiperDims({ width: 360, height: 320 });
       } else if (window.innerWidth < 1024) {
-        setSwiperDims({ width: 600, height: 500 });
+        setSwiperDims({ width: 700, height: 440 });
       } else {
         setSwiperDims({ width: 650, height: 650 });
       }
@@ -57,9 +57,9 @@ export function GlobalMovement() {
       className="relative z-10 bg-slate-50"
       aria-label="Global Movement"
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:gap-x-12 lg:gap-x-16 gap-y-8 py-6 px-5 md:px-10 lg:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:gap-x-16 gap-y-8 py-6 px-5 md:px-10 lg:px-8">
         {/* Columna Izquierda: mobile stack / tablet dos columnas */}
-        <div className="w-full md:w-[52%] lg:w-1/2 flex flex-col justify-center">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center">
           <h2 className="font-title text-slate-900 text-[24px] md:text-[24px] lg:text-[32px] font-semibold leading-[26px] md:leading-[26px] lg:leading-[34px] tracking-normal mb-8">
             Connect with the global movement closing the talent gap and driving
             real-world adoption.
@@ -71,7 +71,7 @@ export function GlobalMovement() {
                 key={benefit.title}
                 className="flex gap-4 items-start"
               >
-                <div className="flex-shrink-0 bg-[#1330F4] rounded-lg p-1.5 md:p-2 flex items-center justify-center shrink-0 w-8 h-8 md:w-10 md:h-10">
+                <div className="flex-shrink-0 bg-[#1330F4] rounded-lg p-1.5 flex items-center justify-center shrink-0 w-8 h-8">
                   <benefit.icon size={16} className="text-white flex-shrink-0" />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -88,7 +88,7 @@ export function GlobalMovement() {
         </div>
 
         {/* Columna Derecha: mobile al final / tablet derecha con aire */}
-        <div className="w-full md:w-[48%] lg:w-1/2 overflow-hidden rounded-2xl min-h-[260px] md:min-h-[400px] lg:min-h-[500px] lg:self-stretch">
+        <div className="w-full lg:w-1/2 overflow-hidden rounded-2xl min-h-[320px] md:min-h-[440px] lg:min-h-[500px] lg:self-stretch">
           <ImageSwiper
             images={COMMUNITY_IMAGES}
             cardWidth={swiperDims.width}
