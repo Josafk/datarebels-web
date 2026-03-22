@@ -59,7 +59,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
               {episode.title}
             </p>
           </div>
-          <span className="font-sans inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-[13px] font-medium w-fit shrink-0" style={{ backgroundColor: "#1330F4" }}>
+          <span className="font-sans inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-[12px] font-medium w-fit whitespace-nowrap shrink-0" style={{ backgroundColor: "#1330F4" }}>
             <Play size={14} className="flex-shrink-0" strokeWidth={2.5} />
             Watch full episode
           </span>
@@ -115,7 +115,7 @@ export function BeyondData() {
                 from the people moving the needle.
               </p>
             </div>
-            <div className="order-last md:order-last flex-shrink-0 md:self-start">
+            <div className="order-first md:order-last flex-shrink-0 md:self-start">
               <Image src="/beyon-data.svg" alt="BEYOND DATA" width={180} height={80} className="h-7 md:h-10 lg:h-12 w-auto object-contain" />
             </div>
           </div>
@@ -123,7 +123,7 @@ export function BeyondData() {
           <Carousel
             setApi={setCarouselApi}
             opts={{ align: "start", dragFree: false, containScroll: "trimSnaps", slidesToScroll: 1, breakpoints: { "(min-width: 768px)": { slidesToScroll: 2 }, "(min-width: 1024px)": { slidesToScroll: 3 } } }}
-            className="w-full overflow-hidden"
+            className="w-full"
           >
             <CarouselContent className="!ml-0 flex flex-row flex-nowrap">
               {episodes.map((episode) => (
