@@ -20,9 +20,9 @@ const socialLinks = [
 ];
 
 const legalLinks = [
-  { href: "#terms", label: "TERMS OF USE" },
-  { href: "#privacy", label: "PRIVACY POLICY" },
-  { href: "#security", label: "SECURITY" },
+  { href: "/terminos", label: "TERMS OF USE" },
+  { href: "/privacidad", label: "PRIVACY POLICY" },
+  { href: "/seguridad", label: "SECURITY" },
 ];
 
 export function Footer() {
