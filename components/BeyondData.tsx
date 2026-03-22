@@ -29,7 +29,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
   const watchUrl = episode.watchUrl ?? "#watch";
   const isExternal = watchUrl.startsWith("http");
   return (
-    <article className="group border border-slate-200/80 rounded-2xl overflow-hidden bg-white flex flex-col w-full">
+    <article className="group border border-slate-200/80 rounded-2xl overflow-hidden bg-white flex flex-col w-full h-full">
       <a
         href={watchUrl}
         className="flex flex-col flex-1"
@@ -59,7 +59,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
               {episode.title}
             </p>
           </div>
-          <span className="font-sans inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-[12px] font-medium w-fit whitespace-nowrap shrink-0" style={{ backgroundColor: "#1330F4" }}>
+          <span className="font-sans inline-flex items-center gap-1 rounded-full text-white text-[12px] font-medium w-fit whitespace-nowrap shrink-0" style={{ backgroundColor: "#1330F4", padding: "7px 24px 7px 16px" }}>
             <Play size={14} className="flex-shrink-0" strokeWidth={2.5} />
             Watch full episode
           </span>
@@ -127,7 +127,7 @@ export function BeyondData() {
           >
             <CarouselContent className="!ml-0 flex flex-row flex-nowrap">
               {episodes.map((episode) => (
-                <CarouselItem key={episode.id} className="!pl-0 pr-2 md:pr-4 flex-none basis-full md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={episode.id} className="!pl-0 pr-2 md:pr-4 flex-none basis-full md:basis-1/2 lg:basis-1/3 self-stretch">
                   <EpisodeCard episode={episode} />
                 </CarouselItem>
               ))}
