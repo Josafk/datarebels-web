@@ -29,45 +29,54 @@ export function Footer() {
   return (
     <footer className="bg-dark-deep-200 flex-shrink-0 relative z-20">
       <div className="h-[3px] bg-gradient-to-r from-fuchsia-500 via-purple-500 to-purple-600" />
-      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-8 py-10 lg:py-12">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8">
-          <div className="flex flex-col gap-4 max-w-sm">
+      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-8 py-8 lg:py-10">
+
+        {/* Fila principal: Logo | Slogan | CTA + Redes */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+
+          {/* Logo */}
+          <div className="flex-shrink-0">
             <Image src="/logo-white.svg" alt="datarebels" width={130} height={20} className="h-5 w-auto" />
-            <p className="text-white/80 text-[14px] leading-[20px] flex items-start gap-1.5">
-              Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
-              <Zap className="w-4 h-4 text-fuchsia-400 flex-shrink-0 mt-0.5" />
-            </p>
-            <ShinyButton href="#contact" variant="blue" className="w-fit">
+          </div>
+
+          {/* Slogan — centro */}
+          <p className="font-sans text-white text-[16px] md:text-[20px] font-medium leading-[24px] lg:max-w-sm">
+            Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
+            <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
+          </p>
+
+          {/* CTA + Redes */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <ShinyButton href="#contact" variant="blue" className="w-fit whitespace-nowrap">
               Enroll a Rebel Today
             </ShinyButton>
-          </div>
-          <div className="flex flex-col gap-3">
-            <p className="text-white text-[14px] font-medium">Visit us at</p>
             <div className="flex items-center gap-3">
+              <span className="text-white text-[14px] font-medium whitespace-nowrap">Visit us at</span>
               {socialLinks.map(({ href, icon: Icon, label }) => (
                 <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors">
-                  <Icon className="w-4 h-4" />
+                  className="text-white/70 hover:text-white transition-colors">
+                  <Icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
           </div>
         </div>
-        <div className="border-t border-white/10 mt-8 pt-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <p className="text-white/40 text-[11px] tracking-wide uppercase">
-              ©2026 DATA REBELS. ALL RIGHTS RESERVED
-            </p>
-            <div className="flex flex-wrap gap-4 sm:gap-6">
-              {legalLinks.map(({ href, label }) => (
-                <Link key={href} href={href}
-                  className="text-white/40 hover:text-white text-[11px] tracking-wide uppercase transition-colors">
-                  {label}
-                </Link>
-              ))}
-            </div>
+
+        {/* Separador + Copyright */}
+        <div className="border-t border-white/10 mt-8 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p className="text-white/40 text-[11px] tracking-wide uppercase">
+            ©2026 DATA REBELS. ALL RIGHTS RESERVED
+          </p>
+          <div className="flex flex-wrap gap-4 sm:gap-6">
+            {legalLinks.map(({ href, label }) => (
+              <Link key={href} href={href}
+                className="text-white/40 hover:text-white text-[11px] tracking-wide uppercase transition-colors">
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
+
       </div>
     </footer>
   );
