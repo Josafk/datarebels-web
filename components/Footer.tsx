@@ -35,8 +35,8 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
           {/* Col izq: Logo + Slogan apilados */}
-          <div className="flex flex-col gap-3 max-w-sm">
-            <Image src="/logo-white.svg" alt="datarebels" width={130} height={20} className="h-5 w-auto" />
+          <div className="flex flex-col gap-3 max-w-xs lg:max-w-[340px]">
+            <Image src="/logo-white.svg" alt="datarebels" width={130} height={20} className="h-5 w-auto mb-1" />
             <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px]">
               Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
               <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
