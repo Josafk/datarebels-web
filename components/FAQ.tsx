@@ -45,10 +45,10 @@ export function FAQ() {
       aria-label="Frequently asked questions"
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 xl:px-12">
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16 gap-10">
           {/* Columna izquierda: Info */}
-          <div className="w-full">
-            <h2 className="font-title text-slate-900 text-[24px] leading-[26px] font-semibold tracking-normal mb-4">
+          <div className="w-full lg:w-[380px] lg:flex-shrink-0 lg:sticky lg:top-24">
+            <h2 className="font-title text-slate-900 text-[24px] md:text-[28px] lg:text-[32px] leading-[26px] md:leading-[30px] lg:leading-[36px] font-semibold tracking-normal mb-4">
               Frequently asked questions and answers
             </h2>
             <p className="font-sans text-slate-500 text-[14px] leading-[18px] mb-6 md:mb-8 max-w-2xl">
@@ -84,7 +84,7 @@ export function FAQ() {
           </div>
 
           {/* Columna derecha: Acordeón Radix */}
-          <div className="w-full min-w-0">
+          <div className="w-full min-w-0 lg:flex-1">
             <Accordion
               type="single"
               collapsible
