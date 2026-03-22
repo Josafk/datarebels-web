@@ -44,7 +44,7 @@ export function ContactSection() {
       aria-label="Contact"
     >
       <div className="max-w-6xl mx-auto w-full px-5 md:px-10 lg:px-8">
-        <div className="bg-white rounded-[1.5rem] p-6 sm:p-8 lg:p-20 shadow-2xl">
+        <div className="bg-white rounded-[1.5rem] p-6 sm:p-8 lg:px-16 lg:py-12 shadow-2xl">
 
           {/* Grid principal */}
           <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 lg:gap-[120px] text-left">
@@ -61,12 +61,12 @@ export function ContactSection() {
               <h2 className="font-title text-slate-900 text-[28px] md:text-[32px] leading-[34px] font-semibold mb-4">
                 Contact with us
               </h2>
-              <p className="font-sans text-slate-500 text-[14px] md:text-[16px] leading-[22px] mb-8 max-w-xs">
+              <p className="font-sans text-slate-500 text-[14px] md:text-[16px] leading-[22px] mb-6 max-w-xs">
                 Have questions or need assistance? Our dedicated team is here to support you—just reach out!
               </p>
 
               {/* Info contacto — solo desktop */}
-              <div className="hidden lg:flex flex-col gap-4 mt-auto">
+              <div className="hidden lg:flex flex-col gap-4 mt-6">
                 {contactItems.map(({ href, icon: Icon, label }) =>
                   href ? (
                     <a key={label} href={href} className="flex items-center gap-3 text-rose-500 hover:text-rose-600 transition-colors">
