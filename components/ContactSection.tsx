@@ -44,29 +44,31 @@ export function ContactSection() {
       aria-label="Contact"
     >
       <div className="max-w-6xl mx-auto w-full px-5 md:px-10 lg:px-8">
-        <div className="bg-white rounded-[1.5rem] p-6 sm:p-8 lg:px-16 lg:py-10 shadow-2xl">
-
-          {/* Grid principal */}
+        <div className="bg-white rounded-[1.5rem] p-[40px] lg:p-[80px] shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 lg:gap-[120px] text-left">
 
             {/* Columna izquierda */}
-            <div className="flex flex-col justify-between">
-              <Image
-                src="/isologo.svg"
-                alt="Data Rebels"
-                width={56}
-                height={46}
-                className="object-contain mb-6"
-              />
-              <h2 className="font-title text-slate-900 text-[28px] md:text-[32px] leading-[34px] font-semibold mb-4">
-                Contact with us
-              </h2>
-              <p className="font-sans text-slate-500 text-[14px] md:text-[16px] leading-[22px] mb-6 max-w-xs">
-                Have questions or need assistance? Our dedicated team is here to support you—just reach out!
-              </p>
+            <div className="flex flex-col justify-between gap-8">
 
-              {/* Info contacto — solo desktop */}
-              <div className="hidden lg:flex flex-col gap-4 mt-6">
+              {/* Bloque superior: isologo + título + descripción */}
+              <div className="flex flex-col gap-4">
+                <Image
+                  src="/isologo.svg"
+                  alt="Data Rebels"
+                  width={56}
+                  height={46}
+                  className="object-contain"
+                />
+                <h2 className="font-title text-slate-900 text-[28px] md:text-[32px] leading-[34px] font-semibold">
+                  Contact with us
+                </h2>
+                <p className="font-sans text-slate-500 text-[14px] md:text-[16px] leading-[22px] max-w-xs">
+                  Have questions or need assistance? Our dedicated team is here to support you—just reach out!
+                </p>
+              </div>
+
+              {/* Bloque inferior: datos de contacto — solo desktop */}
+              <div className="hidden lg:flex flex-col gap-4">
                 {contactItems.map(({ href, icon: Icon, label }) =>
                   href ? (
                     <a key={label} href={href} className="flex items-center gap-3 text-rose-500 hover:text-rose-600 transition-colors">
@@ -89,7 +91,7 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Info contacto — mobile/tablet (fila horizontal debajo) */}
+          {/* Datos de contacto — mobile/tablet */}
           <div className="lg:hidden flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 mt-6 pt-6 border-t border-slate-100">
             {contactItems.map(({ href, icon: Icon, label }) =>
               href ? (
@@ -105,7 +107,6 @@ export function ContactSection() {
               )
             )}
           </div>
-
         </div>
       </div>
     </section>
