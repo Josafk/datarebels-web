@@ -44,13 +44,13 @@ export function ContactSection() {
       aria-label="Contact"
     >
       <div className="max-w-6xl mx-auto w-full px-5 md:px-10 lg:px-8">
-        <div className="bg-white rounded-[1.5rem] p-6 sm:p-8 lg:px-16 lg:py-12 shadow-2xl">
+        <div className="bg-white rounded-[1.5rem] p-6 sm:p-8 lg:px-16 lg:py-10 shadow-2xl">
 
           {/* Grid principal */}
           <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 lg:gap-[120px] text-left">
 
             {/* Columna izquierda */}
-            <div className="flex flex-col">
+            <div className="flex flex-col justify-between">
               <Image
                 src="/isologo.svg"
                 alt="Data Rebels"
