@@ -62,7 +62,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 mt-6 pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
+        <div className="border-t border-white/10 mt-6 pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3">
           <p className="font-sans text-white/40 text-[11px] font-semibold tracking-[1.5px] uppercase whitespace-nowrap">
             ©2026 DATA REBELS. ALL RIGHTS RESERVED
           </p>
