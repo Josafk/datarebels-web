@@ -74,7 +74,7 @@ export function GlobalMovement() {
                 key={benefit.title}
                 className="flex gap-4 items-start"
               >
-                <div className="flex-shrink-0 bg-[#1330F4] rounded-lg flex items-center justify-center" style={{width:"24px",height:"24px",minWidth:"24px",padding:"4px"}}>
+                <div className="flex-shrink-0 bg-[#1330F4] rounded-lg flex items-center justify-center" style={{width:"40px",height:"40px",minWidth:"40px",padding:"8px",borderRadius:"8px",border:"1px solid #B282FF",background:"#1330F4"}}>
                   <benefit.icon size={16} className="text-white flex-shrink-0" />
                 </div>
                 <div className="flex flex-col gap-1">
