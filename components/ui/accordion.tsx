@@ -34,7 +34,7 @@ const accordionItemVariants = cva("", {
 });
 
 const accordionTriggerVariants = cva(
-  "flex flex-1 items-center justify-between py-6 gap-4 text-left text-slate-800 font-medium transition-all cursor-pointer [&[data-state=open]>svg]:rotate-180",
+  "flex flex-1 items-center justify-between py-4 gap-4 text-left text-slate-800 font-medium transition-all cursor-pointer [&[data-state=open]>svg]:rotate-180",
   {
     variants: {
       variant: {
@@ -45,7 +45,7 @@ const accordionTriggerVariants = cva(
       indicator: {
         arrow:
           "[&>svg]:text-blue-600 [&>svg]:shrink-0 [&>svg]:transition-transform [&>svg]:duration-200",
-        plus: "[&>svg]:text-blue-600 [&>svg]:shrink-0 [&>svg]:size-6 [&>svg]:transition-transform [&>svg]:duration-200 [&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0 [&[data-state=open]>svg]:rotate-180",
+        plus: "[&>svg]:text-blue-600 [&>svg]:shrink-0 [&>svg]:size-5 [&>svg]:transition-transform [&>svg]:duration-200 [&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0 [&[data-state=open]>svg]:rotate-180",
         none: "",
       },
     },
@@ -149,7 +149,7 @@ function AccordionTrigger(
         {children}
         {indicator === "plus" && (
           <Plus
-            className="size-6 shrink-0 text-blue-600 transition-transform duration-200"
+            className="size-5 shrink-0 text-blue-600 transition-transform duration-200"
             strokeWidth={2}
             aria-hidden
           />
