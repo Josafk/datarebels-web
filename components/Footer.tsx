@@ -31,21 +31,20 @@ export function Footer() {
       <div className="h-[3px] bg-gradient-to-r from-fuchsia-500 via-purple-500 to-purple-600" />
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-8 py-8 lg:py-10">
 
-        {/* Fila: Logo | Slogan | CTA+Social */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+        {/* 2 columnas: izq logo+slogan / der CTA+social */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
-          {/* Logo */}
-          <Image src="/logo-white.svg" alt="datarebels" width={130} height={20}
-            className="h-5 w-auto flex-shrink-0" />
+          {/* Col izq: Logo + Slogan apilados */}
+          <div className="flex flex-col gap-3 max-w-sm">
+            <Image src="/logo-white.svg" alt="datarebels" width={130} height={20} className="h-5 w-auto" />
+            <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px]">
+              Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
+              <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
+            </p>
+          </div>
 
-          {/* Slogan */}
-          <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px] lg:max-w-[260px] lg:text-center">
-            Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
-            <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
-          </p>
-
-          {/* CTA + Visit us at + iconos — nowrap, todos en fila */}
-          <div className="flex flex-row items-center gap-3 flex-shrink-0" style={{flexWrap: "nowrap"}}>
+          {/* Col der: CTA + Visit us at + iconos en fila */}
+          <div className="flex flex-row items-center gap-3 flex-shrink-0" style={{flexWrap:"nowrap"}}>
             <ShinyButton href="#contact" variant="blue" className="whitespace-nowrap flex-shrink-0">
               Enroll a Rebel Today
             </ShinyButton>
