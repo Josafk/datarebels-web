@@ -42,7 +42,8 @@ export function GlobalMovement() {
       if (window.innerWidth < 640) {
         const el = document.querySelector('[data-swiper-container]');
         const w = el ? el.clientWidth : window.innerWidth - 60;
-        setSwiperDims({ width: w, height: Math.round(w * 0.75) });
+        const h = el ? el.clientHeight : Math.round(w * 0.75);
+        setSwiperDims({ width: w, height: h });
       } else if (window.innerWidth < 1024) {
         setSwiperDims({ width: window.innerWidth - 80, height: 440 });
       } else {
@@ -90,7 +91,7 @@ export function GlobalMovement() {
         </div>
 
         {/* Columna Derecha: mobile al final / tablet derecha con aire */}
-        <div data-swiper-container="" className="w-full lg:w-1/2 overflow-hidden rounded-2xl min-h-[360px] md:min-h-[480px] lg:min-h-[500px] lg:self-stretch">
+        <div data-swiper-container="" className="w-full lg:w-1/2 overflow-hidden rounded-2xl aspect-[4/3] lg:aspect-auto lg:min-h-[500px] lg:self-stretch">
           <ImageSwiper
             images={COMMUNITY_IMAGES}
             cardWidth={swiperDims.width}
