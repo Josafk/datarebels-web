@@ -45,7 +45,7 @@ const accordionTriggerVariants = cva(
       indicator: {
         arrow:
           "[&>svg]:text-blue-600 [&>svg]:shrink-0 [&>svg]:transition-transform [&>svg]:duration-200",
-        plus: "[&>svg]:text-blue-600 [&>svg]:shrink-0 [&>svg]:size-5 [&>svg]:transition-transform [&>svg]:duration-200 [&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0 [&[data-state=open]>svg]:rotate-180",
+        plus: "[&>svg]:text-blue-600 [&>svg]:shrink-0 [&>svg]:transition-transform [&>svg]:duration-200 [&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0 [&[data-state=open]>svg]:rotate-180",
         none: "",
       },
     },
