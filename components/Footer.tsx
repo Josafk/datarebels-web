@@ -31,32 +31,32 @@ export function Footer() {
       <div className="h-[3px] bg-gradient-to-r from-fuchsia-500 via-purple-500 to-purple-600" />
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-8 py-8 lg:py-10">
 
-        {/* Desktop: Logo | Slogan (flex-1 center) | CTA+Social */}
-        <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+        {/* 2 cols: logo izq | slogan+CTA+social der */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
-          {/* Logo — flex-shrink-0 */}
+          {/* Col izq: solo logo */}
           <Image src="/logo-white.svg" alt="datarebels" width={130} height={20}
             className="h-5 w-auto flex-shrink-0" />
 
-          {/* Slogan — ocupa espacio central */}
-          <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px] lg:flex-1 lg:px-8">
-            Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
-            <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
-          </p>
-
-          {/* CTA + Visit us at + iconos */}
-          <div className="flex flex-row items-center gap-3 flex-shrink-0" style={{flexWrap:"nowrap"}}>
-            <ShinyButton href="#contact" variant="blue" className="whitespace-nowrap flex-shrink-0">
-              Enroll a Rebel Today
-            </ShinyButton>
-            <span className="text-white text-[14px] font-medium whitespace-nowrap flex-shrink-0">Visit us at</span>
-            <div className="flex items-center gap-2 flex-shrink-0">
-              {socialLinks.map(({ href, icon: Icon, label }) => (
-                <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors flex-shrink-0">
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
+          {/* Col der: slogan arriba + CTA+social abajo */}
+          <div className="flex flex-col gap-4 lg:items-end">
+            <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px] lg:text-right lg:max-w-sm">
+              Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
+              <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
+            </p>
+            <div className="flex flex-row items-center gap-3 flex-shrink-0" style={{flexWrap:"nowrap"}}>
+              <ShinyButton href="#contact" variant="blue" className="whitespace-nowrap flex-shrink-0">
+                Enroll a Rebel Today
+              </ShinyButton>
+              <span className="text-white text-[14px] font-medium whitespace-nowrap flex-shrink-0">Visit us at</span>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                {socialLinks.map(({ href, icon: Icon, label }) => (
+                  <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                    className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors flex-shrink-0">
+                    <Icon className="w-4 h-4" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
