@@ -34,7 +34,7 @@ const accordionItemVariants = cva("", {
 });
 
 const accordionTriggerVariants = cva(
-  "flex flex-1 items-center justify-between py-4 gap-4 text-left text-slate-800 font-medium transition-all cursor-pointer [&[data-state=open]>svg]:rotate-180",
+  "flex flex-1 items-center justify-between py-3 gap-4 text-left text-slate-800 font-medium transition-all cursor-pointer [&[data-state=open]>svg]:rotate-180",
   {
     variants: {
       variant: {
@@ -149,7 +149,9 @@ function AccordionTrigger(
         {children}
         {indicator === "plus" && (
           <Plus
-            className="size-5 shrink-0 text-blue-600 transition-transform duration-200"
+            width={20}
+            height={20}
+            className="shrink-0 text-blue-600 transition-transform duration-200"
             strokeWidth={2}
             aria-hidden
           />
