@@ -40,7 +40,7 @@ export function GlobalMovement() {
   useEffect(() => {
     const update = () => {
       if (window.innerWidth < 640) {
-        setSwiperDims({ width: 320, height: 400 });
+        setSwiperDims({ width: 320, height: 240 });
       } else if (window.innerWidth < 1024) {
         setSwiperDims({ width: 600, height: 500 });
       } else {
@@ -88,7 +88,7 @@ export function GlobalMovement() {
         </div>
 
         {/* Columna Derecha: mobile al final / tablet derecha con aire */}
-        <div className="w-full md:w-[48%] lg:w-1/2 overflow-hidden rounded-2xl self-stretch min-h-[500px]">
+        <div className="w-full md:w-[48%] lg:w-1/2 overflow-hidden rounded-2xl">
           <ImageSwiper
             images={COMMUNITY_IMAGES}
             cardWidth={swiperDims.width}
