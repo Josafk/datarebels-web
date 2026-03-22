@@ -59,7 +59,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
               {episode.title}
             </p>
           </div>
-          <span className="font-sans inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-[13px] font-medium w-fit whitespace-nowrap shrink-0" style={{ backgroundColor: "#1330F4" }}>
+          <span className="font-sans inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-[13px] font-medium w-fit shrink-0" style={{ backgroundColor: "#1330F4" }}>
             <Play size={14} className="flex-shrink-0" strokeWidth={2.5} />
             Watch full episode
           </span>
@@ -116,7 +116,7 @@ export function BeyondData() {
               </p>
             </div>
             <div className="order-last md:order-last flex-shrink-0 md:self-start">
-              <Image src="/beyon-data.svg" alt="BEYOND DATA" width={180} height={80} className="h-8 md:h-12 w-auto object-contain" />
+              <Image src="/beyon-data.svg" alt="BEYOND DATA" width={180} height={80} className="h-7 md:h-10 lg:h-12 w-auto object-contain" />
             </div>
           </div>
 
@@ -147,10 +147,10 @@ export function BeyondData() {
               ))}
             </div>
             <div className="flex items-center gap-2">
-              <button id="podcast-prev" type="button" onClick={() => carouselApi?.scrollPrev()} disabled={!canScrollPrev} aria-label="Anterior" className={`h-8 w-8 rounded-full flex items-center justify-center outline-none shrink-0 transition-colors duration-200 disabled:pointer-events-none disabled:cursor-not-allowed podcast-nav-btn ${canScrollPrev ? "bg-[#1330F4] text-white border border-transparent shadow-sm hover:bg-[#0f27cc]" : "bg-transparent text-slate-300 border border-slate-200"}`}>
+              <button id="podcast-prev" type="button" onClick={() => carouselApi?.scrollPrev()} disabled={!canScrollPrev} aria-label="Anterior" style={{ width: 32, height: 32, flexShrink: 0 }} className={`rounded-full flex items-center justify-center outline-none transition-colors duration-200 disabled:pointer-events-none disabled:cursor-not-allowed ${canScrollPrev ? "bg-[#1330F4] text-white border border-transparent shadow-sm" : "bg-transparent text-slate-300 border border-slate-200"}`}>
                 <ChevronLeft size={16} strokeWidth={2} />
               </button>
-              <button id="podcast-next" type="button" onClick={() => carouselApi?.scrollNext()} disabled={!canScrollNext} aria-label="Siguiente" className={`h-8 w-8 rounded-full flex items-center justify-center outline-none shrink-0 transition-colors duration-200 disabled:pointer-events-none disabled:cursor-not-allowed podcast-nav-btn ${canScrollNext ? "bg-[#1330F4] text-white border border-transparent shadow-sm hover:bg-[#0f27cc]" : "bg-transparent text-slate-300 border border-slate-200"}`}>
+              <button id="podcast-next" type="button" onClick={() => carouselApi?.scrollNext()} disabled={!canScrollNext} aria-label="Siguiente" style={{ width: 32, height: 32, flexShrink: 0 }} className={`rounded-full flex items-center justify-center outline-none transition-colors duration-200 disabled:pointer-events-none disabled:cursor-not-allowed ${canScrollNext ? "bg-[#1330F4] text-white border border-transparent shadow-sm" : "bg-transparent text-slate-300 border border-slate-200"}`}>
                 <ChevronRight size={16} strokeWidth={2} />
               </button>
             </div>
