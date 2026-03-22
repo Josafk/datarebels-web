@@ -47,7 +47,7 @@ function EpisodeCard({ episode }: { episode: (typeof episodes)[0] }) {
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
         </div>
-        <div className="p-4 flex flex-col gap-3 flex-1">
+        <div className="px-3 py-3 flex flex-col gap-3 flex-1">
           <div className="flex flex-col gap-1 flex-1">
             <p className="font-sans text-[11px] font-semibold leading-4 tracking-[0.04em] uppercase text-slate-400">
               {episode.date}
@@ -103,7 +103,7 @@ export function BeyondData() {
       <div className="absolute inset-0 z-0" style={{ background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 30%, #6366f1 60%, #8b5cf6 100%)" }} />
       <div className="absolute inset-0 z-0 opacity-30" style={{ backgroundImage: "url('/background-podcast.png')", backgroundSize: "cover", backgroundPosition: "center" }} />
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 lg:px-8">
-        <div className="bg-white rounded-[20px] md:rounded-[28px] p-4 md:p-8 lg:p-10 border border-violet-200/70 shadow-[0_0_0_1px_rgba(168,85,247,0.14),0_20px_50px_rgba(124,58,237,0.15)]">
+        <div className="bg-white rounded-[20px] md:rounded-[28px] px-3 py-4 md:p-8 lg:p-10 border border-violet-200/70 shadow-[0_0_0_1px_rgba(168,85,247,0.14),0_20px_50px_rgba(124,58,237,0.15)]">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-6 mb-5 md:mb-6">
             <div className="flex-shrink-0 md:self-start">
               <Image src="/beyon-data.svg" alt="BEYOND DATA" width={180} height={80} className="h-7 md:h-10 lg:h-12 w-auto object-contain" />
@@ -127,7 +127,7 @@ export function BeyondData() {
           >
             <CarouselContent className="!ml-0 flex flex-row flex-nowrap">
               {episodes.map((episode) => (
-                <CarouselItem key={episode.id} className="!pl-0 pr-3 md:pr-4 flex-none basis-full md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={episode.id} className="!pl-0 pr-2 md:pr-4 flex-none basis-full md:basis-1/2 lg:basis-1/3">
                   <EpisodeCard episode={episode} />
                 </CarouselItem>
               ))}
