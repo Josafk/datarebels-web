@@ -39,8 +39,8 @@ export function Footer() {
             className="h-5 w-auto flex-shrink-0" />
 
           {/* Col der: slogan arriba + CTA+social abajo */}
-          <div className="flex flex-col gap-4 lg:items-end">
-            <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px] lg:text-right lg:max-w-sm">
+          <div className="flex flex-col gap-4">
+            <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px] max-w-sm">
               Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
               <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
             </p>
