@@ -40,7 +40,7 @@ export function Footer() {
 
           {/* Col der: slogan arriba + CTA+social abajo */}
           <div className="flex flex-col gap-4">
-            <p className="font-sans text-white text-[14px] lg:text-[16px] font-medium leading-[22px] max-w-sm">
+            <p className="font-sans text-white text-[16px] lg:text-[20px] font-medium leading-[24px] max-w-sm">
               Closing the GenAI talent gap in Mexico with 100,000 certified Rebels by 2030.
               <Zap className="inline w-4 h-4 text-yellow-400 ml-1 -mt-0.5" />
             </p>
@@ -62,7 +62,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 mt-6 pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3">
+        <div className="border-t border-white/10 mt-6 pt-4 flex flex-row flex-wrap items-center justify-between gap-2">
           <p className="font-sans text-white/40 text-[11px] font-semibold tracking-[1.5px] uppercase whitespace-nowrap">
             ©2026 DATA REBELS. ALL RIGHTS RESERVED
           </p>
